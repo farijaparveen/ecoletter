@@ -143,7 +143,7 @@
                             <div class="col-sm-4 invoice-col">
                                 To
                                 <address>
-                                    <strong>Princal</strong><br>
+                                    <strong>Principal</strong><br>
                                     Saveetha Engineering College<br>
 
                                 </address>
