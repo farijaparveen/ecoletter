@@ -1,8 +1,4 @@
-<?php 
 
-include('../session.php');
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,10 +122,43 @@ include('../session.php');
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Subject</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter the subject">
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Through</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter the faculty name">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>To</label>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox">
+Principal                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox">
+                                                    HOD
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
+
 
                                 <div class="form-group">
                                     <label>Letter Type</label>
