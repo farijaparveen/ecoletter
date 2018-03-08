@@ -1,9 +1,8 @@
-<?php 
+<?php
 
 include('../session.php');
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,6 +16,8 @@ include('../session.php');
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
     <!-- Theme style -->
@@ -115,6 +116,117 @@ include('../session.php');
         <section class="content">
 
 
+            <div class="row">
+                <div class="col-md-3">
+
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Folders</h3>
+
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Awaiting Approval
+                                        <span class="label label-primary pull-right">12</span></a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i> Approved</a></li>
+                                <li><a href="#"><i class="fa fa-trash"></i> Unapproved</a></li>
+
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /. box -->
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Inbox</h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="has-feedback">
+
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh fa-spin"></i> Refresh</button>
+
+
+                                </div>
+                            </div>
+
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <div class="mailbox-controls">
+                                <!-- Check all button -->
+
+                                <!-- /.btn-group -->
+
+                            </div>
+                            <div class="table-responsive mailbox-messages" style="padding: 10px;">
+                                <table id="example3" class="table table-hover table-striped" >
+
+                                    <thead style="display: none;">
+                                    <tr>
+                                        <th>Browser</th>
+                                        <th>Platform(s)</th>
+                                        <th>Engine version</th>
+                                        <th>CSS grade</th>
+                                        <th>CSS grade</th>
+
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                    <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope"></i></a></td>
+                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
+                                        <td class="mailbox-subject">Requesting 5 days leave
+                                        </td>
+                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span></td>
+                                        <td class="mailbox-date">11 hours ago</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
+                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
+                                        <td class="mailbox-subject">Need Od for symposium
+                                        </td>
+                                        <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
+                                        <td class="mailbox-date">11 hours ago</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
+                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
+                                        <td class="mailbox-subject">Permission to go to hospital
+                                        </td>
+                                        <td class="mailbox-attachment"><span class="label label-primary">Permission</span></td>
+                                        <td class="mailbox-date">11 hours ago</td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <!-- /.table -->
+                            </div>
+                            <!-- /.mail-box-messages -->
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                    <!-- /. box -->
+                </div>
+                <!-- /.col -->
+            </div>
+
+
 
 
 
@@ -139,6 +251,12 @@ include('../session.php');
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -162,6 +280,21 @@ include('../session.php');
         $("#compose-textarea").wysihtml5();
     });
 </script>
+
+<script>
+    $(function () {
+        $('#example3').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
+</script>
+
 
 <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
