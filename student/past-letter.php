@@ -86,7 +86,7 @@ include('../session.php');
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li class="active"><a href="past-letter.php"><i class="fa fa-calendar-times-o"></i> <span>View Past Letter</span></a></li>
+                <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
@@ -103,7 +103,7 @@ include('../session.php');
         <section class="content-header">
             <h1>Past Letters
 
-                <small>view past letters</small>
+                <small>Manage Letterss</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

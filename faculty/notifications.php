@@ -88,7 +88,7 @@ include('../session.php');
             <li><a href="inbox.php"><i class="fa fa-inbox"></i> <span>Inbox</span></a></li>
             <li><a href="outbox.php"><i class="fa fa-sign-out"></i> <span>Outbox</span></a></li>
             <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-            <li><a href="past-letter.php"><i class="fa fa-calendar-times-o"></i> <span>View Past Letter</span></a></li>
+            <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
             <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i> <span>Attendance Report</span></a></li>
 
             <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
