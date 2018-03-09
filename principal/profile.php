@@ -47,7 +47,7 @@ include('../session.php');
         <!-- Logo -->
         <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-             <span class="logo-mini"><b>E</b>LT</span>
+            <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Eco</b>Letter</span>
         </a>
@@ -74,24 +74,26 @@ include('../session.php');
     <aside class="main-sidebar"> <section class="sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <div class="user-panel">                <div class="pull-left image">                    <img src="../dist/img/teacher.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Faculty Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Faculty</a>                </div>            </div>
-            <!-- Sidebar user panel -->
+        <!-- Sidebar user panel -->
 
-            <!-- search form -->
+        <!-- search form -->
 
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">MAIN NAVIGATION</li>
-
-                <li class="active"><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li><a href="attendance-report.php"><i class="fa fa-line-chart"></i> <span>Attendance Report</span></a></li>
-                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
 
 
-            </ul>
+            <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
+
+            <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+
+            <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+            <li class="active"><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+
+
+
+        </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -101,89 +103,17 @@ include('../session.php');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>Insights</small>
+                Profile                <small>User details</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
+                <li class="active">Profile</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
 
-            <div class="row">
-                <div class="col-md-12">
-
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">New Letter</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <form role="form">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Subject</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter the subject">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Letter Type</label>
-                                    <select class="form-control">
-                                        <option>Leave Letter</option>
-                                        <option>Permission Letter</option>
-                                        <option>OD letter</option>
-                                        <option>Special Permission</option>
-                                        <option>Emergency</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Message</label>
-                                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      <h1><u>Heading Of Message</u></h1>
-                      <h4>Subheading</h4>
-                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-                        was born and I will give you a complete account of the system, and expound the actual teachings
-                        of the great explorer of the truth, the master-builder of human happiness. No one rejects,
-                        dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know
-                        how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again
-                        is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
-                        but because occasionally circumstances occur in which toil and pain can procure him some great
-                        pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,
-                        except to obtain some advantage from it? But who has any right to find fault with a man who
-                        chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that
-                        produces no resultant pleasure? On the other hand, we denounce with righteous indignation and
-                        dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so
-                        blinded by desire, that they cannot foresee</p>
-                      <ul>
-                        <li>List item one</li>
-                        <li>List item two</li>
-                        <li>List item three</li>
-                        <li>List item four</li>
-                      </ul>
-                      <p>Thank you,</p>
-                      <p>John Doe</p>
-                    </textarea>
-                                </div>
-
-                            </div>
-                            <!-- /.box-body -->
-
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.box -->
-
-
-                </div>
-
-
-            </div>
 
 
 
