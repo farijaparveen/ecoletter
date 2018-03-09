@@ -96,7 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
 
-
         }
     </style>
 
@@ -111,7 +110,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="/"><b>Eco</b>Letter</a>
     </div>
 
-    <?php echo $error; ?>
+    <?php if (isset($error)) {
+        echo $error;
+    } ?>
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
