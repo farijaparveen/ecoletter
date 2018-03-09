@@ -61,10 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html xmlns:https="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/favicon.png" rel="icon" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 
     <title>Eco Letters | Log in</title>
@@ -90,11 +92,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        body {
+
+
+        }
+    </style>
+
+
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background: url(https://blackrockdigital.github.io/startbootstrap-new-age/img/bg-pattern.png), #7b4397;
+            background: url(https://blackrockdigital.github.io/startbootstrap-new-age/img/bg-pattern.png), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+            background: url(https://blackrockdigital.github.io/startbootstrap-new-age/img/bg-pattern.png), linear-gradient(to left, #7b4397, #dc2430);
+">
 <div class="login-box">
-    <div class="login-logo">
-        <a href="../..//"><b>Eco</b>Letter</a>
+    <div class="login-logo" style="color: #fff;">
+        <a href="/"><b>Eco</b>Letter</a>
     </div>
 
     <?php echo $error; ?>
