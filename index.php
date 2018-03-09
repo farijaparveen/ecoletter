@@ -1,60 +1,64 @@
 <?php
-   include("config.php");
-   session_start();
-   $error='';
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-      $username = $_POST['userid'];
-      $password = ($_POST["password"]);
-      $error="";
-      $sql = "SELECT * FROM `login` WHERE userid = '$username' and password = '$password'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result);  
-      $count = mysqli_num_rows($result);
-      
-        
-      if($count == 1) {
+include("config.php");
+session_start();
+$error = '';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $rolesql="SELECT role from `login` where userid='$username'";
-        $result1 = mysqli_query($db,$rolesql);
-         $row = mysqli_fetch_array($result1);
-
-         $_SESSION['login_user'] = $username;
-
-         $_SESSION['role']= $row['role'];
-
-         if($row['role']==1)
-         {
-         header("location: /student");
-
-         }
-
-          if($row['role']==2)
-         {
-             header("location: /faculty");
+    $username = $_POST['userid'];
+    $password = ($_POST["password"]);
+    $error = "";
+    $sql = "SELECT * FROM `login` WHERE userid = '$username' and password = '$password'";
+    $result = mysqli_query($db, $sql);
+    $row = mysqli_fetch_array($result);
+    $count = mysqli_num_rows($result);
 
 
-         }
+    if ($count == 1) {
 
-          if($row['role']==3)
-         {
-         header("location: /warden");
+        $rolesql = "SELECT role from `login` where userid='$username'";
+        $result1 = mysqli_query($db, $rolesql);
+        $row = mysqli_fetch_array($result1);
 
-         }
-if($row['role']==4)
-         {
-         header("location: /admin");
+        $_SESSION['login_user'] = $username;
 
-         }
-         
-      }else {
-         $error = '<div class="alert alert-danger alert-dismissible">
+        $_SESSION['role'] = $row['role'];
+
+        if ($row['role'] == 1) {
+            header("location: /student");
+
+        }
+
+        if ($row['role'] == 2) {
+            header("location: /faculty");
+
+
+        }
+
+        if ($row['role'] == 3) {
+            header("location: /warden");
+
+        }
+        if ($row['role'] == 4) {
+            header("location: /hod");
+
+        }
+        if ($row['role'] == 5) {
+            header("location: /principal");
+
+        }
+        if ($row['role'] == 6) {
+            header("location: /admin");
+
+        }
+
+    } else {
+        $error = '<div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-ban"></i> Alert!</h4>
                 Password or Username Incorrect!
               </div>';
-      }
-   }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +85,8 @@ if($row['role']==4)
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -112,7 +117,6 @@ if($row['role']==4)
                 <!-- /.col -->
             </div>
         </form>
-
 
 
     </div>
