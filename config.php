@@ -1,12 +1,11 @@
 <?php
 
 
-
-$baseurl="http://localhost";
+$baseurl = "http://localhost";
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database="ecoletter";
+$database = "ecoletter";
 
 // Create connection
 $db = mysqli_connect($servername, $username, $password, $database);

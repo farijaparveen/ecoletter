@@ -48,7 +48,7 @@ include('../session.php');
         <!-- Logo -->
         <a href="" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-             <span class="logo-mini"><b>E</b>LT</span>
+            <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Eco</b>Letter</span>
         </a>
@@ -72,9 +72,15 @@ include('../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="../dist/img/student.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Student Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Student</a>                </div>            </div>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info"><p>Student Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Student</a></div>
+            </div>
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -87,10 +93,10 @@ include('../session.php');
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                </li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
-
 
 
             </ul>
@@ -124,7 +130,8 @@ include('../session.php');
                             <h3 class="box-title">Folders</h3>
 
                             <div class="box-tools">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -151,7 +158,9 @@ include('../session.php');
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
 
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh fa-spin"></i> Refresh</button>
+                                    <button type="button" class="btn btn-default btn-sm"><i
+                                                class="fa fa-refresh fa-spin"></i> Refresh
+                                    </button>
 
 
                                 </div>
@@ -168,7 +177,7 @@ include('../session.php');
 
                             </div>
                             <div class="table-responsive mailbox-messages" style="padding: 10px;">
-                                <table id="example3" class="table table-hover table-striped" >
+                                <table id="example3" class="table table-hover table-striped">
 
                                     <thead style="display: none;">
                                     <tr>
@@ -188,7 +197,8 @@ include('../session.php');
                                         <td class="mailbox-name"><a href="">Farija Parveen</a></td>
                                         <td class="mailbox-subject">Requesting 5 days leave
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span></td>
+                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
+                                        </td>
                                         <td class="mailbox-date">11 hours ago</td>
                                     </tr>
 
@@ -207,7 +217,8 @@ include('../session.php');
                                         <td class="mailbox-name"><a href="">Farija Parveen</a></td>
                                         <td class="mailbox-subject">Permission to go to hospital
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-primary">Permission</span></td>
+                                        <td class="mailbox-attachment"><span
+                                                    class="label label-primary">Permission</span></td>
                                         <td class="mailbox-date">11 hours ago</td>
                                     </tr>
 
@@ -227,9 +238,6 @@ include('../session.php');
             </div>
 
 
-
-
-
         </section>
         <!-- /.content -->
     </div>
@@ -239,11 +247,11 @@ include('../session.php');
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 
-   
+
 </div>
 <!-- ./wrapper -->
 
@@ -251,7 +259,6 @@ include('../session.php');
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 
 
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -285,12 +292,12 @@ include('../session.php');
     $(function () {
         $('#example3').DataTable()
         $('#example2').DataTable({
-            'paging'      : true,
+            'paging': true,
             'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
         })
     })
 </script>

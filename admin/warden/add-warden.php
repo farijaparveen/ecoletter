@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('../../session.php');
 
@@ -43,14 +43,14 @@ include('../../session.php');
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-red sidebar-mini">
-<div class="wrapper"> 
+<div class="wrapper">
 
     <header class="main-header">
 
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-             <span class="logo-mini"><b>E</b>LT</span>
+            <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Eco</b>Letter</span>
         </a>
@@ -74,10 +74,16 @@ include('../../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
+    <aside class="main-sidebar">
+        <section class="sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="<?php echo $baseurl; ?>/dist/img/admin.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Admin Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>                </div>            </div>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="<?php echo $baseurl; ?>/dist/img/admin.png" class="img-circle"
+                                                  alt="User Image"></div>
+                <div class="pull-left info"><p>Admin Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Admin</a></div>
+            </div>
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -90,58 +96,55 @@ include('../../session.php');
                 <li><a href="../index.php"><i class="fa fa-area-chart"></i><span>Dashboard</span></a></li>
 
 
-
-<li class="treeview ">
-          <a href="#">
-            <i class="fa fa-users"></i> <span>Student</span>
-            <span class="pull-right-container">
+                <li class="treeview ">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>Student</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-            <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
+                        <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
 
-<li class="treeview">
-          <a href="#">
-            <i class="fa fa-graduation-cap"></i> <span> Faculty</span>
-            <span class="pull-right-container">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-graduation-cap"></i> <span> Faculty</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-            <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
+                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
 
-
-<li class="active treeview">
-          <a href="#">
-            <i class="fa fa-university"></i> <span> Warden</span>
-            <span class="pull-right-container">
+                <li class="active treeview">
+                    <a href="#">
+                        <i class="fa fa-university"></i> <span> Warden</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-           <ul class="treeview-menu">
-            <li class="active"><a href="add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-            <li><a href="edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
+                        <li><a href="edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
-
 
 
             </ul>
@@ -165,120 +168,122 @@ include('../../session.php');
 
         <!-- Main content -->
         <section class="content">
-<div class="row">
+            <div class="row">
 
-<div class="col-md-12">
+                <div class="col-md-12">
 
-<div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Adding New Warden</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="wdnname" class="col-sm-2 control-label">Name</label>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Adding New Warden</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="wdnname" class="col-sm-2 control-label">Name</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="wdnname" name="wdnname" placeholder="Name of the warden">
-                  </div>
-                </div>
-
-            
-                <div class="form-group">
-                  <label for="wdnid" class="col-sm-2 control-label">Warden id</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="wdnid" name="wdnid" placeholder="ID of the warden">
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Designation</label>
-
-                  <div class="col-sm-10">
-
-                  <select name="desig" class="form-control">
-                    <option value="1">Associate Professor</option>
-                    <option value="2">Assistant Professor(OG)</option>
-                    <option value="3">Assistant Professor(SG)</option>
-                    <option value="4">Professor</option>
-                  </select>
-
-              </div>
-                </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="wdnname" name="wdnname"
+                                               placeholder="Name of the warden">
+                                    </div>
+                                </div>
 
 
-                  <div class="form-group">
-                  <label class="col-sm-2 control-label">Gender</label>
+                                <div class="form-group">
+                                    <label for="wdnid" class="col-sm-2 control-label">Warden id</label>
 
-                  <div class="col-sm-10">
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="wdnid" name="wdnid"
+                                               placeholder="ID of the warden">
+                                    </div>
+                                </div>
 
-                  <select name="Gender" class="form-control">
-                    <option value="1">Male</option>
-                    <option  value="2">Female</option>
-                    <option  value="3">Others</option>
-                   
-                  </select>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Designation</label>
 
-              </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="mobno" class="col-sm-2 control-label">Mobile Number</label>
-
-                  <div class="col-sm-10">
-                    <input type="number" class="form-control" id="mobno" name="mobno" placeholder="Mobile number of the warden">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="mailid" class="col-sm-2 control-label">EMail ID</label>
-
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="mailid" placeholder="Mail id of the warden">
-                  </div>
-                </div>
-
-                    <div class="form-group">
-                  <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="bloodgroup" name="bloodgroup" placeholder="Blood group of the warden">
-                  </div>
-                </div>
-
-
-
-
-                 <div class="form-group">
-                  <label or="address" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-10">
 
-                  <textarea class="form-control" rows="3" placeholder="Enter the address"></textarea>
+                                        <select name="desig" class="form-control">
+                                            <option value="1">Associate Professor</option>
+                                            <option value="2">Assistant Professor(OG)</option>
+                                            <option value="3">Assistant Professor(SG)</option>
+                                            <option value="4">Professor</option>
+                                        </select>
 
-              </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Gender</label>
+
+                                    <div class="col-sm-10">
+
+                                        <select name="Gender" class="form-control">
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Others</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mobno" class="col-sm-2 control-label">Mobile Number</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="mobno" name="mobno"
+                                               placeholder="Mobile number of the warden">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mailid" class="col-sm-2 control-label">EMail ID</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" name="mailid"
+                                               placeholder="Mail id of the warden">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="bloodgroup" name="bloodgroup"
+                                               placeholder="Blood group of the warden">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label or="address" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+
+                                        <textarea class="form-control" rows="3"
+                                                  placeholder="Enter the address"></textarea>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-info pull-right">Submit</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+
                 </div>
 
-                
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Submit</button>
-              </div>
-              <!-- /.box-footer -->
-            </form>
-          </div>
-          <!-- /.box -->
-
-
-</div>
-
-</div>
-
-
+            </div>
 
 
         </section>
@@ -290,11 +295,10 @@ include('../../session.php');
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 
-    
 
 </div>
 <!-- ./wrapper -->

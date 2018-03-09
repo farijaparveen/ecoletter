@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('../../session.php');
 
@@ -43,14 +43,14 @@ include('../../session.php');
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-red sidebar-mini">
-<div class="wrapper"> 
+<div class="wrapper">
 
     <header class="main-header">
 
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-             <span class="logo-mini"><b>E</b>LT</span>
+            <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Eco</b>Letter</span>
         </a>
@@ -74,10 +74,16 @@ include('../../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
+    <aside class="main-sidebar">
+        <section class="sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="<?php echo $baseurl; ?>/dist/img/admin.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Admin Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>                </div>            </div>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="<?php echo $baseurl; ?>/dist/img/admin.png" class="img-circle"
+                                                  alt="User Image"></div>
+                <div class="pull-left info"><p>Admin Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Admin</a></div>
+            </div>
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -90,58 +96,55 @@ include('../../session.php');
                 <li><a href="../index.php"><i class="fa fa-area-chart"></i><span>Dashboard</span></a></li>
 
 
-
-<li class="treeview">
-          <a href="#">
-            <i class="fa fa-users"></i> <span>Student</span>
-            <span class="pull-right-container">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>Student</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-            <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
+                        <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
 
-<li class="treeview">
-          <a href="#">
-            <i class="fa fa-graduation-cap"></i> <span> Faculty</span>
-            <span class="pull-right-container">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-graduation-cap"></i> <span> Faculty</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-            <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
+                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
 
-
-<li class="active treeview">
-          <a href="#">
-            <i class="fa fa-university"></i> <span> Warden</span>
-            <span class="pull-right-container">
+                <li class="active treeview">
+                    <a href="#">
+                        <i class="fa fa-university"></i> <span> Warden</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-           <ul class="treeview-menu">
-            <li><a href="add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-            <li><a href="edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li class="active"><a href="remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
+                        <li><a href="edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li class="active"><a href="remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
-
 
 
             </ul>
@@ -176,11 +179,10 @@ include('../../session.php');
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 
-    
 
 </div>
 <!-- ./wrapper -->

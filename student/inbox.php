@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('../session.php');
 
@@ -47,7 +47,7 @@ include('../session.php');
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-             <span class="logo-mini"><b>E</b>LT</span>
+            <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Eco</b>Letter</span>
         </a>
@@ -63,7 +63,7 @@ include('../session.php');
                 <ul class="nav navbar-nav">
 
                     <li>
-                        <a href="/logout.php" ><i class="fa fa-sign-out"></i> Log out</a>
+                        <a href="/logout.php"><i class="fa fa-sign-out"></i> Log out</a>
                     </li>
                 </ul>
             </div>
@@ -71,9 +71,15 @@ include('../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="../dist/img/student.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Student Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Student</a>                </div>            </div>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info"><p>Student Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Student</a></div>
+            </div>
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -93,7 +99,6 @@ include('../session.php');
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
-
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -104,7 +109,8 @@ include('../session.php');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-Inbox                <small>All letters</small>
+                Inbox
+                <small>All letters</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -115,8 +121,7 @@ Inbox                <small>All letters</small>
         <!-- Main content -->
         <section class="content">
 
-<?php echo md5(456); ?>
-
+            <?php echo md5(456); ?>
 
 
         </section>
@@ -128,7 +133,7 @@ Inbox                <small>All letters</small>
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 

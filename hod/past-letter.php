@@ -18,7 +18,8 @@ include('../session.php');
     <!-- Ionicons -->
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
     <!-- jvectormap -->
     <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
@@ -74,29 +75,36 @@ include('../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="../dist/img/teacher.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Faculty Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Faculty</a>                </div>            </div>
-        <!-- Sidebar user panel -->
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info"><p>HOD name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Faculty</a></div>
+            </div>
+            <!-- Sidebar user panel -->
 
-        <!-- search form -->
+            <!-- search form -->
 
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
-
-
-            <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-            <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-            <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-            <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i> <span>Attendance Report</span></a></li>
-            <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-            <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
 
 
+                <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
+                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
+                <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                </li>
+                <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i>
+                        <span>Attendance Report</span></a></li>
+                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+                <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
-        </ul>
+
+            </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -106,7 +114,8 @@ include('../session.php');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Manage Letter     <small>Manage Letters all letter here</small>
+                Manage Letter
+                <small>Manage Letters all letter here</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -126,7 +135,8 @@ include('../session.php');
                             <h3 class="box-title">Folders</h3>
 
                             <div class="box-tools">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -147,7 +157,8 @@ include('../session.php');
                             <h3 class="box-title">Labels</h3>
 
                             <div class="box-tools">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -171,7 +182,9 @@ include('../session.php');
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
 
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh fa-spin"></i> Refresh</button>
+                                    <button type="button" class="btn btn-default btn-sm"><i
+                                                class="fa fa-refresh fa-spin"></i> Refresh
+                                    </button>
 
 
                                 </div>
@@ -188,7 +201,7 @@ include('../session.php');
 
                             </div>
                             <div class="table-responsive mailbox-messages" style="padding: 10px;">
-                                <table id="example3" class="table table-hover table-striped" >
+                                <table id="example3" class="table table-hover table-striped">
 
                                     <thead style="display: none;">
                                     <tr>
@@ -208,7 +221,8 @@ include('../session.php');
                                         <td class="mailbox-name"><a href="">Farija Parveen</a></td>
                                         <td class="mailbox-subject">Requesting 5 days leave
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span></td>
+                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
+                                        </td>
                                         <td class="mailbox-date">11 hours ago</td>
                                     </tr>
 
@@ -227,7 +241,8 @@ include('../session.php');
                                         <td class="mailbox-name"><a href="">Evangelin</a></td>
                                         <td class="mailbox-subject">Permission to go to hospital
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-primary">Permission</span></td>
+                                        <td class="mailbox-attachment"><span
+                                                    class="label label-primary">Permission</span></td>
                                         <td class="mailbox-date">11 hours ago</td>
                                     </tr>
 
@@ -257,7 +272,7 @@ include('../session.php');
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 
@@ -300,12 +315,12 @@ include('../session.php');
     $(function () {
         $('#example3').DataTable()
         $('#example2').DataTable({
-            'paging'      : true,
+            'paging': true,
             'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
         })
     })
 </script>

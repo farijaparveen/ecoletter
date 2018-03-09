@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('../../session.php');
 
@@ -43,14 +43,14 @@ include('../../session.php');
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-red sidebar-mini">
-<div class="wrapper"> 
+<div class="wrapper">
 
     <header class="main-header">
 
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-             <span class="logo-mini"><b>E</b>LT</span>
+            <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Eco</b>Letter</span>
         </a>
@@ -74,10 +74,16 @@ include('../../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
+    <aside class="main-sidebar">
+        <section class="sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="<?php echo $baseurl; ?>/dist/img/admin.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Admin Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>                </div>            </div>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="<?php echo $baseurl; ?>/dist/img/admin.png" class="img-circle"
+                                                  alt="User Image"></div>
+                <div class="pull-left info"><p>Admin Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Admin</a></div>
+            </div>
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -90,58 +96,55 @@ include('../../session.php');
                 <li><a href="../index.php"><i class="fa fa-area-chart"></i><span>Dashboard</span></a></li>
 
 
-
-<li class="treeview active">
-          <a href="#">
-            <i class="fa fa-users"></i> <span>Student</span>
-            <span class="pull-right-container">
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>Student</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-            <li><a href="edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
+                        <li><a href="edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
 
-<li class="treeview">
-          <a href="#">
-            <i class="fa fa-graduation-cap"></i> <span> Faculty</span>
-            <span class="pull-right-container">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-graduation-cap"></i> <span> Faculty</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-            <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
+                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
 
-
-<li class="treeview">
-          <a href="#">
-            <i class="fa fa-university"></i> <span> Warden</span>
-            <span class="pull-right-container">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-university"></i> <span> Warden</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-           <ul class="treeview-menu">
-            <li><a href="../warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-            <li><a href="../warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
-            <li><a href="../warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
+                        <li><a href="../warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
+                        <li><a href="../warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
-          </ul>
-        </li>
+                    </ul>
+                </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
-
 
 
             </ul>
@@ -167,183 +170,184 @@ include('../../session.php');
         <section class="content">
 
 
-<div class="row">
+            <div class="row">
 
-<div class="col-md-12">
+                <div class="col-md-12">
 
-<div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Adding New Student</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="name" class="col-sm-2 control-label">Name</label>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Adding New Student</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Name</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="stdname" placeholder="Name of the Student">
-                  </div>
-                </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" name="stdname"
+                                               placeholder="Name of the Student">
+                                    </div>
+                                </div>
 
-                <div class="form-group">
-                  <label for="reg" class="col-sm-2 control-label">Register Number</label>
+                                <div class="form-group">
+                                    <label for="reg" class="col-sm-2 control-label">Register Number</label>
 
-                  <div class="col-sm-10">
-                    <input type="number" class="form-control" id="reg" name="regnum" placeholder="Register Number of the Student">
-                  </div>
-                </div>
-                
-                
-                  <div class="form-group">
-                  <label class="col-sm-2 control-label">Gender</label>
-
-                  <div class="col-sm-10">
-
-                  <select name="Gender" class="form-control">
-                    <option value="1">Male</option>
-                    <option  value="2">Female</option>
-                    <option  value="3">Others</option>
-                   
-                  </select>
-
-              </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Student type</label>
-
-                  <div class="col-sm-10">
-
-                  <select name="student type" class="form-control">
-                    <option value="1">Hosteller</option>
-                    <option  value="2">Day scholar</option>
-                   
-                  </select>
-
-              </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Year of Study</label>
-
-                  <div class="col-sm-10">
-
-                  <select name="year" class="form-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-
-              </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Department</label>
-
-                  <div class="col-sm-10">
-
-                  <select name="department" class="form-control">
-                    <option value="CSE">B.E-Computer Science and Engineering</option>
-                    <option value="IT">B.Tech-Information Technology</option>
-                    <option value="ECE">B.E-Electronics and Communication Engineering/option>
-                    <option value="EEE">B.E-Electronics and Electrical Engineering</option>
-                    <option value="MECH">B.E-Mechanical Engineering</option>
-                    <option value="CIVIL">B.E-Civil Engineering</option>
-                    <option value="E&I">B.E-Electronics and Instrumentation Engineering</option>
-                    <option value="MBA">Master of Buisness Administration</option>
-                  </select>
-
-              </div>
-                </div>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="reg" name="regnum"
+                                               placeholder="Register Number of the Student">
+                                    </div>
+                                </div>
 
 
-                 <div class="form-group">
-                  <label for="section" class="col-sm-2 control-label">Section</label>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Gender</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="section" name="section" placeholder="Section of the Student">
-                  </div>
-                </div>
-
-
-               
-                <div class="form-group">
-                  <label for="mailid" class="col-sm-2 control-label">EMail ID</label>
-
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="mailid" placeholder="Mail id of the student">
-                  </div>
-                </div>
-
-                 <div class="form-group">
-                  <label for="mobno" class="col-sm-2 control-label">Mobile Number</label>
-
-                  <div class="col-sm-10">
-                    <input type="number" class="form-control" id="mobno" name="mobno" placeholder="Mobile number of the student">
-                  </div>
-                </div>
-
-
-                 <div class="form-group">
-                  <label for="fathername" class="col-sm-2 control-label">Father Name</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="fathername" name="fathername" placeholder=" Father name of the Student">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="fmobno" class="col-sm-2 control-label">Father Mobile Number</label>
-
-                  <div class="col-sm-10">
-                    <input type="tel" class="form-control" id="fmobno" name="fmobno" placeholder="Father's phone number of the student">
-                  </div>
-                </div>
-
-                    <div class="form-group">
-                  <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="bloodgroup" name="bloodgroup" placeholder="Blood group of the Student">
-                  </div>
-                </div>
-
-
-
-
-                 <div class="form-group">
-                  <label or="address" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-10">
 
-                  <textarea class="form-control" rows="3" placeholder="Enter the address"></textarea>
+                                        <select name="Gender" class="form-control">
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Others</option>
 
-              </div>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Student type</label>
+
+                                    <div class="col-sm-10">
+
+                                        <select name="student type" class="form-control">
+                                            <option value="1">Hosteller</option>
+                                            <option value="2">Day scholar</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Year of Study</label>
+
+                                    <div class="col-sm-10">
+
+                                        <select name="year" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Department</label>
+
+                                    <div class="col-sm-10">
+
+                                        <select name="department" class="form-control">
+                                            <option value="CSE">B.E-Computer Science and Engineering</option>
+                                            <option value="IT">B.Tech-Information Technology</option>
+                                            <option value="ECE">B.E-Electronics and Communication Engineering/option>
+                                            <option value="EEE">B.E-Electronics and Electrical Engineering</option>
+                                            <option value="MECH">B.E-Mechanical Engineering</option>
+                                            <option value="CIVIL">B.E-Civil Engineering</option>
+                                            <option value="E&I">B.E-Electronics and Instrumentation Engineering</option>
+                                            <option value="MBA">Master of Buisness Administration</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="section" class="col-sm-2 control-label">Section</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="section" name="section"
+                                               placeholder="Section of the Student">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="mailid" class="col-sm-2 control-label">EMail ID</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" name="mailid"
+                                               placeholder="Mail id of the student">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mobno" class="col-sm-2 control-label">Mobile Number</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="mobno" name="mobno"
+                                               placeholder="Mobile number of the student">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="fathername" class="col-sm-2 control-label">Father Name</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="fathername" name="fathername"
+                                               placeholder=" Father name of the Student">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fmobno" class="col-sm-2 control-label">Father Mobile Number</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="tel" class="form-control" id="fmobno" name="fmobno"
+                                               placeholder="Father's phone number of the student">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="bloodgroup" name="bloodgroup"
+                                               placeholder="Blood group of the Student">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label or="address" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+
+                                        <textarea class="form-control" rows="3"
+                                                  placeholder="Enter the address"></textarea>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-info pull-right">Submit</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+
                 </div>
 
-                
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Submit</button>
-              </div>
-              <!-- /.box-footer -->
-            </form>
-          </div>
-          <!-- /.box -->
 
-
-</div>
-
-
-
-
-</div>
-
-
-
+            </div>
 
 
         </section>
@@ -355,11 +359,10 @@ include('../../session.php');
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 
-    
 
 </div>
 <!-- ./wrapper -->

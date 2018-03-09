@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('../session.php');
 
@@ -39,7 +39,7 @@ include('../session.php');
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow sidebar-mini">
 <div class="wrapper">
 
     <header class="main-header">
@@ -71,30 +71,37 @@ include('../session.php');
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="user-panel">                <div class="pull-left image">                    <img src="../dist/img/teacher.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Faculty Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Faculty</a>                </div>            </div>
-        <!-- Sidebar user panel -->
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="user-panel">
+                <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info"><p>HOD name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Faculty</a></div>
+            </div>
+            <!-- Sidebar user panel -->
 
-        <!-- search form -->
+            <!-- search form -->
 
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
-
-
-            <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-            <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-            <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-            <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i> <span>Attendance Report</span></a></li>
-
-            <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-            <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
 
 
+                <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
+                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
+                <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i>
+                        <span>Attendance Report</span></a></li>
 
-        </ul>
+                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a>
+                </li>
+                <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+
+
+            </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -104,7 +111,8 @@ include('../session.php');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Notification                <small>Offcial proclamations</small>
+                Notification
+                <small>Offcial proclamations</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -116,9 +124,6 @@ include('../session.php');
         <section class="content">
 
 
-
-
-
         </section>
         <!-- /.content -->
     </div>
@@ -126,9 +131,9 @@ include('../session.php');
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.4.0
+            <b>Back to top</b>
         </div>
-        <strong>Copyright &copy;   Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 </div>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,9 +66,15 @@
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar"> <section class="sidebar">
+    <aside class="main-sidebar">
+        <section class="sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
-            <div class="user-panel">                <div class="pull-left image">                    <img src="../dist/img/student.png" class="img-circle" alt="User Image">                </div>                <div class="pull-left info">                    <p>Student Name</p>                    <a href="#"><i class="fa fa-circle text-success"></i> Student</a>                </div>            </div>
+            <div class="user-panel">
+                <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info"><p>Student Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Student</a></div>
+            </div>
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -83,11 +88,11 @@
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
                 <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span><span class="pull-right-container">
+                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span><span
+                                class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
-
 
 
             </ul>
@@ -112,145 +117,139 @@
         <!-- Main content -->
 
 
+        <section class="container">
 
-            <section class="container">
+            <div class="row" style="padding: 10px;">
+                <div class="col-md-6" style="background: #fff;padding: 10px;">
 
-                <div class="row" style="padding: 10px;">
-                    <div class="col-md-6" style="background: #fff;padding: 10px;">
-
-                        <!-- title row -->
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2 class="page-header">
-                                    <i class="fa fa-envelope-open text-blue"></i> Leave Letter.
-                                    <small class="pull-right">Applied Date: 2/10/2014</small>
-                                </h2>
-                            </div>
-                            <!-- /.col -->
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                <i class="fa fa-envelope-open text-blue"></i> Leave Letter.
+                                <small class="pull-right">Applied Date: 2/10/2014</small>
+                            </h2>
                         </div>
-                        <!-- info row -->
-                        <div class="row invoice-info">
-                            <div class="col-sm-4 invoice-col">
-                                From
-                                <address>
-                                    <strong>Farija Parveen.</strong><br>
-                                    4 CSE A1<br>
-                                    B.E Computer Science <br>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col">
+                            From
+                            <address>
+                                <strong>Farija Parveen.</strong><br>
+                                4 CSE A1<br>
+                                B.E Computer Science <br>
 
-                                </address>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 invoice-col">
-                                To
-                                <address>
-                                    <strong>Principal</strong><br>
-                                    Saveetha Engineering College<br>
-
-                                </address>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 invoice-col">
-                                <b>Letter Id #007612</b><br>
-                            </div>
-                            <!-- /.col -->
+                            </address>
                         </div>
-                        <!-- /.row -->
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            To
+                            <address>
+                                <strong>Principal</strong><br>
+                                Saveetha Engineering College<br>
+
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            <b>Letter Id #007612</b><br>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
 
 
-                            <div class="row text-muted well well-sm no-shadow">
-                            <div class="col-md-6">
-                                <b><i class="fa fa-calendar-check-o"></i> Subject : Requesting Leave for hos </b>
+                    <div class="row text-muted well well-sm no-shadow">
+                        <div class="col-md-6">
+                            <b><i class="fa fa-calendar-check-o"></i> Subject : Requesting Leave for hos </b>
 
-
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <b><i class="fa fa-calendar-check-o"></i> Date : 25/12/2018 </b>
-
-                            </div>
 
                         </div>
 
+                        <div class="col-md-6">
+
+                            <b><i class="fa fa-calendar-check-o"></i> Date : 25/12/2018 </b>
+
+                        </div>
+
+                    </div>
 
 
-                        <p style="font-size: large;">
+                    <p style="font-size: large;">
                         As I am suffering from fever, I cant able attend the class please excuse my absence
-                        </p>
+                    </p>
 
-                        <!-- this row will not appear when printing -->
-                        <div class="row no-print">
-                            <div class="col-xs-12">
-                                <a href="" target="_blank" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
-                                    Later</a>
-                                <button type="button" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve Letter
-                                </button>
-                                <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;">
-                                    <i class="fa fa-ban"></i> Reject Letter
-                                </button>
-                            </div>
+                    <!-- this row will not appear when printing -->
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <a href="" target="_blank" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
+                                Later</a>
+                            <button type="button" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
+                                Letter
+                            </button>
+                            <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                                <i class="fa fa-ban"></i> Reject Letter
+                            </button>
                         </div>
-
-                        <HR>
-                        <div class="box-footer">
-                                <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
-                                <!-- .img-push is used to add margin to elements next to floating images -->
-                                <div class="img-push">
-                                    <textarea class="form-control" placeholder="Enter comment"></textarea>
-                                </div>
-                        </div>
-
-
                     </div>
 
-
-                    <div class="col-md-6">
-
-                        <div class="box-footer box-comments">
-                            <div class="box-comment">
-
-                                <!-- User image -->
-                                <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
-
-                                <div class="comment-text">
-                      <span class="username">
-                        Reethesh <span class="label label-success">Approved</span>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                                    It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </div>
-                                <!-- /.comment-text -->
-                            </div>
-
-                            <div class="box-comment">
-                                <!-- User image -->
-                                <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
-
-                                <div class="comment-text">
-                      <span class="username">
-                        Dr. Godfrey wingston <span class="label label-warning">Pending</span>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                                    It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </div>
-                                <!-- /.comment-text -->
-                            </div>
-                            <!-- /.box-comment -->
-
+                    <HR>
+                    <div class="box-footer">
+                        <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
+                        <!-- .img-push is used to add margin to elements next to floating images -->
+                        <div class="img-push">
+                            <textarea class="form-control" placeholder="Enter comment"></textarea>
+                        </div>
                     </div>
-
 
 
                 </div>
 
 
-            </section>
+                <div class="col-md-6">
+
+                    <div class="box-footer box-comments">
+                        <div class="box-comment">
+
+                            <!-- User image -->
+                            <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
+
+                            <div class="comment-text">
+                      <span class="username">
+                        Reethesh <span class="label label-success">Approved</span>
+                        <span class="text-muted pull-right">8:03 PM Today</span>
+                      </span><!-- /.username -->
+                                It is a long established fact that a reader will be distracted
+                                by the readable content of a page when looking at its layout.
+                            </div>
+                            <!-- /.comment-text -->
+                        </div>
+
+                        <div class="box-comment">
+                            <!-- User image -->
+                            <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
+
+                            <div class="comment-text">
+                      <span class="username">
+                        Dr. Godfrey wingston <span class="label label-warning">Pending</span>
+                        <span class="text-muted pull-right">8:03 PM Today</span>
+                      </span><!-- /.username -->
+                                It is a long established fact that a reader will be distracted
+                                by the readable content of a page when looking at its layout.
+                            </div>
+                            <!-- /.comment-text -->
+                        </div>
+                        <!-- /.box-comment -->
+
+                    </div>
 
 
+                </div>
 
+
+        </section>
 
 
         <!-- /.content -->
@@ -261,7 +260,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy;  Eco Letter.</strong> All rights
+        <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
 
