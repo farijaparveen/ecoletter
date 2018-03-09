@@ -45,7 +45,7 @@ include('../session.php');
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -258,10 +258,3 @@ include('../session.php');
 
 </body>
 </html>
-<?php
-/**
- * Created by PhpStorm.
- * User: Durai
- * Date: 01-03-2018
- * Time: 01:00 PM
- */

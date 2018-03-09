@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Eco</b>Letter</a>
+        <a href="../..//"><b>Eco</b>Letter</a>
     </div>
 
     <?php echo $error; ?>
