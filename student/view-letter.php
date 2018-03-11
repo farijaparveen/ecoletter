@@ -184,40 +184,80 @@
 
                 <div class="col-md-6">
 
-                    <div class="box-footer box-comments">
-                        <div class="box-comment">
+                    <h2 class="page-header">Track your Letter</h2>
 
-                            <!-- User image -->
-                            <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
 
-                            <div class="comment-text">
-                      <span class="username">
-                        Reethesh <span class="label label-success">Approved</span>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                                It is a long established fact that a reader will be distracted
-                                by the readable content of a page when looking at its layout.
+                    <ul class="timeline">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                  <span class="bg-red">
+                    10 Feb. 2014
+                  </span>
+                        </li>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <li>
+                            <i class="fa fa-envelope bg-blue"></i>
+
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                <h3 class="timeline-header"><a href="#">Mr. Reethesh</a> <span class="label label-success">Approved</span> sent you an email</h3>
+
+                                <div class="timeline-body">
+                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                    quora plaxo ideeli hulu weebly balihoo...
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-primary btn-xs">Read more</a>
+                                    <a class="btn btn-danger btn-xs">Delete</a>
+                                </div>
                             </div>
-                            <!-- /.comment-text -->
-                        </div>
+                        </li>
+                        <!-- END timeline item -->
+                        <!-- timeline item -->
 
-                        <div class="box-comment">
-                            <!-- User image -->
-                            <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
+                        <li class="time-label">
+                  <span class="bg-red">
+                    10 Feb. 2014
+                  </span>
+                        </li>
+                        <li>
+                            <i class="fa fa-user bg-aqua"></i>
 
-                            <div class="comment-text">
-                      <span class="username">
-                        Dr. Godfrey wingston <span class="label label-warning">Pending</span>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                                It is a long established fact that a reader will be distracted
-                                by the readable content of a page when looking at its layout.
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+
+                                <h3 class="timeline-header no-border"><a href="#">Dr.Godfrey</a> <span class="label label-success">Approved</span> accepted your friend request</h3>
                             </div>
-                            <!-- /.comment-text -->
-                        </div>
-                        <!-- /.box-comment -->
+                        </li>
+                        <!-- END timeline item -->
+                        <!-- timeline item -->
+                        <li>
+                            <i class="fa fa-comments bg-yellow"></i>
 
-                    </div>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+
+                                <h3 class="timeline-header"><a href="#">Jay White</a> <span class="label label-success">Approved</span> commented on your post</h3>
+
+                                <div class="timeline-body">
+                                    Take me to your leader!
+                                    Switzerland is small and neutral!
+                                    We are more like Germany, ambitious and misunderstood!
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <i class="fa fa-check bg-green"></i>
+                        </li>
+                    </ul>
 
 
                 </div>

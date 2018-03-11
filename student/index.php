@@ -87,12 +87,12 @@ role_check($_SESSION['role'],1);
                 <div class="pull-left info"><p>
 
                         <?php
-                        $sql = "SELECT Name from student_data WHERE student_id=".$_SESSION['login_user'];
+                        $sql = "SELECT name from student_data WHERE student_id=".$_SESSION['login_user'];
                         $result = mysqli_query($db, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
-                            echo $row['Name'];
+                            echo $row['name'];
 
                         } else {
                             echo "0 results";
