@@ -1,13 +1,14 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],1);
+role_check($_SESSION['role'],5);
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter | Dashboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -17,7 +18,9 @@ role_check($_SESSION['role'],1);
     <!-- Ionicons -->
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
     <!-- jvectormap -->
     <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
     <!-- Theme style -->
@@ -40,13 +43,13 @@ role_check($_SESSION['role'],1);
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">
 
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>E</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -76,10 +79,10 @@ role_check($_SESSION['role'],1);
         <section class="sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
             <div class="user-panel">
-                <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
+                <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Student Name</p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Student</a></div>
+                <div class="pull-left info"><p>Prinicipal Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Faculty</a></div>
             </div>
             <!-- Sidebar user panel -->
 
@@ -92,8 +95,7 @@ role_check($_SESSION['role'],1);
 
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                <li class="active"><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
                 </li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
@@ -108,13 +110,13 @@ role_check($_SESSION['role'],1);
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Past Letters
-
-                <small>Manage Letterss</small>
+            <h1>
+                Manage Letter
+                <small>Manage Letters all letter here</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Past Letters</li>
+                <li class="active">Manage Letters</li>
             </ol>
         </section>
 
@@ -137,34 +139,42 @@ role_check($_SESSION['role'],1);
                         </div>
                         <div class="box-body no-padding">
                             <ul class="nav nav-pills nav-stacked">
-                                <li <?php
-                                if($_GET['options']=="pending")
-                                {echo 'class="active"'; }?>><a href="?options=pending"><i class="fa fa-inbox"></i> Pending Approval
+                                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Pending Approval
                                         <span class="label label-primary pull-right">12</span></a></li>
-                                <li <?php
-                                if($_GET['options']=="approved")
-                                {echo 'class="active"'; }?>><a href="?options=approved"><i class="fa fa-envelope-o"></i> Approved</a></li>
-                                <li <?php
-                                if($_GET['options']=="unapproved")
-                                {echo 'class="active"'; }?>><a href="?options=unapproved"><i class="fa fa-trash"></i> Unapproved</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i> Approved</a></li>
+                                <li><a href="#"><i class="fa fa-trash"></i> Unapproved</a></li>
 
                             </ul>
                         </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /. box -->
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Labels</h3>
+
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"><i class="fa fa-circle-o text-red"></i> Leave Letter</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> OD</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Permission</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
                     <!-- /.box -->
                 </div>
                 <!-- /.col -->
-
-
-                <?php
-                if($_GET['options']=="pending")
-                {?>
                 <div class="col-md-9">
-                    <div class="box box-warning">
+                    <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Pending Approval</h3>
+                            <h3 class="box-title">Inbox</h3>
 
                             <div class="box-tools pull-right">
                                 <div class="has-feedback">
@@ -216,7 +226,7 @@ role_check($_SESSION['role'],1);
 
                                     <tr>
                                         <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
+                                        <td class="mailbox-name"><a href="">Brindha N</a></td>
                                         <td class="mailbox-subject">Need Od for symposium
                                         </td>
                                         <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
@@ -225,7 +235,7 @@ role_check($_SESSION['role'],1);
 
                                     <tr>
                                         <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
+                                        <td class="mailbox-name"><a href="">Evangelin</a></td>
                                         <td class="mailbox-subject">Permission to go to hospital
                                         </td>
                                         <td class="mailbox-attachment"><span
@@ -245,189 +255,9 @@ role_check($_SESSION['role'],1);
                     </div>
                     <!-- /. box -->
                 </div>
-                <?php }  ?>
-                <?php
-                if($_GET['options']=="approved")
-                {?>
-                <div class="col-md-9">
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Approval</h3>
-
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">
-
-                                    <button type="button" class="btn btn-default btn-sm"><i
-                                                class="fa fa-refresh fa-spin"></i> Refresh
-                                    </button>
-
-
-                                </div>
-                            </div>
-
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <div class="mailbox-controls">
-                                <!-- Check all button -->
-
-                                <!-- /.btn-group -->
-
-                            </div>
-                            <div class="table-responsive mailbox-messages" style="padding: 10px;">
-                                <table id="example3" class="table table-hover table-striped">
-
-                                    <thead style="display: none;">
-                                    <tr>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                        <th>CSS grade</th>
-
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope"></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Requesting 5 days leave
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
-                                        </td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Need Od for symposium
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Permission to go to hospital
-                                        </td>
-                                        <td class="mailbox-attachment"><span
-                                                    class="label label-primary">Permission</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
-
-
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
-                            </div>
-                            <!-- /.mail-box-messages -->
-                        </div>
-                        <!-- /.box-body -->
-
-                    </div>
-                    <!-- /. box -->
-                </div>
-                <?php }  ?>
-
-                <?php
-                if($_GET['options']=="unapproved")
-                {?>
-                <div class="col-md-9">
-                    <div class="box box-danger">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Unapproved</h3>
-
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">
-
-                                    <button type="button" class="btn btn-default btn-sm"><i
-                                                class="fa fa-refresh fa-spin"></i> Refresh
-                                    </button>
-
-
-                                </div>
-                            </div>
-
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <div class="mailbox-controls">
-                                <!-- Check all button -->
-
-                                <!-- /.btn-group -->
-
-                            </div>
-                            <div class="table-responsive mailbox-messages" style="padding: 10px;">
-                                <table id="example3" class="table table-hover table-striped">
-
-                                    <thead style="display: none;">
-                                    <tr>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                        <th>CSS grade</th>
-
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope"></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Requesting 5 days leave
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
-                                        </td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Need Od for symposium
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Permission to go to hospital
-                                        </td>
-                                        <td class="mailbox-attachment"><span
-                                                    class="label label-primary">Permission</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
-
-
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
-                            </div>
-                            <!-- /.mail-box-messages -->
-                        </div>
-                        <!-- /.box-body -->
-
-                    </div>
-                    <!-- /. box -->
-                </div>
-                <?php }  ?>
-
-
-
-                    <!-- /.col -->
+                <!-- /.col -->
             </div>
+            <!-- /.row -->
 
 
         </section>
@@ -443,7 +273,6 @@ role_check($_SESSION['role'],1);
         reserved.
     </footer>
 
-
 </div>
 <!-- ./wrapper -->
 
@@ -451,7 +280,6 @@ role_check($_SESSION['role'],1);
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -493,7 +321,6 @@ role_check($_SESSION['role'],1);
         })
     })
 </script>
-
 
 <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 

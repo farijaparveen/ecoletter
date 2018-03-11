@@ -5,4 +5,4 @@
  * Date: 11-03-2018
  * Time: 09:50 AM
  */
-echo "geelo";
+echo $_POST['content'];

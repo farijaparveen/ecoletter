@@ -86,8 +86,8 @@
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span><span
+                <li class="active"><a href="manage-letter.php?option=pending"><i class=" fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span><span
                                 class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span></a></li>
@@ -105,11 +105,11 @@
         <section class="content-header">
             <h1>
                 View Letter
-                <small>Read Or Approve Letter</small>
+                <small>#00000</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Notification</li>
+                <li class="active">View Letter</li>
             </ol>
         </section>
 
@@ -153,7 +153,9 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
-                            <b>Letter Id #007612</b><br>
+                            <b><i class="fa fa-calendar-check-o"></i> Date :</b><br>
+                            22/02/2018 9.00am
+
                         </div>
                         <!-- /.col -->
                     </div>
@@ -161,17 +163,10 @@
 
 
                     <div class="row text-muted well well-sm no-shadow">
-                        <div class="col-md-6">
                             <b><i class="fa fa-calendar-check-o"></i> Subject : Requesting Leave for hos </b>
 
 
-                        </div>
 
-                        <div class="col-md-6">
-
-                            <b><i class="fa fa-calendar-check-o"></i> Date : 25/12/2018 </b>
-
-                        </div>
 
                     </div>
 

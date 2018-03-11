@@ -1,7 +1,7 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],5);
+role_check($_SESSION['role'],4);
 
 ?>
 <!DOCTYPE html>
@@ -81,7 +81,7 @@ role_check($_SESSION['role'],5);
             <div class="user-panel">
                 <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Prinicipal Name</p>                    <a href="#"><i
+                <div class="pull-left info"><p>HOD name</p>                    <a href="#"><i
                                 class="fa fa-circle text-success"></i> Faculty</a></div>
             </div>
             <!-- Sidebar user panel -->
@@ -95,8 +95,11 @@ role_check($_SESSION['role'],5);
 
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li class="active"><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
+                <li class="active"><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
                 </li>
+                <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i>
+                        <span>Attendance Report</span></a></li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 

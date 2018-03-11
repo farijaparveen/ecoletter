@@ -19,6 +19,15 @@ role_check($_SESSION['role'],1);
     <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+    <link rel="stylesheet" href="../plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../plugins/iCheck/all.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -93,7 +102,7 @@ role_check($_SESSION['role'],1);
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li class="active"><a href="new-letter.php"><i class="fa fa-plus-square"></i>
                         <span>New Letter</span></a></li>
-                <li><a href="past-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="manage-letter.php?option=pending"><i class=" fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
@@ -134,29 +143,36 @@ role_check($_SESSION['role'],1);
 
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Through</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                                   placeholder="Enter the faculty name">
+                                            <label>Through</label>
+                                            <select class="form-control select2" multiple="multiple" data-placeholder="Select the faculty"
+                                                    style="width: 100%;">
+                                                <option>Mr. Reethesh</option>
+                                                <option>Dr. nagappan</option>
+                                                <option>MR. Loganathan</option>
+                                                <option>Mr. Anand</option>
+
+                                            </select>
                                         </div>
 
                                     </div>
 
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>To</label>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="minimal">
                                                     Principal </label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox">
+                                                    <input type="checkbox" class="minimal-red">
                                                     HOD
                                                 </label>
                                             </div>
@@ -165,13 +181,29 @@ role_check($_SESSION['role'],1);
 
                                     </div>
 
+                                    <div class="col-md-4">
+
+                                        <div class="form-group">
+                                            <label>Date and time:</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <input type="text" name="duration" class="form-control pull-right" id="lettertime">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+
+                                    </div>
 
                                 </div>
 
 
                                 <div class="form-group">
                                     <label>Letter Type</label>
-                                    <select class="form-control">
+                                    <select class="form-control select2" style="width: 100%;">
                                         <option>Leave Letter</option>
                                         <option>Permission Letter</option>
                                         <option>OD letter</option>
@@ -187,7 +219,7 @@ role_check($_SESSION['role'],1);
                                 </div>
                                 <div class="form-group">
                                     <label>Message</label>
-                                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                                    <textarea id="compose-textarea" name="content" class="form-control" style="height: 300px">
                       <h1><u>Heading Of Message</u></h1>
                       <h4>Subheading</h4>
                       <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
@@ -296,6 +328,21 @@ role_check($_SESSION['role'],1);
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
+<script src="../bower_components/select2/dist/js/select2.full.min.js"></script>
+
+<script src="../bower_components/moment/min/moment.min.js"></script>
+<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../plugins/iCheck/icheck.min.js"></script>
+
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
@@ -307,13 +354,36 @@ role_check($_SESSION['role'],1);
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
-<script src="../bower_components/Chart.js/Chart.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../dist/js/pages/dashboard2.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+
 <script>
     $(function () {
+
+        $('.select2').select2()
+//iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass   : 'iradio_minimal-blue'
+        })
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass   : 'iradio_minimal-red'
+        })
+        //Flat red color scheme for iCheck
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass   : 'iradio_flat-green'
+        })
+
+        $('input[name="duration"]').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'DD/MM/YYYY h:mm A'
+            }
+        });
+
+
         //Add text editor
         $("#compose-textarea").wysihtml5();
     });
