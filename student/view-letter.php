@@ -181,27 +181,7 @@
                     </p>
 
                     <!-- this row will not appear when printing -->
-                    <div class="row no-print">
-                        <div class="col-xs-12">
-                            <a href="" target="_blank" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
-                                Later</a>
-                            <button type="button" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
-                                Letter
-                            </button>
-                            <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;">
-                                <i class="fa fa-ban"></i> Reject Letter
-                            </button>
-                        </div>
-                    </div>
 
-                    <HR>
-                    <div class="box-footer">
-                        <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
-                        <!-- .img-push is used to add margin to elements next to floating images -->
-                        <div class="img-push">
-                            <textarea class="form-control" placeholder="Enter comment"></textarea>
-                        </div>
-                    </div>
 
 
                 </div>

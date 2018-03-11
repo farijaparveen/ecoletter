@@ -38,7 +38,7 @@ include('../session.php');
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini fixed">
 <div class="wrapper">
 
     <header class="main-header">
@@ -128,7 +128,7 @@ include('../session.php');
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form id="letter" role="form">
                             <div class="box-body">
 
 
@@ -180,6 +180,11 @@ include('../session.php');
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Subject</label>
+                                    <input type="text" class="form-control" name="subject" id="exampleInputEmail1"
+                                           placeholder="Enter the faculty name">
+                                </div>
+                                <div class="form-group">
                                     <label>Message</label>
                                     <textarea id="compose-textarea" class="form-control" style="height: 300px">
                       <h1><u>Heading Of Message</u></h1>
@@ -212,9 +217,52 @@ include('../session.php');
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-info pull-right">Submit Letter</button>
                             </div>
                         </form>
+
+
+                        <div id="response"></div>
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
+                        <script>
+                            $(document).ready(function(){
+                                $('#letter').submit(function(){
+
+// show that something is loading
+                                    $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Uploading Questions To Server...</b>');
+
+// Call ajax for pass data to other place
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/functions/new-student-letter.php',
+                                        data: $(this).serialize() // getting filed value in serialize form
+                                    })
+                                        .done(function(data){ // if getting done then call.
+
+// show the response
+                                            $('#response').html(data);
+
+                                        })
+                                        .fail(function() { // if fail then getting message
+
+// just in case posting your form failed
+                                            alert( "Posting failed." );
+
+                                        });
+
+// to prevent refreshing the whole page page
+                                    return false;
+
+                                });
+                            });
+                        </script>
+
+
+
+
+
                     </div>
                     <!-- /.box -->
 

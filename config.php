@@ -16,4 +16,17 @@ if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+//functions
+
+
+function name($id, $role)
+{
+
+
+
+
+}
+
+
+
 ?>
