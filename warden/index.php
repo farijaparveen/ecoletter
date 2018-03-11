@@ -1,6 +1,8 @@
 <?php
 
 include('../session.php');
+role_check($_SESSION['role'],3);
+
 
 ?>
 <!DOCTYPE html>
