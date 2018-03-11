@@ -177,7 +177,7 @@ include('../../session.php');
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal">
+                        <form id="add-fac" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="facname" class="col-sm-2 control-label">Name</label>
@@ -296,6 +296,46 @@ include('../../session.php');
                             </div>
                             <!-- /.box-footer -->
                         </form>
+
+                        <div id="add-fac"></div>
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
+                        <script>
+                            $(document).ready(function(){
+                                $('#quesset1').submit(function(){
+
+// show that something is loading
+                                    $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Uploading Questions To Server...</b>');
+
+// Call ajax for pass data to other place
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'updatequestions.php',
+                                        data: $(this).serialize() // getting filed value in serialize form
+                                    })
+                                        .done(function(data){ // if getting done then call.
+
+// show the response
+                                            $('#response').html(data);
+
+                                        })
+                                        .fail(function() { // if fail then getting message
+
+// just in case posting your form failed
+                                            alert( "Posting failed." );
+
+                                        });
+
+// to prevent refreshing the whole page page
+                                    return false;
+
+                                });
+                            });
+                        </script>
+
+
+
+
                     </div>
                     <!-- /.box -->
 

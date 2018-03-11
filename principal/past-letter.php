@@ -138,7 +138,7 @@ include('../session.php');
                         </div>
                         <div class="box-body no-padding">
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Awaiting Approval
+                                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Pending Approval
                                         <span class="label label-primary pull-right">12</span></a></li>
                                 <li><a href="#"><i class="fa fa-envelope-o"></i> Approved</a></li>
                                 <li><a href="#"><i class="fa fa-trash"></i> Unapproved</a></li>
