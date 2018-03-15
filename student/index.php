@@ -102,8 +102,7 @@ role_check($_SESSION['role'],1);
                         ?>
 
 
-                    </p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Student</a></div>
+                    </p> <a href="#"><i class="fa fa-circle text-success"></i> Student</a></div>
             </div>
             <!-- Sidebar user panel -->
 
