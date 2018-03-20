@@ -160,12 +160,19 @@ role_check($_SESSION['role'],1);
 
                                         <div class="form-group">
                                             <label>Through</label>
-                                            <select class="form-control select2" multiple="multiple" data-placeholder="Select the faculty"
+                                            <select class="form-control select2" name="through[]" multiple="multiple" data-placeholder="Select the faculty"
                                                     style="width: 100%;">
-                                                <option>Mr. Reethesh</option>
-                                                <option>Dr. nagappan</option>
-                                                <option>MR. Loganathan</option>
-                                                <option>Mr. Anand</option>
+
+                                                <?php
+                                                $sql4="SELECT faculty_id, name from `faculty_data`";
+                                                $ress=mysqli_query($db,$sql4);
+                                                while ($rwo=mysqli_fetch_array($ress)) {
+                                                    echo '<option value="'.$rwo['faculty_id'].'">'.$rwo['name'].'</option>';
+                                                }
+                                                ?>
+
+
+
 
                                             </select>
                                         </div>
@@ -179,13 +186,13 @@ role_check($_SESSION['role'],1);
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" class="minimal">
+                                                    <input type="checkbox" name="to[]" value="prinicipal" class="minimal">
                                                     Principal </label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" class="minimal-red">
+                                                    <input type="checkbox" name="to[]" value="hod"  class="minimal-red">
                                                     HOD
                                                 </label>
                                             </div>
@@ -195,7 +202,20 @@ role_check($_SESSION['role'],1);
                                     </div>
 
                                     <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Days</label>
+                                            <input type="number" class="form-control" name="days" id="exampleInputEmail1"
+                                                   placeholder="Number of days">
+                                        </div>
 
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date and time:</label>
 
@@ -211,24 +231,27 @@ role_check($_SESSION['role'],1);
 
                                     </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Letter Type</label>
+                                            <select class="form-control select2" name="type" style="width: 100%;">
+                                                <option value="leave">Leave Letter</option>
+                                                <option value="pleave">Permission Letter</option>
+                                                <option value="oleave">OD letter</option>
+                                                <option value="sleave">Special Permission</option>
+                                                <option value="eleave">Emergency</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
-
-                                <div class="form-group">
-                                    <label>Letter Type</label>
-                                    <select class="form-control select2" style="width: 100%;">
-                                        <option>Leave Letter</option>
-                                        <option>Permission Letter</option>
-                                        <option>OD letter</option>
-                                        <option>Special Permission</option>
-                                        <option>Emergency</option>
-                                    </select>
-                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Subject</label>
                                     <input type="text" class="form-control" name="subject" id="exampleInputEmail1"
-                                           placeholder="Enter the faculty name">
+                                           placeholder="Enter the subject">
                                 </div>
                                 <div class="form-group">
                                     <label>Message</label>
@@ -262,6 +285,18 @@ role_check($_SESSION['role'],1);
                             </div>
                             <!-- /.box-body -->
 
+                            <input type="hidden" value="<?php echo $_SESSION['login_user'] ; ?>" name="user" >
+
+                            <?php
+
+                            $sql="SELECT department FROM `student_data` WHERE student_id=".$_SESSION['login_user'];
+                            $res=mysqli_query($db, $sql);
+                            $row=mysqli_fetch_array($res);
+
+                            ?>
+
+                            <input type="hidden" value="<?php echo $row['department'] ; ?>" name="department" >
+
                             <div class="box-footer">
                                 <button type="reset" class="btn btn-default">Cancel</button>
                                 <button type="submit" class="btn btn-info pull-right">Submit Letter</button>
@@ -277,7 +312,7 @@ role_check($_SESSION['role'],1);
                                 $('#letter').submit(function(){
 
 // show that something is loading
-                                    $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Uploading Questions To Server...</b>');
+                                    $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Submitting Letter...</b>');
 
 // Call ajax for pass data to other place
                                     $.ajax({

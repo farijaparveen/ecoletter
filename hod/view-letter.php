@@ -1,10 +1,10 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],1);
-
-include ('../custom-functions.php')
+role_check($_SESSION['role'],4);
+include('../custom-functions.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +40,7 @@ include ('../custom-functions.php')
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red sidebar-mini fixed">
+<body class="hold-transition skin-yellow sidebar-mini fixed">
 <div class="wrapper">
 
     <header class="main-header">
@@ -78,21 +78,8 @@ include ('../custom-functions.php')
             <div class="user-panel">
                 <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p> <?php
-                        $sql = "SELECT name from student_data WHERE student_id=".$_SESSION['login_user'];
-                        $result = mysqli_query($db, $sql);
-
-                        if (mysqli_num_rows($result) > 0) {
-                            $row = mysqli_fetch_assoc($result);
-                            echo $row['name'];
-
-                        } else {
-                            echo "0 results";
-                        }
-
-
-                        ?></p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Student</a></div>
+                <div class="pull-left info"><p>Faculty Name</p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Faculty</a></div>
             </div>
             <!-- Sidebar user panel -->
 
@@ -103,49 +90,50 @@ include ('../custom-functions.php')
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
 
-
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li class="active"><a href="manage-letter.php?option=pending"><i class=" fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span><span
-                                class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span></a></li>
+                <li class="active"><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="attendance-report.php"><i class="fa fa-line-chart"></i> <span>Attendance Report</span></a>
+                </li>
+                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
             </ul>
+
         </section>
         <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+
+        <?php
+
+        $letterid=$_GET['id'];
+
+        $lsql="SELECT * FROM `letter_content` WHERE letter_id=".$letterid." AND status>0";
+
+        $res1=mysqli_query($db,$lsql);
+
+        $letter=mysqli_fetch_array($res1);
+
+
+        $studsql="SELECT * FROM `student_data` WHERE student_id=".$letter['sender'];
+
+        $res2=mysqli_query($db,$studsql);
+
+        $student=mysqli_fetch_array($res2);
 
 
 
-<?php
-
-$letterid=$_GET['id'];
-
-$lsql="SELECT * FROM `letter_content` WHERE letter_id=".$letterid." AND status>0";
-
-$res1=mysqli_query($db,$lsql);
-
-$letter=mysqli_fetch_array($res1);
-
-
-
-
-    ?>
-
+        ?>
 
 
 
         <section class="content-header">
             <h1>
-                View Letter
+               Read or Approve Letter
                 <small>#<?php echo $letter['letter_id']; ?></small>
             </h1>
             <ol class="breadcrumb">
@@ -177,9 +165,9 @@ $letter=mysqli_fetch_array($res1);
                         <div class="col-sm-4 invoice-col">
                             From
                             <address>
-                                <strong>Farija Parveen.</strong><br>
-                                4 CSE A1<br>
-                                B.E Computer Science <br>
+                                <strong><?php echo $student['name'];?>.</strong><br>
+                                <?php echo $student['year']; ?> Year <?php echo $student['class']; ?><br>
+                                <?php echo $student['department']; ?><br>
 
                             </address>
                         </div>
@@ -197,7 +185,7 @@ $letter=mysqli_fetch_array($res1);
 
                                     }else {
 
-                                    echo "Faculty";
+                                        echo "Faculty";
                                     }
 
 
@@ -213,7 +201,7 @@ $letter=mysqli_fetch_array($res1);
                             <b><i class="fa fa-calendar-times-o"></i> Number of Days :</b>
                             <?php echo $letter['days']; ?><br>
 
-                            <b><i class="fa fa-calendar-check-o"></i> Date :</b><br>
+                            <b><i class="fa fa-calendar-check-o"></i> Date :</b>
                             <?php echo $letter['duration']; ?>
 
                         </div>
@@ -223,7 +211,7 @@ $letter=mysqli_fetch_array($res1);
 
 
                     <div class="row text-muted well well-sm no-shadow">
-                            <b><i class="fa fa-calendar-check-o"></i> Subject : <?php echo $letter['subject']; ?></b>
+                        <b><i class="fa fa-calendar-check-o"></i> Subject : <?php echo $letter['subject']; ?></b>
 
 
 
@@ -237,184 +225,76 @@ $letter=mysqli_fetch_array($res1);
 
                     <!-- this row will not appear when printing -->
 
+<form id="comment" action="">
 
+                    <!-- this row will not appear when printing -->
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <a href="manage-letter.php?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
+                                Later</a>
+                            <button type="submit" name="response" value="approve" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
+                                Letter
+                            </button>
+                            <button type="submit" name="response" value="reject" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                                <i class="fa fa-ban"></i> Reject Letter
+                            </button>
+                        </div>
+                    </div>
 
+                    <HR>
+                    <div class="box-footer">
+                        <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
+                        <!-- .img-push is used to add margin to elements next to floating images -->
+                        <div class="img-push">
+                            <textarea class="form-control" placeholder="Enter comment"></textarea>
+                        </div>
+                    </div>
+
+</form>
                 </div>
 
 
                 <div class="col-md-6">
+                    <h2 class="page-header">People associated with this letter</h2>
 
 
-
-
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">People involving</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-
-
-
-                    <ul class="users-list clearfix">
+                    <div class="box-footer box-comments">
 
                         <?php
 
-
-                        $sql3="SELECT * FROM `letter_index` WHERE letter_id=".$letterid;
-                        $res=mysqli_query($db, $sql3);
-                        while($row=mysqli_fetch_array($res))
-
+                        $sql="SELECT * FROM `letter_index` WHERE letter_id=".$letterid;
+                        $res=mysqli_query($db, $sql);
+                        while($comment=mysqli_fetch_array($res))
                         {
 
+                            echo '<div class="box-comment">
 
-                            echo ' <li>
-                            <img src="/dist/img/faculty.png" alt="User Image">
-                            <a class="users-list-name" href="#">'.facultyname($row['faculty_id'], $db).'</a>
-                            <span class="users-list-date">Faculty</span>
-                        </li>';
+                            
+                            <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
 
-
-                        }
-
-
-
-
-
-
-                        ?>
-
-
-
-                    </ul>
-
-                        </div>
-
-                    </div>
-
-                    <div class="box">
-                        <div class="box-header with-border box-primary">
-                            <h3 class="box-title">Track your Letter</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-
-
-
-
-
-                    <ul class="timeline">
-                        <!-- timeline time label -->
-
-
-                        <?php
-
-
-
-
-
-
-
-
-                        $sql2="SELECT * FROM `letter_index` WHERE letter_id=".$letterid." AND status>0 ORDER BY timestamp ASC";
-;
-                        $res2=mysqli_query($db, $sql2);
-                        $day2="";
-
-                        if(mysqli_num_rows($res2)>0) {
-                            while ($lettersts = mysqli_fetch_array($res2)) {
-
-                                $day1=displaydate($lettersts["timestamp"]);
-                                if(empty($day2) ||  $day1!=$day2)
-                                echo '  <li class="time-label">
-                  <span class="bg-red">
-                    ' . displaydate($lettersts["timestamp"]) . '
-                  </span>
-                        </li>';
-                                $day2=$day1;
-
-                        echo '<li>
-                            <i class="fa fa-user bg-blue"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> ' . displaytime($lettersts["timestamp"]) . '</span>
-
-                                <h3 class="timeline-header"><a href="#">' . facultyname($lettersts['faculty_id'], $db) . '</a> ' . status($lettersts['status']) . ' your letter</h3>
-
-                                <div class="timeline-body">
-                                    ' . $lettersts['comments'] . '
-                                </div>
+                            <div class="comment-text">
+                      <span class="username">
+                        '.facultyname($comment["faculty_id"],$db).' '.status($comment['status']).'
+                        <span class="text-muted pull-right">'.datetime($comment["timestamp"]).'</span>
+                      </span><!-- /.username -->
+                                
+                                '.$comment['comments'].'
+                                
+                                
                                 
                             </div>
-                        </li>';
+                            <!-- /.comment-text -->
+                        </div><br>';
 
-
-
-
-                            }
-
-
-                            if($letter['status']==3)
-                            {
-                                echo '<li> <i class="fa fa-ban bg-red" data-toggle="tooltip" title="Letter Rejected"> </i>
-                            
-                        </li>';
-                            }else if($letter['status']==2)
-                            {
-                                echo '<li><i class="fa fa-check bg-green" data-toggle="tooltip" title="Letter Approved"></i>
-                            
-                        </li>';
-                            } else
-                            {
-                                echo '<li>
-                            <i class="fa fa-cog fa-spin bg-yellow"data-toggle="tooltip" title="Pending approval" ></i>
-                        </li>';
-                            }
-
-
-                        }else{
-
-                            echo "<style>.timeline:before {display: none;}</style><b>No one has interacted to your letter</b>";
                         }
-
-
-
-
-
-
-
-
 
 
                         ?>
 
 
 
+                        <!-- /.box-comment -->
 
-
-
-                    </ul>
-
-
-
-
-
-
-                        </div>
                     </div>
 
 

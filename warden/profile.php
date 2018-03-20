@@ -8,7 +8,7 @@ role_check($_SESSION['role'],3);
     <html>
     <head>
         <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />        <title>Eco Letter| Dashboard</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />        <title>Eco Letter| Dashboard</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -117,7 +117,179 @@ role_check($_SESSION['role'],3);
             <!-- Main content -->
             <section class="content">
 
+                <div class="row">
+                    <div class="col-md-3">
 
+                        <!-- Profile Image -->
+                        <div class="box box-primary">
+                            <div class="box-body box-profile">
+                                <img class="profile-user-img img-responsive img-circle"
+                                     src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+
+                                <h3 class="profile-username text-center">Warden name</h3>
+
+                                <p class="text-muted text-center">CSE</p>
+
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>Designation</b> <a class="pull-right">Associate professor</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Following</b> <a class="pull-right">543</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Friends</b> <a class="pull-right">13,287</a>
+                                    </li>
+                                </ul>
+
+                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+
+                        <!-- About Me Box -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">About Me</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+                                <p class="text-muted">
+                                    B.E. in Computer Science and Engineering from Saveetha Engineering college
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+                                <p class="text-muted">M.K.B nagar, chennai</p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+                                <p>
+                                    <span class="label label-danger">UI Design</span>
+                                    <span class="label label-success">Coding</span>
+                                    <span class="label label-info">Javascript</span>
+                                    <span class="label label-warning">PHP</span>
+                                    <span class="label label-primary">Node.js</span>
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+
+                        <!-- About Me Box -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">About Me</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="warden name" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">warden id</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="fac id" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Designation</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="68808908908" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">warden type</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="teaching staff" disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">D.O.B</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="28-03-1997" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Gender</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Male" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">E-Mail</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="rduraisankar@gmail.com" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Phone</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="9710085851" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Father</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Raja Subbhu" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Blood group</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="A positive" disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Address</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Durai Sankar" disabled="disabled">
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
             </section>
             <!-- /.content -->
         </div>
@@ -165,10 +337,3 @@ role_check($_SESSION['role'],3);
 
     </body>
     </html>
-<?php
-/**
- * Created by PhpStorm.
- * User: Durai
- * Date: 01-03-2018
- * Time: 01:02 PM
- */

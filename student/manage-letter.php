@@ -2,6 +2,8 @@
 
 include('../session.php');
 role_check($_SESSION['role'],1);
+include('../custom-functions.php');
+
 
 ?><!DOCTYPE html>
 <html>
@@ -85,6 +87,7 @@ role_check($_SESSION['role'],1);
                         if (mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
                             echo $row['name'];
+                            $name=$row['name'];
 
                         } else {
                             echo "0 results";
@@ -123,7 +126,7 @@ role_check($_SESSION['role'],1);
         <section class="content-header">
             <h1>Past Letters
 
-                <small>Manage Letterss</small>
+                <small>Manage Letters</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -155,7 +158,7 @@ role_check($_SESSION['role'],1);
                                 <li <?php
                                 if(empty($_GET['option']) || $_GET['option']=="pending")
                                 {echo 'class="active"'; }?>><a href="?option=pending"><i class="fa fa-inbox"></i> Pending Approval
-                                        <span class="label label-primary pull-right">12</span></a></li>
+                                        </a></li>
                                 <li <?php
                                 if($_GET['option']=="approved")
                                 {echo 'class="active"'; }?>><a href="?option=approved"><i class="fa fa-envelope-o"></i> Approved</a></li>
@@ -207,46 +210,45 @@ role_check($_SESSION['role'],1);
 
                                     <thead style="display: none;">
                                     <tr>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                        <th>CSS grade</th>
+                                        <th>Icon</th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Type</th>
+                                        <th>Time</th>
 
                                     </tr>
                                     </thead>
 
                                     <tbody>
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-clock-o"></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Requesting 5 days leave
+                                    <?php
+
+                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=1";
+
+                                    $res=mysqli_query($db,$sql);
+
+                                    while($row=mysqli_fetch_array($res))
+
+                                    {
+                                        echo' <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-clock-o text-yellow"></i></a></td>
+                                        <td class="mailbox-name"><a href="view-letter.php?id='.$row['letter_id'].'">'.$name.'</a></td>
+                                        <td class="mailbox-subject">'.$row['subject'].'
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
+                                        <td class="mailbox-attachment"><span class="label label-danger">'.$row['type'].'</span>
                                         </td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                        <td class="mailbox-date">'.datetime($row['timestamp']).'</td>
+                                    </tr>';
 
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Need Od for symposium
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                    }
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Permission to go to hospital
-                                        </td>
-                                        <td class="mailbox-attachment"><span
-                                                    class="label label-primary">Permission</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                    ?>
+
+
+
+
+
 
 
                                     </tbody>
@@ -291,54 +293,56 @@ role_check($_SESSION['role'],1);
 
                             </div>
                             <div class="table-responsive mailbox-messages" style="padding: 10px;">
+
                                 <table id="example3" class="table table-hover table-striped">
 
                                     <thead style="display: none;">
                                     <tr>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                        <th>CSS grade</th>
+                                        <th>Icon</th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Type</th>
+                                        <th>Time</th>
 
                                     </tr>
                                     </thead>
 
                                     <tbody>
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope"></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Requesting 5 days leave
+                                    <?php
+
+                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=2";
+
+                                    $res=mysqli_query($db,$sql);
+
+                                    while($row=mysqli_fetch_array($res))
+
+                                    {
+                                        echo' <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-check text-green"></i></a></td>
+                                        <td class="mailbox-name"><a href="view-letter.php?id='.$row['letter_id'].'">'.$name.'</a></td>
+                                        <td class="mailbox-subject">'.$row['subject'].'
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
+                                        <td class="mailbox-attachment"><span class="label label-danger">'.$row['type'].'</span>
                                         </td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                        <td class="mailbox-date">'.$row['timestamp'].'</td>
+                                    </tr>';
 
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Need Od for symposium
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                    }
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Permission to go to hospital
-                                        </td>
-                                        <td class="mailbox-attachment"><span
-                                                    class="label label-primary">Permission</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                    ?>
+
+
+
+
+
 
 
                                     </tbody>
                                 </table>
+
+
                                 <!-- /.table -->
                             </div>
                             <!-- /.mail-box-messages -->
@@ -384,50 +388,51 @@ role_check($_SESSION['role'],1);
 
                                     <thead style="display: none;">
                                     <tr>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                        <th>CSS grade</th>
+                                        <th>Icon</th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Type</th>
+                                        <th>Time</th>
 
                                     </tr>
                                     </thead>
 
                                     <tbody>
 
-                                    <tr>
+                                    <?php
+
+                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=3";
+
+                                    $res=mysqli_query($db,$sql);
+
+                                    while($row=mysqli_fetch_array($res))
+
+                                    {
+                                        echo' <tr>
                                         <td class="mailbox-star"><a href="#"><i class="fa fa-ban text-red"></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Requesting 5 days leave
+                                        <td class="mailbox-name"><a href="view-letter.php?id='.$row['letter_id'].'">'.$name.'</a></td>
+                                        <td class="mailbox-subject">'.$row['subject'].'
                                         </td>
-                                        <td class="mailbox-attachment"><span class="label label-danger">leave</span>
+                                        <td class="mailbox-attachment"><span class="label label-danger">'.$row['type'].'</span>
                                         </td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                        <td class="mailbox-date">'.$row['timestamp'].'</td>
+                                    </tr>';
 
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Need Od for symposium
-                                        </td>
-                                        <td class="mailbox-attachment"><span class="label label-warning">OD</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                    }
 
-                                    <tr>
-                                        <td class="mailbox-star"><a href="#"><i class="fa fa-envelope "></i></a></td>
-                                        <td class="mailbox-name"><a href="">Farija Parveen</a></td>
-                                        <td class="mailbox-subject">Permission to go to hospital
-                                        </td>
-                                        <td class="mailbox-attachment"><span
-                                                    class="label label-primary">Permission</span></td>
-                                        <td class="mailbox-date">11 hours ago</td>
-                                    </tr>
+                                    ?>
+
+
+
+
+
 
 
                                     </tbody>
                                 </table>
+
+
                                 <!-- /.table -->
                             </div>
                             <!-- /.mail-box-messages -->
@@ -483,7 +488,6 @@ role_check($_SESSION['role'],1);
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
-<script src="../bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -497,7 +501,16 @@ role_check($_SESSION['role'],1);
 
 <script>
     $(function () {
-        $('#example3').DataTable()
+        $('#example3').DataTable({
+
+
+            "language": {
+                "emptyTable": "Your selection inbox is empty"
+
+            }
+
+
+        })
         $('#example2').DataTable({
             'paging': true,
             'lengthChange': false,
@@ -506,6 +519,8 @@ role_check($_SESSION['role'],1);
             'info': true,
             'autoWidth': false
         })
+
+
     })
 </script>
 

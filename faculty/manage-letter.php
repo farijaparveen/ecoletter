@@ -1,8 +1,10 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],4);
-include('../custom-functions.php');
+role_check($_SESSION['role'],2);
+
+include ('../custom-functions.php')
+
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +46,7 @@ include('../custom-functions.php');
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-yellow sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">
 
     <header class="main-header">
@@ -82,7 +84,20 @@ include('../custom-functions.php');
             <div class="user-panel">
                 <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>HOD name</p>                    <a href="#"><i
+                <div class="pull-left info"><p><?php
+                        $sql = "SELECT name from faculty_data WHERE faculty_id=".$_SESSION['login_user'];
+                        $result = mysqli_query($db, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['name'];
+
+                        } else {
+                            echo "0 results";
+                        }
+
+
+                        ?></p>                    <a href="#"><i
                                 class="fa fa-circle text-success"></i> Faculty</a></div>
             </div>
             <!-- Sidebar user panel -->
@@ -97,7 +112,7 @@ include('../custom-functions.php');
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li class="active"><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                <li class="active"><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
                 </li>
                 <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i>
                         <span>Attendance Report</span></a></li>
@@ -110,17 +125,16 @@ include('../custom-functions.php');
         <!-- /.sidebar -->
     </aside>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                Manage Letter
-                <small>Manage Letters all letter here</small>
+            <h1>Past Letters
+
+                <small>Manage Letterss</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Manage Letters</li>
+                <li class="active">Past Letters</li>
             </ol>
         </section>
 
@@ -233,7 +247,8 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE level>1 AND hod=1";
+                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.faculty_id=".$_SESSION['login_user'];
+
 
                                         $res=mysqli_query($db,$sql);
 
@@ -285,7 +300,7 @@ include('../custom-functions.php');
                     <div class="col-md-9">
                         <div class="box box-success">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Approved</h3>
+                                <h3 class="box-title">Approval</h3>
 
                                 <div class="box-tools pull-right">
                                     <div class="has-feedback">
@@ -327,7 +342,7 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE level>1 AND hod=2";
+                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.faculty_id=".$_SESSION['login_user'];
 
 
                                         $res=mysqli_query($db,$sql);
@@ -423,7 +438,7 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE level>1 AND hod=3";
+                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.faculty_id=".$_SESSION['login_user'];
 
 
                                         $res=mysqli_query($db,$sql);
@@ -481,7 +496,8 @@ include('../custom-functions.php');
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
+
+
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">

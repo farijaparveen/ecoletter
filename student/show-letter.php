@@ -1,14 +1,20 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],2);
+
+role_check($_SESSION['role'],1);
+
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/favicon.png" rel="icon" type="image/x-icon"/>
+    <title>Eco Letter| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -39,7 +45,7 @@ role_check($_SESSION['role'],2);
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper">
 
     <header class="main-header">
@@ -73,12 +79,30 @@ role_check($_SESSION['role'],2);
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <section class="sidebar">
+
             <!-- sidebar: style can be found in sidebar.less -->
             <div class="user-panel">
-                <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
+                <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Faculty Name</p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Faculty</a></div>
+                <div class="pull-left info"><p>
+
+                        <?php
+                        $sql = "SELECT name from student_data WHERE student_id=".$_SESSION['login_user'];
+                        $result = mysqli_query($db, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['name'];
+
+                        } else {
+                            echo "0 results";
+                        }
+
+
+                        ?>
+
+
+                    </p> <a href="#"><i class="fa fa-circle text-success"></i> Student</a></div>
             </div>
             <!-- Sidebar user panel -->
 
@@ -90,14 +114,10 @@ role_check($_SESSION['role'],2);
                 <li class="header">MAIN NAVIGATION</li>
 
 
-                <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
+                <li class="active"><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i>
-                        <span>Attendance Report</span></a></li>
-
-                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a>
-                </li>
+                <li><a href="manage-letter.php?option=pending"><i class=" fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
@@ -111,17 +131,27 @@ role_check($_SESSION['role'],2);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Notification
-                <small>Offcial proclamations</small>
+                Dashboard
+                <small>Insights</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Notification</li>
+                <li class="active">Dashboard</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
+
+<style>iframe{
+        overflow:hidden;
+    }</style>
+
+
+<iframe height="250px" width="250px"style="border:none;" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=safasfas"></iframe>
+
+
+            <!-- /.row -->
 
 
         </section>
@@ -136,6 +166,8 @@ role_check($_SESSION['role'],2);
         <strong>Copyright &copy; Eco Letter.</strong> All rights
         reserved.
     </footer>
+
+
 </div>
 <!-- ./wrapper -->
 

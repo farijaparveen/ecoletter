@@ -1,10 +1,8 @@
 <?php
 
 include('../../session.php');
-role_check($_SESSION['role'],6);
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -180,7 +178,7 @@ role_check($_SESSION['role'],6);
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form id="add-std" class="form-horizontal">
+                        <form id="quesset1" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Name</label>
@@ -341,13 +339,12 @@ role_check($_SESSION['role'],6);
                             <!-- /.box-footer -->
                         </form>
 
-
                         <div id="response"></div>
 
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
                         <script>
                             $(document).ready(function(){
-                                $('#add-std').submit(function(){
+                                $('#quesset1').submit(function(){
 
 // show that something is loading
                                     $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Uploading Questions To Server...</b>');
@@ -377,7 +374,6 @@ role_check($_SESSION['role'],6);
                                 });
                             });
                         </script>
-
 
 
                     </div>

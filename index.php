@@ -10,29 +10,29 @@ if(isset($_SESSION['login_user']))
     $row['role'] = $_SESSION['role'] ;
 
     if ($row['role'] == 1) {
-        header("location: /student");
+        header("location: /student/");
 
     }
 
     if ($row['role'] == 2) {
-        header("location: /faculty");
+        header("location: /faculty/");
 
     }
 
     if ($row['role'] == 3) {
-        header("location: /warden");
+        header("location: /warden/");
 
     }
     if ($row['role'] == 4) {
-        header("location: /hod");
+        header("location: /hod/");
 
     }
     if ($row['role'] == 5) {
-        header("location: /principal");
+        header("location: /principal/");
 
     }
     if ($row['role'] == 6) {
-        header("location: /admin");
+        header("location: /admin/");
 
     }
 
@@ -62,30 +62,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = $row['role'];
 
         if ($row['role'] == 1) {
-            header("location: /student");
+            header("location: /student/");
 
         }
 
         if ($row['role'] == 2) {
-            header("location: /faculty");
+            header("location: /faculty/");
 
 
         }
 
         if ($row['role'] == 3) {
-            header("location: /warden");
+            header("location: /warden/");
 
         }
         if ($row['role'] == 4) {
-            header("location: /hod");
+            header("location: /hod/");
 
         }
         if ($row['role'] == 5) {
-            header("location: /principal");
+            header("location: /principal/");
 
         }
         if ($row['role'] == 6) {
-            header("location: /admin");
+            header("location: /admin/");
 
         }
 
