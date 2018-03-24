@@ -241,14 +241,14 @@ role_check($_SESSION['role'],6);
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab">Student</a></li>
-                    <li class="active"><a href="#tab_2" data-toggle="tab">Faculties</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">Faculties</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Warden</a></li>
 
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab_1">
+                    <div class="tab-pane active table-responsive" id="tab_1">
 
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <td>Reg id</td>
@@ -316,8 +316,8 @@ role_check($_SESSION['role'],6);
 
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="tab_2">
-                        <table id="example2" class="table table-bordered table-striped">
+                    <div class="tab-pane table-responsive" id="tab_2">
+                        <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <td> Faculty id</td>
@@ -382,8 +382,8 @@ role_check($_SESSION['role'],6);
 
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="tab_3">
-                        <table id="example3" class="table table-bordered table-striped">
+                    <div class="tab-pane table-responsive" id="tab_3">
+                        <table id="example3" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <td> Warden id</td>
@@ -504,14 +504,7 @@ role_check($_SESSION['role'],6);
     $(function () {
         $('#example1').DataTable()
         $('#example2').DataTable()
-        $('#example3').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
+        $('#example3').DataTable()
     })
 </script>
 
