@@ -2,8 +2,63 @@
 
 include('../../session.php');
 role_check($_SESSION['role'],6);
+?>
+
+<?php
+
+$message = "";
+
+if(isset($_POST['submit'])) {
+    $userid = $_POST['facid'];
+    $password = $_POST['facid'];
+    $facultyid = $_POST['facid'];
+    $facname = $_POST['facname'];
+    $factype = $_POST['facultytype'];
+    $dept = $_POST['department'];
+    $desig= $_POST['designation'];
+    $exp = $_POST['experience'];
+    $gender = $_POST['gender'];
+    $email = $_POST['mailid'];
+    $dob = $_POST['dob'];
+    $phnno = $_POST['mobno'];
+    $bloodgrp = $_POST['bldgrp'];
+    $address = $_POST['address'];
+
+
+    $sql1="INSERT into faculty_data (faculty_id, name, type,  department, designation, experience, gender, email, dob, phno, bldgrp, address) 
+VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$email','$dob','$phnno','$bloodgrp','$address')";
+    $res1 = mysqli_query($db, $sql1);
+
+
+
+    $sql = "INSERT into login (userid, password, role) VALUES ('$userid', '$password', 2)";
+    $res = mysqli_query($db, $sql);
+    if($res1)
+    {
+
+        $message="
+<div class=\"callout callout-success\">
+                <h4>Successfull!</h4>
+
+                <p>New faculty is added.</p>
+              </div>";
+    }else{
+
+        $message='<div class="callout callout-danger">
+                <h4>unsuccesfull!</h4>
+
+                <p>Error occured!Check the details properly.</p>
+              </div>';
+
+    }
+
+
+
+
+}
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -176,9 +231,10 @@ role_check($_SESSION['role'],6);
                         <div class="box-header with-border">
                             <h3 class="box-title">Adding New faculty</h3>
                         </div>
+                        <?php if(isset($message)){ echo $message;} ?>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form id="add-fac" class="form-horizontal">
+                        <form action="" method="post" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="facname" class="col-sm-2 control-label">Name</label>
@@ -203,11 +259,32 @@ role_check($_SESSION['role'],6);
 
                                     <div class="col-sm-10">
 
-                                        <select name="desig" class="form-control">
+                                        <select name="designation" class="form-control">
                                             <option value="1">Associate Professor</option>
                                             <option value="2">Assistant Professor(OG)</option>
                                             <option value="3">Assistant Professor(SG)</option>
                                             <option value="4">Professor</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reg" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="exp" name="experience"
+                                               placeholder="Experience of the faculty">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Type</label>
+
+                                    <div class="col-sm-10">
+
+                                        <select name="facultytype" class="form-control">
+                                            <option value="1">Teaching-staff</option>
+                                            <option value="2">Non-teaching staff</option>
                                         </select>
 
                                     </div>
@@ -240,7 +317,7 @@ role_check($_SESSION['role'],6);
 
                                     <div class="col-sm-10">
 
-                                        <select name="Gender" class="form-control">
+                                        <select name="gender" class="form-control">
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
                                             <option value="3">Others</option>
@@ -272,18 +349,32 @@ role_check($_SESSION['role'],6);
                                     <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="bloodgroup" name="bloodgroup"
+                                        <input type="text" class="form-control" id="bloodgroup" name="bldgrp"
                                                placeholder="Blood group of the faculty">
                                     </div>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label or="address" class="col-sm-2 control-label">Address</label>
+                                    <label for="address" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="address" class="form-control" rows="3"
+                                                  placeholder="Enter the address"></textarea>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Date</label>
+
                                     <div class="col-sm-10">
 
-                                        <textarea class="form-control" rows="3"
-                                                  placeholder="Enter the address"></textarea>
+
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="date" name="dob" class="form-control" placeholder="dd/mm/yyyy">
+                                        </div>
 
                                     </div>
                                 </div>
@@ -293,46 +384,12 @@ role_check($_SESSION['role'],6);
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="reset" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                <button type="submit" name="submit" value="submit" class="btn btn-info pull-right">Submit</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
 
-                        <div id="add-fac"></div>
 
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
-                        <script>
-                            $(document).ready(function(){
-                                $('#quesset1').submit(function(){
-
-// show that something is loading
-                                    $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Uploading Questions To Server...</b>');
-
-// Call ajax for pass data to other place
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: 'updatequestions.php',
-                                        data: $(this).serialize() // getting filed value in serialize form
-                                    })
-                                        .done(function(data){ // if getting done then call.
-
-// show the response
-                                            $('#response').html(data);
-
-                                        })
-                                        .fail(function() { // if fail then getting message
-
-// just in case posting your form failed
-                                            alert( "Posting failed." );
-
-                                        });
-
-// to prevent refreshing the whole page page
-                                    return false;
-
-                                });
-                            });
-                        </script>
 
 
 

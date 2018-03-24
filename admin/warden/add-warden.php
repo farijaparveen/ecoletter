@@ -1,6 +1,56 @@
 <?php
 
 include('../../session.php');
+role_check($_SESSION['role'],6);
+?>
+<?php
+
+$message = "";
+
+if(isset($_POST['submit'])) {
+    $userid = $_POST['wardenid'];
+    $password = $_POST['wardenid'];
+    $wdnid= $_POST['wardenid'];
+    $wdnname = $_POST['wardenname'];
+    $wdntyp = $_POST['wardentype'];
+    $exp = $_POST['experience'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $email = $_POST['mailid'];
+    $phnno = $_POST['mobno'];
+    $bloodgrp = $_POST['bldgrp'];
+    $address = $_POST['address'];
+
+
+    $sql1="INSERT into warden_data(wardenid, name, wardentype, experience, gender,  dob, email, phno, bldgrp, address) 
+VALUES ('$wdnid', '$wdnname','$wdntyp', '$exp','$gender','$dob','$email','$phnno','$bloodgrp','$address')";
+    $res1 = mysqli_query($db, $sql1);
+
+
+
+    $sql = "INSERT into login (userid, password, role) VALUES ('$userid', '$password', 3)";
+    $res = mysqli_query($db, $sql);
+    if($res1)
+    {
+
+        $message="
+<div class=\"callout callout-success\">
+                <h4>Successfull!</h4>
+
+                <p>New warden is added</p>
+              </div>";
+    }else{
+
+        $message='<div class="callout callout-danger">
+                <h4>unsuccesfull!</h4>
+
+                <p>Error occured!Check the details properly.</p>
+              </div>';
+
+    }
+
+
+}
 
 ?>
 
@@ -175,15 +225,15 @@ include('../../session.php');
                         <div class="box-header with-border">
                             <h3 class="box-title">Adding New Warden</h3>
                         </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <form id="add-warden" class="form-horizontal">
+
+                        <?php if(isset($message)){ echo $message;} ?>
+                        <form action="" method="post" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="wdnname" class="col-sm-2 control-label">Name</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="wdnname" name="wdnname"
+                                        <input type="text" class="form-control" id="wdnname" name="wardenname"
                                                placeholder="Name of the warden">
                                     </div>
                                 </div>
@@ -193,33 +243,39 @@ include('../../session.php');
                                     <label for="wdnid" class="col-sm-2 control-label">Warden id</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="wdnid" name="wdnid"
+                                        <input type="text" class="form-control" id="wdnid" name="wardenid"
                                                placeholder="ID of the warden">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Designation</label>
+                                    <label class="col-sm-2 control-label">Warden type</label>
 
                                     <div class="col-sm-10">
 
-                                        <select name="desig" class="form-control">
-                                            <option value="1">Associate Professor</option>
-                                            <option value="2">Assistant Professor(OG)</option>
-                                            <option value="3">Assistant Professor(SG)</option>
-                                            <option value="4">Professor</option>
+                                        <select name="wardentype" class="form-control">
+                                            <option value="1">Floor warden</option>
+                                            <option value="2">Full time warden</option>
                                         </select>
 
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="reg" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="exp" name="experience"
+                                               placeholder="Experience of the warden">
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Gender</label>
 
                                     <div class="col-sm-10">
 
-                                        <select name="Gender" class="form-control">
+                                        <select name="gender" class="form-control">
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
                                             <option value="3">Others</option>
@@ -229,6 +285,25 @@ include('../../session.php');
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Date</label>
+
+                                    <div class="col-sm-10">
+
+
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="date" name="dob" class="form-control" placeholder="dd/mm/yyyy">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
                                 <div class="form-group">
                                     <label for="mobno" class="col-sm-2 control-label">Mobile Number</label>
 
@@ -251,7 +326,7 @@ include('../../session.php');
                                     <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="bloodgroup" name="bloodgroup"
+                                        <input type="text" class="form-control" id="bloodgroup" name="bldgrp"
                                                placeholder="Blood group of the warden">
                                     </div>
                                 </div>
@@ -261,7 +336,7 @@ include('../../session.php');
                                     <label or="address" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-10">
 
-                                        <textarea class="form-control" rows="3"
+                                        <textarea name="address" class="form-control" rows="3"
                                                   placeholder="Enter the address"></textarea>
 
                                     </div>
@@ -272,7 +347,7 @@ include('../../session.php');
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="reset" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                <button type="submit" value="submit" name="submit" class="btn btn-info pull-right">Submit</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>

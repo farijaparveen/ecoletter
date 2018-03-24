@@ -266,13 +266,6 @@ role_check($_SESSION['role'],2);
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Father</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Raja Subbhu" disabled="disabled">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Blood group</label>
 
                                     <div class="col-sm-10">

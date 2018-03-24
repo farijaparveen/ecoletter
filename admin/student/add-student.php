@@ -1,8 +1,67 @@
 <?php
 
 include('../../session.php');
+role_check($_SESSION['role'],6);
+
 
 ?>
+<?php
+
+$message = "";
+
+if(isset($_POST['submit'])) {
+    $userid = $_POST['regnum'];
+    $password = $_POST['regnum'];
+    $stdntid = $_POST['regnum'];
+    $stdname = $_POST['name'];
+    $stdtyp = $_POST['studenttype'];
+    $year = $_POST['year'];
+    $dept = $_POST['department'];
+    $sec = $_POST['section'];
+    $gender = $_POST['gender'];
+    $email = $_POST['mailid'];
+    $dob = $_POST['dob'];
+    $phnno = $_POST['mobno'];
+    $fathername = $_POST['fathername'];
+    $fathermob = $_POST['fmobno'];
+    $bloodgrp = $_POST['bldgrp'];
+    $address = $_POST['address'];
+
+
+    $sql1="INSERT into student_data (student_id, name, studenttype, year, department, section,  gender, email, dob, phno, fathernam, fathermob, bldgrp, address) 
+VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$email','$dob','$phnno','$fathername','$fathermob','$bloodgrp','$address')";
+    $res1 = mysqli_query($db, $sql1);
+
+
+
+    $sql = "INSERT into login (userid, password, role) VALUES ('$userid', '$password', 1)";
+    $res = mysqli_query($db, $sql);
+    if($res)
+    {
+
+        $message="
+<div class=\"callout callout-success\">
+                <h4>Successfull!</h4>
+
+                <p>New student is added</p>
+              </div>";
+    }else{
+
+        $message='<div class="callout callout-danger">
+                <h4>unsuccesfull!</h4>
+
+                <p>Error occured!Check the details properly.</p>
+              </div>';
+
+    }
+
+
+}
+
+?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -19,6 +78,9 @@ include('../../session.php');
     <link rel="stylesheet" href="<?php echo $baseurl; ?>/bower_components/Ionicons/css/ionicons.min.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?php echo $baseurl; ?>/bower_components/jvectormap/jquery-jvectormap.css">
+
+    <link rel="stylesheet" href="<?php echo $baseurl; ?>/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo $baseurl; ?>/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -176,15 +238,17 @@ include('../../session.php');
                         <div class="box-header with-border">
                             <h3 class="box-title">Adding New Student</h3>
                         </div>
+                        <?php if(isset($message)){ echo $message;} ?>
+
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form id="quesset1" class="form-horizontal">
+                        <form action="" method="post" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Name</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="stdname"
+                                        <input type="text" class="form-control" id="name" name="name"
                                                placeholder="Name of the Student">
                                     </div>
                                 </div>
@@ -204,7 +268,7 @@ include('../../session.php');
 
                                     <div class="col-sm-10">
 
-                                        <select name="Gender" class="form-control">
+                                        <select name="gender" class="form-control">
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
                                             <option value="3">Others</option>
@@ -219,14 +283,31 @@ include('../../session.php');
 
                                     <div class="col-sm-10">
 
-                                        <select name="student type" class="form-control">
-                                            <option value="1">Hosteller</option>
-                                            <option value="2">Day scholar</option>
+                                <select name="studenttype" class="form-control">
+                                    <option value="1">Hosteller</option>
+                                    <option value="2">Day scholar</option>
 
-                                        </select>
+                                </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Date</label>
+
+                                    <div class="col-sm-10">
+
+
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="date" name="dob" class="form-control" placeholder="dd/mm/yyyy">
+                                        </div>
 
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Year of Study</label>
 
@@ -254,7 +335,7 @@ include('../../session.php');
                                             <option value="EEE">B.E-Electronics and Electrical Engineering</option>
                                             <option value="MECH">B.E-Mechanical Engineering</option>
                                             <option value="CIVIL">B.E-Civil Engineering</option>
-                                            <option value="E&I">B.E-Electronics and Instrumentation Engineering</option>
+                                            <option value="EI">B.E-Electronics and Instrumentation Engineering</option>
                                             <option value="MBA">Master of Buisness Administration</option>
                                         </select>
 
@@ -313,17 +394,17 @@ include('../../session.php');
                                     <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="bloodgroup" name="bloodgroup"
+                                        <input type="text" class="form-control" id="bloodgroup" name="bldgrp"
                                                placeholder="Blood group of the Student">
                                     </div>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label or="address" class="col-sm-2 control-label">Address</label>
+                                    <label for="address" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-10">
 
-                                        <textarea class="form-control" rows="3"
+                                        <textarea name="address" class="form-control" rows="3"
                                                   placeholder="Enter the address"></textarea>
 
                                     </div>
@@ -334,46 +415,12 @@ include('../../session.php');
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="reset" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                <button type="submit" name="submit" value="submit" class="btn btn-info pull-right">Submit</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
 
-                        <div id="response"></div>
 
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
-                        <script>
-                            $(document).ready(function(){
-                                $('#quesset1').submit(function(){
-
-// show that something is loading
-                                    $('#response').html('<b><i class="fa fa-spin fa-refresh"></i> Uploading Questions To Server...</b>');
-
-// Call ajax for pass data to other place
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/functions/add-student.php',
-                                        data: $(this).serialize() // getting filed value in serialize form
-                                    })
-                                        .done(function(data){ // if getting done then call.
-
-// show the response
-                                            $('#response').html(data);
-
-                                        })
-                                        .fail(function() { // if fail then getting message
-
-// just in case posting your form failed
-                                            alert( "Posting failed." );
-
-                                        });
-
-// to prevent refreshing the whole page page
-                                    return false;
-
-                                });
-                            });
-                        </script>
 
 
                     </div>
@@ -410,6 +457,12 @@ include('../../session.php');
 <!-- FastClick -->
 <script src="<?php echo $baseurl; ?>/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
+
+
+
+<script src="<?php echo $baseurl; ?>/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?php echo $baseurl; ?>/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?php echo $baseurl; ?>/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <script src="<?php echo $baseurl; ?>/dist/js/adminlte.min.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo $baseurl; ?>/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
@@ -424,12 +477,10 @@ include('../../session.php');
 <script src="<?php echo $baseurl; ?>/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo $baseurl; ?>/dist/js/demo.js"></script>
-<script>
-    $(function () {
-        //Add text editor
-        $("#compose-textarea").wysihtml5();
-    });
-</script>
+
+
+<script src="<?php echo $baseurl; ?>/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 
 <script src="<?php echo $baseurl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 

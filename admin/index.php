@@ -20,6 +20,11 @@ role_check($_SESSION['role'],6);
     <link rel="stylesheet" href="<?php echo $baseurl; ?>/bower_components/Ionicons/css/ionicons.min.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?php echo $baseurl; ?>/bower_components/jvectormap/jquery-jvectormap.css">
+
+
+
+    <link rel="stylesheet" href="<?php echo $baseurl; ?>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo $baseurl; ?>/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -236,43 +241,208 @@ role_check($_SESSION['role'],6);
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab">Student</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Faculties</a></li>
+                    <li class="active"><a href="#tab_2" data-toggle="tab">Faculties</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Warden</a></li>
 
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                        <b>How to use:</b>
 
-                        <p>Exactly like the original bootstrap tabs except you should use
-                            the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-                        A wonderful serenity has taken possession of my entire soul,
-                        like these sweet mornings of spring which I enjoy with my whole heart.
-                        I am alone, and feel the charm of existence in this spot,
-                        which was created for the bliss of souls like mine. I am so happy,
-                        my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                        that I neglect my talents. I should be incapable of drawing a single stroke
-                        at the present moment; and yet I feel that I never was a greater artist than now.
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <td>Reg id</td>
+                                <td> Name </td>
+                                <td> Student type</td>
+                                <td> Year </td>
+                                <td> Department </td>
+                                <td> Section </td>
+                                <td> Gender </td>
+                                <td> Email </td>
+                                <td> DOB</td>
+                                <td> Phone number </td>
+                                <td> Father name </td>
+                                <td> Father mob number </td>
+                                <td> Blood group </td>
+                                <td> Address </td>
+
+
+
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+                        <?php
+
+                        $sql="SELECT * from student_data";
+                        $res=mysqli_query($db, $sql);
+                        while($std=mysqli_fetch_array($res))
+                        {
+
+                            echo '<tr>
+                            
+                            <td>'.$std[0].'</td>
+                            <td>'.$std[1].'</td>
+                            <td>'.$std[2].'</td>
+                            <td>'.$std[3].'</td>
+                            <td>'.$std[4].'</td>
+                            <td>'.$std[5].'</td>
+                            <td>'.$std[6].'</td>
+                            <td>'.$std[7].'</td>
+                            <td>'.$std[8].'</td>
+                            <td>'.$std[9].'</td>
+                            <td>'.$std[10].'</td>
+                            <td>'.$std[11].'</td>
+                            <td>'.$std[12].'</td>
+                            <td>'.$std[13].'</td>
+
+                            </td>
+
+                            </tr>
+                            
+                            ';
+
+                        }
+
+
+
+                        ?>
+
+                            </tbody>
+
+                        </table>
+
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
-                        The European languages are members of the same family. Their separate existence is a myth.
-                        For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                        in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                        new common language would be desirable: one could refuse to pay expensive translators. To
-                        achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                        words. If several languages coalesce, the grammar of the resulting language is more simple
-                        and regular than that of the individual languages.
+                        <table id="example2" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <td> Faculty id</td>
+                                <td> Name </td>
+                                <td> Faculty type</td>
+                                <td> Department </td>
+                                <td> Dessignation </td>
+                                <td> Experience</td>
+                                <td> Gender </td>
+                                <td> Email </td>
+                                <td> DOB</td>
+                                <td> Phone number </td>
+                                <td> Bloodgroup </td>
+                                <td> Address </td>
+
+
+
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+                            <?php
+
+                            $sql="SELECT * from faculty_data";
+                            $res=mysqli_query($db, $sql);
+                            while($fac=mysqli_fetch_array($res))
+                            {
+
+                                echo '<tr>
+                            
+                            <td>'.$fac[0].'</td>
+                            <td>'.$fac[1].'</td>
+                            <td>'.$fac[2].'</td>
+                            <td>'.$fac[3].'</td>
+                            <td>'.$fac[4].'</td>
+                            <td>'.$fac[5].'</td>
+                            <td>'.$fac[6].'</td>
+                            <td>'.$fac[7].'</td>
+                            <td>'.$fac[8].'</td>
+                            <td>'.$fac[9].'</td>
+                            <td>'.$fac[10].'</td>
+                            <td>'.$fac[11].'</td>
+                           
+
+                            </td>
+
+                            </tr>
+                            
+                            ';
+
+                            }
+
+
+
+                            ?>
+
+                            </tbody>
+
+                        </table>
+
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
+                        <table id="example3" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <td> Warden id</td>
+                                <td> Name </td>
+                                <td> Warden type</td>
+                                <td> Experience</td>
+                                <td> Gender </td>
+                                <td> DOB</td>
+                                <td> Email </td>
+                                <td> Phone number </td>
+                                <td> Bloodgroup </td>
+                                <td> Address </td>
+
+
+
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+                            <?php
+
+                            $sql="SELECT * from warden_data";
+                            $res=mysqli_query($db, $sql);
+                            while($wdn=mysqli_fetch_array($res))
+                            {
+
+                                echo '<tr>
+                            
+                            <td>'.$wdn[0].'</td>
+                            <td>'.$wdn[1].'</td>
+                            <td>'.$wdn[2].'</td>
+                            <td>'.$wdn[3].'</td>
+                            <td>'.$wdn[4].'</td>
+                            <td>'.$wdn[5].'</td>
+                            <td>'.$wdn[6].'</td>
+                            <td>'.$wdn[7].'</td>
+                            <td>'.$wdn[8].'</td>
+                            <td>'.$wdn[9].'</td>
+                          
+                           
+
+                            </td>
+
+                            </tr>
+                            
+                            ';
+
+                            }
+
+
+
+                            ?>
+
+                            </tbody>
+
+                        </table>
+
                     </div>
                     <!-- /.tab-pane -->
                 </div>
@@ -302,6 +472,9 @@ role_check($_SESSION['role'],6);
 <script src="<?php echo $baseurl; ?>/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo $baseurl; ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo $baseurl; ?>/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -325,6 +498,25 @@ role_check($_SESSION['role'],6);
         $("#compose-textarea").wysihtml5();
     });
 </script>
+
+
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable()
+        $('#example3').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
+</script>
+
+
+
 
 <script src="<?php echo $baseurl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
