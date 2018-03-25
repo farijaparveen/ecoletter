@@ -73,19 +73,26 @@ role_check($_SESSION['role'],2);
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
             <section class="sidebar">
-                <!-- sidebar: style can be found in sidebar.less -->
                 <div class="user-panel">
                     <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                     </div>
-                    <div class="pull-left info"><p>Faculty Name</p>                    <a href="#"><i
+                    <div class="pull-left info"><p><?php
+                            $sql = "SELECT name from faculty_data WHERE faculty_id=".$_SESSION['login_user'];
+                            $result = mysqli_query($db, $sql);
+
+                            if (mysqli_num_rows($result) > 0) {
+                                $row = mysqli_fetch_assoc($result);
+                                echo $row['name'];
+
+                            } else {
+                                echo "0 results";
+                            }
+
+
+                            ?></p>                    <a href="#"><i
                                     class="fa fa-circle text-success"></i> Faculty</a></div>
                 </div>
-                <!-- Sidebar user panel -->
 
-                <!-- search form -->
-
-                <!-- /.search form -->
-                <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
 
@@ -94,8 +101,6 @@ role_check($_SESSION['role'],2);
                     <li class="active"><a href="new-letter.php"><i class="fa fa-plus-square"></i>
                             <span>New Letter</span></a></li>
                     <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                    <li><a href="attendance-report.php"><i class="fa fa-calendar-times-o"></i>
-                            <span>Attendance Report</span></a></li>
                     <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                     <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 

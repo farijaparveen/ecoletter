@@ -73,13 +73,28 @@ role_check($_SESSION['role'],5);
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <section class="sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
             <div class="user-panel">
                 <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Prinicipal Name</p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Faculty</a></div>
+                <div class="pull-left info"><p><?php
+                        $sql = "SELECT name from principal_data WHERE principal_id=".$_SESSION['login_user'];
+                        $result = mysqli_query($db, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['name'];
+
+                        } else {
+                            echo "0 results";
+                        }
+
+
+                        ?></p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Principal </a></div>
             </div>
+
+            <!-- sidebar: style can be found in sidebar.less -->
+
             <!-- Sidebar user panel -->
 
             <!-- search form -->

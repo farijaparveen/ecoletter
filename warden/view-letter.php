@@ -92,7 +92,6 @@ role_check($_SESSION['role'],2);
 
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
                 <li><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                 <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
@@ -100,7 +99,7 @@ role_check($_SESSION['role'],2);
 
             </ul>
         </section>
-        <!-- /.sidebar -->
+        <!-- /.sidebar -->+
     </aside>
 
     <!-- Content Wrapper. Contains page content -->

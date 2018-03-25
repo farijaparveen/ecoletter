@@ -73,13 +73,27 @@ role_check($_SESSION['role'],3);
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
             <section class="sidebar">
-                <!-- sidebar: style can be found in sidebar.less -->
                 <div class="user-panel">
                     <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                     </div>
-                    <div class="pull-left info"><p>Warden Name</p>                    <a href="#"><i
-                                    class="fa fa-circle text-success"></i> Warden</a></div>
+                    <div class="pull-left info"><p><?php
+                            $sql = "SELECT name from warden_data WHERE wardenid=".$_SESSION['login_user'];
+                            $result = mysqli_query($db, $sql);
+
+                            if (mysqli_num_rows($result) > 0) {
+                                $row = mysqli_fetch_assoc($result);
+                                echo $row['name'];
+
+                            } else {
+                                echo "0 results";
+                            }
+
+
+                            ?></p>                    <a href="#"><i
+                                    class="fa fa-circle text-success"></i> Warden </a></div>
                 </div>
+
+                <!-- sidebar: style can be found in sidebar.less -->
                 <!-- Sidebar user panel -->
 
                 <!-- search form -->
@@ -89,10 +103,8 @@ role_check($_SESSION['role'],3);
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                    <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
                     <li><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                     <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                    <li><a href="report.php"><i class="fa fa-exclamation"></i> <span>Report</span></a></li>
                     <li class="active"><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a>
                     </li>
                 </ul>
