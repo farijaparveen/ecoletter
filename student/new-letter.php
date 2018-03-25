@@ -167,9 +167,27 @@ role_check($_SESSION['role'],1);
                                                 $sql4="SELECT faculty_id, name from `faculty_data`";
                                                 $ress=mysqli_query($db,$sql4);
                                                 while ($rwo=mysqli_fetch_array($ress)) {
-                                                    echo '<option value="'.$rwo['faculty_id'].'">'.$rwo['name'].'</option>';
+                                                    echo '<option value="'.$rwo['faculty_id'].'">'.$rwo['name'].' [faculty]</option>';
                                                 }
                                                 ?>
+
+
+                                                <?php
+
+
+                                                $std="SELECT studenttype from student_data WHERE studenttype=2 AND student_id=".$_SESSION['login_user'];
+                                                $rstd=mysqli_query($db, $std);
+                                                $or=mysqli_fetch_array($rstd);
+
+                                                if($or[0]==2) {
+                                                    $sql5 = "SELECT wardenid, name FROM `warden_data`";
+                                                    $ress5 = mysqli_query($db, $sql5);
+                                                    while ($rwo = mysqli_fetch_array($ress5)) {
+                                                        echo '<option value="' . $rwo['wardenid'] . '">' . $rwo['name'] . ' [warden]</option>';
+                                                    }
+                                                }
+                                                ?>
+
 
 
 
