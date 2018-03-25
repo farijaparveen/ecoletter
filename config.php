@@ -1,7 +1,7 @@
 <?php
 
 
-$baseurl = "http://localhost:90";
+$baseurl = "http://localhost";
 
 
 $servername = "localhost";
