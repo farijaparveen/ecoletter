@@ -14,8 +14,12 @@ if(isset($_POST['approved']))
     $runsql1="update letter_index SET status=2, comments='".$_POST['comments']."' WHERE faculty_id=".$_SESSION['login_user']." AND letter_id=".$letterid;
     $runsql2="update letter_content SET status=1 WHERE letter_id=".$letterid;
 
+    $runsql3="update letter_content SET hod=1 WHERE letter_id=".$letterid;
+
     $res=mysqli_query($db, $runsql1);
     $res2=mysqli_query($db, $runsql2);
+    $res3=mysqli_query($db, $runsql3);
+
     if($res)
     {
         $msg ='<div class="alert alert-success alert-dismissible">
@@ -149,7 +153,20 @@ if(isset($_POST['rejected']))
             <div class="user-panel">
                 <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Faculty Name</p>                    <a href="#"><i
+                <div class="pull-left info"><p><?php
+                        $sql = "SELECT name from faculty_data WHERE faculty_id=".$_SESSION['login_user'];
+                        $result = mysqli_query($db, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['name'];
+
+                        } else {
+                            echo "0 results";
+                        }
+
+
+                        ?></p>          </p>                    <a href="#"><i
                                 class="fa fa-circle text-success"></i> Faculty</a></div>
             </div>
             <!-- Sidebar user panel -->
@@ -234,7 +251,7 @@ if(isset($_POST['rejected']))
                             From
                             <address>
                                 <strong><?php echo $student['name'];?>.</strong><br>
-                                <?php echo $student['year']; ?> Year <?php echo $student['class']; ?><br>
+                                <?php echo $student['year']; ?> Year <?php echo $student['section']; ?><br>
                                 <?php echo $student['department']; ?><br>
 
                             </address>
