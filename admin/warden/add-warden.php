@@ -321,15 +321,24 @@ VALUES ('$wdnid', '$wdnname','$wdntyp', '$exp','$gender','$dob','$email','$phnno
                                                placeholder="Mail id of the warden">
                                     </div>
                                 </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Blood Group</label>
 
-                                <div class="form-group">
-                                    <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
+                                <div class="col-sm-10">
 
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="bloodgroup" name="bldgrp"
-                                               placeholder="Blood group of the warden">
-                                    </div>
+                                    <select name="bldgrp" class="form-control">
+                                        <option value="O+">O positive</option>
+                                        <option value="O-">O negative</option>
+                                        <option value="A+">A positive</option>
+                                        <option value="A-">A negative</option>
+                                        <option value="B+">B positive</option>
+                                        <option value="B-">B negative</option>
+                                        <option value="AB+">AB positive</option>
+                                        <option value="AB-">AB negative</option>
+
+                                    </select>
                                 </div>
+                            </div>
 
 
                                 <div class="form-group">

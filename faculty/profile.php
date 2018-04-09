@@ -162,14 +162,12 @@ role_check($_SESSION['role'],2);
                                     <b>Designation</b> <a class="pull-right"><?php echo $data['designation']; ?></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Following</b> <a class="pull-right">543</a>
+                                    <b>Faculty id</b> <a class="pull-right"><?php echo $data['faculty_id']; ?></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Friends</b> <a class="pull-right">13,287</a>
+                                    <b>Faculty type</b> <a class="pull-right"><?php echo $data['type']; ?></a>
                                 </li>
                             </ul>
-
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -182,11 +180,6 @@ role_check($_SESSION['role'],2);
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-
-                            <p class="text-muted">
-                                <?php echo $data['name']; ?>
-                            </p>
 
                             <hr>
 
@@ -232,14 +225,6 @@ role_check($_SESSION['role'],2);
 
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['type']; ?>" disabled="disabled">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Designation</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['designation']; ?>" disabled="disabled">
                                     </div>
                                 </div>
 
