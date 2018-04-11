@@ -26,7 +26,7 @@ $result=mysqli_query($db, $sql);
 
 
 foreach ($through as $value) {
-    $letter = "INSERT INTO letter_index (letter_id, faculty_id, status) VALUES ($letterid, $value, 0)";
+    $letter = "INSERT INTO letter_index (letter_id, faculty_id, status) VALUES ('$letterid', '$value', 0)";
     $result1=mysqli_query($db, $letter);
 
 }
@@ -37,7 +37,7 @@ foreach ($through as $value) {
 
 
 
-if($result)
+if($result1)
 {
 
     echo '<div class="modal modal-success fade" id="modal-success">

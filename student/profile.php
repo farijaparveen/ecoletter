@@ -132,6 +132,19 @@ role_check($_SESSION['role'],1);
         <!-- Main content -->
         <section class="content">
 
+
+            <?php
+
+            $usern="SELECT * FROM student_data WHERE student_id=".$_SESSION['login_user'];
+            $std=mysqli_query($db, $usern);
+            $data=mysqli_fetch_array($std);
+
+
+            ?>
+
+
+
+
             <div class="row">
                 <div class="col-md-3">
 
@@ -139,25 +152,24 @@ role_check($_SESSION['role'],1);
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img class="profile-user-img img-responsive img-circle"
-                                 src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                                 src="../dist/img/student.png" alt="User profile picture">
 
-                            <h3 class="profile-username text-center">Durai Sankar</h3>
+                            <h3 class="profile-username text-center"> <?php echo $data['name']; ?>  </h3>
 
-                            <p class="text-muted text-center">CSE</p>
+                            <p class="text-muted text-center"><?php echo $data['department']; ?></p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Student type</b> <a class="pull-right">Day-scholar</a>
+                                    <b>Student type</b> <a class="pull-right"><?php echo $data['studenttype']; ?></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Year</b> <a class="pull-right">4</a>
+                                    <b>Year</b> <a class="pull-right"><?php echo $data['year']; ?> </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Section</b> <a class="pull-right">A1</a>
+                                    <b>Section</b> <a class="pull-right"><?php echo $data['section']; ?> </a>
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -175,32 +187,17 @@ role_check($_SESSION['role'],1);
                             <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
 
                             <p class="text-muted">
-                                B.E. in Computer Science and Engineering from Saveetha Engineering college
+                                <?php echo $data['department']; ?>
                             </p>
 
                             <hr>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
 
-                            <p class="text-muted">M.K.B nagar, chennai</p>
+                            <p class="text-muted"><?php echo $data['address']; ?> </p>
 
                             <hr>
 
-                            <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-
-                            <p>
-                                <span class="label label-danger">UI Design</span>
-                                <span class="label label-success">Coding</span>
-                                <span class="label label-info">Javascript</span>
-                                <span class="label label-warning">PHP</span>
-                                <span class="label label-primary">Node.js</span>
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -219,18 +216,34 @@ role_check($_SESSION['role'],1);
                             <div class="active tab-pane" id="activity">
 
                             <form class="form-horizontal">
+
+
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Durai Sankar" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['name']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Reg no</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="212214104026" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['student_id']; ?>" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Student type</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['studenttype']; ?>" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Department</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['department']; ?>" disabled="disabled">
                                     </div>
                                 </div>
 
@@ -238,56 +251,56 @@ role_check($_SESSION['role'],1);
                                     <label for="inputName" class="col-sm-2 control-label">D.O.B</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="28-03-1997" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['dob']; ?>7" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Gender</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Male" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['gender']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">E-Mail</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="rduraisankar@gmail.com" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['email']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Phone</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="9710085851" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['phno']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Father</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Raja subbhu" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['fathernam']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Father num</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="68808908908" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['fathermob']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Blood group</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="O positive" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['bldgrp']; ?>" disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Address</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Durai Sankar" disabled="disabled">
+                                        <input type="text" class="form-control" id="inputName" placeholder="<?php echo $data['address']; ?>" disabled="disabled">
                                     </div>
                                 </div>
 
@@ -296,19 +309,92 @@ role_check($_SESSION['role'],1);
 
                             </div>
                             <div class="tab-pane" id="password">
-                                <form class="form-horizontal">
+
+
+
+
+                                <?php
+
+                                $msg="";
+                                if(isset($_POST['submit']))
+                                {
+
+                                    $op=$_POST['oldpassword'];
+                                    $np=$_POST['newpassword'];
+                                    $cp=$_POST['confirmpassword'];
+
+                                    if($np==$cp)
+                                    {
+
+                                        $psql="SELECT password from login where userid=".$_SESSION['login_user'];
+                                        $rsql=mysqli_query($db, $psql);
+                                        $nd=mysqli_fetch_array($rsql);
+
+                                        if($nd['password']==$op)
+                                        {
+                                            $usql="UPDATE login SET password='".$cp."' where userid=".$_SESSION['login_user'];
+                                            $usql=mysqli_query($db, $usql);
+
+                                            if($usql)
+                                            {
+
+                                                $msg=' <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Success!</h4>Password changed succsessfully!
+             </div>';
+                                            }
+
+
+                                        }else{
+
+                                            $msg=' <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Wrong password!</h4>
+                 Enter the password correctly!</div>';
+                                        }
+
+
+
+
+
+                                    }else{
+
+                                        $msg=' <div class="alert alert-ifo alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Password does not match</h4>Enter the confirm password correctly!
+                </div>';
+
+                                    }
+
+
+
+
+                                }
+
+
+
+
+
+                                ?>
+
+
+
+<?php if(isset($msg)){ echo $msg; }  ?>
+
+
+                                <form action="" method="post" class="form-horizontal">
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">OLD password</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Durai Sankar" disabled="disabled">
+                                            <input type="password" name="oldpassword" class="form-control" id="inputName" placeholder="Enter the old passsword" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Neww password</label>
+                                        <label for="inputName" class="col-sm-2 control-label">New password</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="212214104026" disabled="disabled">
+                                            <input type="password" name="newpassword" class="form-control" id="inputName" placeholder="Enter the new password" required>
                                         </div>
                                     </div>
 
@@ -316,9 +402,12 @@ role_check($_SESSION['role'],1);
                                         <label for="inputName" class="col-sm-2 control-label">Confirm password</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" placeholder="28-03-1997" disabled="disabled">
+                                            <input type="password" name="confirmpassword" class="form-control" id="inputName" placeholder="Enter your confirmation password" required>
                                         </div>
                                     </div>
+
+
+                                    <button class="btn btn-primary" type="submit" value="submit" name="submit">Change Password</button>
 
 
                                 </form>

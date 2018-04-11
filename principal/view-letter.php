@@ -94,7 +94,7 @@ include ('../custom-functions.php');
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
                 <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                 <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
@@ -229,7 +229,7 @@ include ('../custom-functions.php');
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-xs-12">
-                            <a href="manage-letter.php?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
+                            <a href="manage-letter.php?option=pending?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
                                 Later</a>
                             <button type="submit" name="response" value="approve" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
                                 Letter

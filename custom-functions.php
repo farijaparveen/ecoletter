@@ -45,7 +45,7 @@ function displaytime($time)
 
 function facultyname($fid, $db)
 {
-    $sql4="SELECT name FROM `faculty_data` WHERE faculty_id=".$fid;
+    $sql4="SELECT name FROM `faculty_data` WHERE faculty_id='".$fid."'";
 
 
     $res4=mysqli_query($db, $sql4);

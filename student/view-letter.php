@@ -137,6 +137,13 @@ $letter=mysqli_fetch_array($res1);
 
 
 
+$ssql="SELECT * FROM `student_data` WHERE student_id=".$_SESSION['login_user'];
+
+$ress=mysqli_query($db,$ssql);
+
+$student=mysqli_fetch_array($ress);
+
+
 
     ?>
 
@@ -177,9 +184,9 @@ $letter=mysqli_fetch_array($res1);
                         <div class="col-sm-4 invoice-col">
                             From
                             <address>
-                                <strong>Farija Parveen.</strong><br>
-                                4 CSE A1<br>
-                                B.E Computer Science <br>
+                                <strong><?php echo $student['name']; ?></strong><br>
+                                <?php echo $student['year']; ?> <?php echo $student['section']; ?><br>
+                                <?php echo $student['department']; ?> <br>
 
                             </address>
                         </div>

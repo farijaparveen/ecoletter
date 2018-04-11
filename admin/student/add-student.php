@@ -389,15 +389,29 @@ VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$ema
                                                placeholder="Father's phone number of the student">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="bloodgroup" class="col-sm-2 control-label">Blood Group</label>
+                                    <label class="col-sm-2 control-label">Blood Group</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="bloodgroup" name="bldgrp"
-                                               placeholder="Blood group of the Student">
+
+                                        <select name="bldgrp" class="form-control">
+                                            <option value="O+">O positive</option>
+                                            <option value="O-">O negative</option>
+                                            <option value="A+">A positive</option>
+                                            <option value="A-">A negative</option>
+                                            <option value="B+">B positive</option>
+                                            <option value="B-">B negative</option>
+                                            <option value="AB+">AB positive</option>
+                                            <option value="AB-">AB negative</option>
+
+                                        </select>
                                     </div>
                                 </div>
+
+
+
+
+
 
 
                                 <div class="form-group">
