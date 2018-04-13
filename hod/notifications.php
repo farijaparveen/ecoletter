@@ -77,7 +77,7 @@ role_check($_SESSION['role'],4);
                 <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info"><p><?php
-                        $sql = "SELECT name from hod_data WHERE hod_id=".$_SESSION['login_user'];
+                        $sql = "SELECT name from hod_data WHERE hod_id='".$_SESSION['login_user']."'";
                         $result = mysqli_query($db, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -133,6 +133,23 @@ role_check($_SESSION['role'],4);
 
         <!-- Main content -->
         <section class="content">
+            <?php
+
+            $dissql="SELECT * from notification WHERE role=4";
+            $result = mysqli_query($db, $dissql);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo $row['title'];
+                    echo $row['message'];
+                }
+            } else {
+                echo "NO Notifications";
+            }
+
+
+
+            ?>
+
 
 
         </section>

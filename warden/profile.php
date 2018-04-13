@@ -130,7 +130,7 @@ role_check($_SESSION['role'],3);
             <section class="content">
                 <?php
 
-                $usern="SELECT * FROM warden_data WHERE wardenid=".$_SESSION['login_user'];
+                $usern="SELECT * FROM warden_data WHERE wardenid='".$_SESSION['login_user']."'";
                 $wdn=mysqli_query($db, $usern);
                 $data=mysqli_fetch_array($wdn);
 
@@ -301,13 +301,13 @@ role_check($_SESSION['role'],3);
                                         if($np==$cp)
                                         {
 
-                                            $psql="SELECT password from login where userid=".$_SESSION['login_user'];
+                                            $psql="SELECT password from login where userid='".$_SESSION['login_user']."'";
                                             $rsql=mysqli_query($db, $psql);
                                             $nd=mysqli_fetch_array($rsql);
 
                                             if($nd['password']==$op)
                                             {
-                                                $usql="UPDATE login SET password='".$cp."' where userid=".$_SESSION['login_user'];
+                                                $usql="UPDATE login SET password='".$cp."' where userid='".$_SESSION['login_user']."'";
                                                 $usql=mysqli_query($db, $usql);
 
                                                 if($usql)
