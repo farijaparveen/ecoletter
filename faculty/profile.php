@@ -137,7 +137,7 @@ role_check($_SESSION['role'],2);
 
             <?php
 
-            $usern="SELECT * FROM faculty_data WHERE faculty_id=".$_SESSION['login_user'];
+            $usern="SELECT * FROM faculty_data WHERE faculty_id='".$_SESSION['login_user']."'";
             $std=mysqli_query($db, $usern);
             $data=mysqli_fetch_array($std);
 

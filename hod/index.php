@@ -77,7 +77,7 @@ role_check($_SESSION['role'],4);
                 <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info"><p><?php
-                        $sql = "SELECT name from hod_data WHERE hod_id=".$_SESSION['login_user'];
+                        $sql = "SELECT name from hod_data WHERE hod_id='".$_SESSION['login_user']."'";
                         $result = mysqli_query($db, $sql);
 
                         if (mysqli_num_rows($result) > 0) {

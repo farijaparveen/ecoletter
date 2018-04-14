@@ -136,7 +136,7 @@ role_check($_SESSION['role'],5);
         <section class="content">
             <?php
 
-            $usern="SELECT * FROM principal_data WHERE principal_id=".$_SESSION['login_user'];
+            $usern="SELECT * FROM principal_data WHERE principal_id='".$_SESSION['login_user']."'";
             $prin=mysqli_query($db, $usern);
             $data=mysqli_fetch_array($prin);
 

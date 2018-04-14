@@ -87,7 +87,7 @@ role_check($_SESSION['role'],1);
                 <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info"><p> <?php
-                        $sql = "SELECT name from student_data WHERE student_id=".$_SESSION['login_user'];
+                        $sql = "SELECT name from student_data WHERE student_id='".$_SESSION['login_user']."'"];
                         $result = mysqli_query($db, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -175,7 +175,7 @@ role_check($_SESSION['role'],1);
                                                 <?php
 
 
-                                                $std="SELECT studenttype from student_data WHERE studenttype=2 AND student_id=".$_SESSION['login_user'];
+                                                $std="SELECT studenttype from student_data WHERE studenttype=2 AND student_id='".$_SESSION['login_user']."'";
                                                 $rstd=mysqli_query($db, $std);
                                                 $or=mysqli_fetch_array($rstd);
 
@@ -285,7 +285,7 @@ role_check($_SESSION['role'],1);
 
                             <?php
 
-                            $sql="SELECT department FROM `student_data` WHERE student_id=".$_SESSION['login_user'];
+                            $sql="SELECT department FROM `student_data` WHERE student_id='".$_SESSION['login_user']."'";
                             $res=mysqli_query($db, $sql);
                             $row=mysqli_fetch_array($res);
 
