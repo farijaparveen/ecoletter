@@ -11,16 +11,35 @@ role_check($_SESSION['role'],3);
 
 $letterid=$_GET['id'];
 
+$sql8 = "SELECT name from warden_data WHERE warden_id='" . $_SESSION['login_user'] . "'";
+$result8 = mysqli_query($db, $sql8);
+if (mysqli_num_rows($result8) > 0) {
+    $row = mysqli_fetch_assoc($result8);
+    $fname = $row['name'];
+
+} else {
+    echo "0 results";
+}
+
+
+$sts = "SELECT receiver from letter_content where letter_id=" . $letterid;
+$runsts = mysqli_query($db, $sts);
+$stst = mysqli_fetch_array($runsts);
+
 if(isset($_POST['approved']))
 {
-    $runsql1="update letter_index SET status=2, comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
-    $runsql2="update letter_content SET status=1 WHERE letter_id=".$letterid;
-
-    $runsql3="update letter_content SET hod=1 WHERE letter_id=".$letterid;
+    $runsql1="update letter_index SET status=2, name='$fname' ,comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
 
     $res=mysqli_query($db, $runsql1);
-    $res2=mysqli_query($db, $runsql2);
-    $res3=mysqli_query($db, $runsql3);
+    if ($stst['receiver'] == 1) {
+
+        $runsql4 = "update letter_content SET status=2 WHERE letter_id=" . $letterid;
+        $res4 = mysqli_query($db, $runsql4);
+    } else {
+
+        $runsql5 = "update letter_content SET hod=1 WHERE letter_id=" . $letterid;
+        $res5 = mysqli_query($db, $runsql5);
+    }
 
     if($res)
     {
