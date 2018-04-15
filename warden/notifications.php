@@ -102,7 +102,7 @@ role_check($_SESSION['role'],3);
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                    <li><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                    <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                     <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a>
                     </li>
                     <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
@@ -127,22 +127,53 @@ role_check($_SESSION['role'],3);
 
             <!-- Main content -->
             <section class="content">
-                <?php
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
 
-                $dissql="SELECT * from notification WHERE role=3";
-                $result = mysqli_query($db, $dissql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo $row['title'];
-                        echo $row['message'];
-                    }
-                } else {
-                    echo "0 results";
-                }
+                            <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Sno</th>
+                                        <th>Title</th>
+                                        <th>Message</th>
+
+                                    </tr>
+                                    <?php
+
+                                    $i=1;
+                                    $dissql="SELECT * from notification WHERE role=3";
+                                    $result = mysqli_query($db, $dissql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+
+                                            echo  "<tr>";
+                                            echo "<td>".$i++."</td>";
+
+                                            echo "<td>".$row['title']."</td>";
+                                            echo "<td>".$row['message']."</td>";
+                                            echo  "</tr>";
+                                        }
+                                    } else {
+                                        echo "0 Notification";
+                                    }
 
 
 
-                ?>
+                                    ?>
+
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
 
 
             </section>

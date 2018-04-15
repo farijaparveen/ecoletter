@@ -77,7 +77,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         }
         if ($row['role'] == 4) {
+            $dsql = "SELECT department from `hod_data` where hod_id='$username'";
+            $resul1 = mysqli_query($db, $dsql);
+            $rowr = mysqli_fetch_array($resul1);
+            $_SESSION['department'] = $rowr['department'];
+
+
             header("location: /hod/");
+
 
         }
         if ($row['role'] == 5) {

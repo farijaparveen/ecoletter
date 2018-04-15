@@ -1,16 +1,96 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],2);
-include ('../custom-functions.php');
+role_check($_SESSION['role'], 5);
+include('../custom-functions.php');
 
 ?>
+
+<?php
+
+$letterid = $_GET['id'];
+$user = $_SESSION['login_user'];
+
+
+$sql7 = "SELECT name from principal_data WHERE principal_id='" . $_SESSION['login_user'] . "'";
+$result7 = mysqli_query($db, $sql7);
+
+$row7 = mysqli_fetch_assoc($result7);
+$pname = $row7['name'];
+
+
+if (isset($_POST['approved'])) {
+    $com = $_POST['comments'];
+    $runsql1 = "INSERT INTO letter_index (letter_id, faculty_id, name, role, comments, status) VALUES ('$letterid', '$user', '$pname' , 'Principal', '$com', 2)";
+    $runsql3 = "update letter_content SET status=2, principal=2 WHERE letter_id=" . $letterid;
+
+    $res = mysqli_query($db, $runsql1);
+    $res3 = mysqli_query($db, $runsql3);
+
+    if ($res) {
+        $msg = '<div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Approved!</h4>
+                Success alert preview. This alert is dismissable.
+              </div>';
+
+
+    } else {
+
+        $new = mysqli_error($db);
+        $msg = '<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Problem ar!</h4>
+                Warning alert preview. This alert is dismissable. ' . $new . '
+              </div>';
+
+    }
+
+
+}
+
+if (isset($_POST['rejected'])) {
+    $com = $_POST['comments'];
+
+
+    $runsql1 = "INSERT INTO letter_index (letter_id, faculty_id, name, role, comments, status) VALUES ('$letterid', '$user', '$pname' , 'Principal', '$com', 3)";
+    $runsql2 = "update letter_content SET status=3, principal=3 WHERE letter_id=" . $letterid;
+
+    $res = mysqli_query($db, $runsql1);
+    $res2 = mysqli_query($db, $runsql2);
+
+    if ($res) {
+        $msg = '<div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
+                soul, like these sweet mornings of spring which I enjoy with my whole heart.
+              </div>';
+
+
+    } else {
+        $msg = '<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                Warning alert preview. This alert is dismissable.
+              </div>';
+
+    }
+
+
+}
+
+
+?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/favicon.png" rel="icon" type="image/x-icon"/>
+    <title>Eco Letter| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -79,8 +159,21 @@ include ('../custom-functions.php');
             <div class="user-panel">
                 <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Faculty Name</p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Faculty</a></div>
+                <div class="pull-left info"><p><?php
+                        $sql = "SELECT name from principal_data WHERE principal_id='" . $_SESSION['login_user'] . "'";
+                        $result = mysqli_query($db, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['name'];
+
+                        } else {
+                            echo "0 results";
+                        }
+
+
+                        ?></p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Principal</a></div>
             </div>
             <!-- Sidebar user panel -->
 
@@ -93,9 +186,9 @@ include ('../custom-functions.php');
 
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
-                <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+                <li class="active"><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                </li>
+                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
@@ -108,31 +201,29 @@ include ('../custom-functions.php');
     <div class="content-wrapper">
 
         <?php
-
-        $letterid=$_GET['id'];
-
-        $lsql="SELECT * FROM `letter_content` WHERE letter_id=".$letterid." AND status>0";
-
-        $res1=mysqli_query($db,$lsql);
-
-        $letter=mysqli_fetch_array($res1);
+        $letterid = $_GET['id'];
 
 
-        $studsql="SELECT * FROM `student_data` WHERE student_id=".$letter['sender'];
+        $lsql = "SELECT * FROM `letter_content` WHERE letter_id=" . $letterid . " AND status>0";
 
-        $res2=mysqli_query($db,$studsql);
+        $res1 = mysqli_query($db, $lsql);
 
-        $student=mysqli_fetch_array($res2);
+        $letter = mysqli_fetch_array($res1);
 
+
+        $studsql = "SELECT * FROM `student_data` WHERE student_id=" . $letter['sender'];
+
+        $res2 = mysqli_query($db, $studsql);
+
+        $student = mysqli_fetch_array($res2);
 
 
         ?>
 
 
-
         <section class="content-header">
             <h1>
-               Read or Approve Letter
+                Read or Approve Letter
                 <small><?php echo $letter['letter_id']; ?></small>
             </h1>
             <ol class="breadcrumb">
@@ -164,8 +255,8 @@ include ('../custom-functions.php');
                         <div class="col-sm-4 invoice-col">
                             From
                             <address>
-                                <strong><?php echo $student['name'];?>.</strong><br>
-                                <?php echo $student['year']; ?> Year <?php echo $student['class']; ?><br>
+                                <strong><?php echo $student['name']; ?>.</strong><br>
+                                <?php echo $student['year']; ?> Year <?php echo $student['section']; ?><br>
                                 <?php echo $student['department']; ?><br>
 
                             </address>
@@ -174,19 +265,16 @@ include ('../custom-functions.php');
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
-                                <strong><?php if($letter['receiver']>1)
-                                    {
+                                <strong><?php if ($letter['receiver'] > 1) {
                                         echo "The Principal";
-                                    }else if($letter['receiver']>0)
-                                    {
+                                    } else if ($letter['receiver'] > 0) {
                                         echo "The HOD<br>";
                                         echo $letter['department'];
 
-                                    }else {
+                                    } else {
 
-                                        echo "Faculty";
+                                        echo "Faculty(s)";
                                     }
-
 
 
                                     ?></strong><br>
@@ -213,8 +301,6 @@ include ('../custom-functions.php');
                         <b><i class="fa fa-calendar-check-o"></i> Subject : <?php echo $letter['subject']; ?></b>
 
 
-
-
                     </div>
 
 
@@ -224,32 +310,39 @@ include ('../custom-functions.php');
 
                     <!-- this row will not appear when printing -->
 
-<form id="comment" action="">
+                    <form id="comment" method="post" action="">
 
-                    <!-- this row will not appear when printing -->
-                    <div class="row no-print">
-                        <div class="col-xs-12">
-                            <a href="manage-letter.php?option=pending?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
-                                Later</a>
-                            <button type="submit" name="response" value="approve" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
-                                Letter
-                            </button>
-                            <button type="submit" name="response" value="reject" class="btn btn-danger pull-right" style="margin-right: 5px;">
-                                <i class="fa fa-ban"></i> Reject Letter
-                            </button>
+                        <!-- this row will not appear when printing -->
+                        <div class="row no-print">
+                            <div class="col-xs-12">
+                                <a href="manage-letter.php?option=pending" class="btn btn-default"><i
+                                            class="fa fa-clock-o"></i> May be
+                                    Later</a>
+                                <button type="submit" name="approved" value="approve"
+                                        class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
+                                    Letter
+                                </button>
+                                <button type="submit" name="rejected" value="reject" class="btn btn-danger pull-right"
+                                        style="margin-right: 5px;">
+                                    <i class="fa fa-ban"></i> Reject Letter
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <HR>
-                    <div class="box-footer">
-                        <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
-                        <!-- .img-push is used to add margin to elements next to floating images -->
-                        <div class="img-push">
-                            <textarea class="form-control" placeholder="Enter comment"></textarea>
+                        <HR>
+                        <div class="box-footer">
+                            <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
+                            <!-- .img-push is used to add margin to elements next to floating images -->
+                            <div class="img-push">
+                                <textarea class="form-control" name="comments" placeholder="Enter comment"></textarea>
+                            </div>
                         </div>
-                    </div>
 
-</form>
+
+                        <?php if (isset($msg)) {
+                            echo $msg;
+                        } ?>
+                    </form>
                 </div>
 
 
@@ -261,10 +354,9 @@ include ('../custom-functions.php');
 
                         <?php
 
-                        $sql="SELECT * FROM `letter_index` WHERE letter_id=".$letterid;
-                        $res=mysqli_query($db, $sql);
-                        while($comment=mysqli_fetch_array($res))
-                        {
+                        $sql = "SELECT * FROM `letter_index` WHERE letter_id=" . $letterid;
+                        $res = mysqli_query($db, $sql);
+                        while ($comment = mysqli_fetch_array($res)) {
 
                             echo '<div class="box-comment">
 
@@ -273,11 +365,11 @@ include ('../custom-functions.php');
 
                             <div class="comment-text">
                       <span class="username">
-                        '.facultyname($comment["faculty_id"],$db).' '.status($comment['status']).'
-                        <span class="text-muted pull-right">'.datetime($comment["timestamp"]).'</span>
+                        ' . $comment["name"] . ' - ' . $comment["role"] . '  ' . status($comment['status']) . '
+                        <span class="text-muted pull-right">' . datetime($comment["timestamp"]) . '</span>
                       </span><!-- /.username -->
                                 
-                                '.$comment['comments'].'
+                                ' . $comment['comments'] . '
                                 
                                 
                                 
@@ -289,7 +381,6 @@ include ('../custom-functions.php');
 
 
                         ?>
-
 
 
                         <!-- /.box-comment -->

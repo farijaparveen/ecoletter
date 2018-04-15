@@ -1,10 +1,20 @@
 <?php
 
 include('../config.php');
+include ('../custom-functions.php');
 
 $through=$_POST['through'];
 $department=$_POST['department'];
-$to=isset($_POST['to']);
+if(isset( $_POST['principal'])) {
+    $principal = $_POST['principal'];
+}else{ $principal = 0;}
+if(isset($_POST['hod'])) {
+    $hod = $_POST['hod'];
+}else{$hod = 0;
+}
+
+
+
 $type=$_POST['type'];
 $duration=$_POST['duration'];
 $subject=$_POST['subject'];
@@ -26,10 +36,24 @@ $result=mysqli_query($db, $sql);
 
 
 foreach ($through as $value) {
-    $letter = "INSERT INTO letter_index (letter_id, faculty_id, status) VALUES ('$letterid', '$value', 0)";
+    $letter = "INSERT INTO letter_index (letter_id, faculty_id, role, status) VALUES ('$letterid', '$value', 'Faculty', 0)";
     $result1=mysqli_query($db, $letter);
 
 }
+
+if($hod!=1 && $principal!=1){
+$s1="update letter_content SET receiver=1 where letter_id=".$letterid;
+mysqli_query($db, $s1);
+}
+if($hod==1){
+    $s1="update letter_content SET receiver=2 where letter_id=".$letterid;
+    mysqli_query($db, $s1);
+}
+if($principal==1){
+    $s1="update letter_content SET receiver=3 where letter_id=".$letterid;
+    mysqli_query($db, $s1);
+}
+
 
 
 

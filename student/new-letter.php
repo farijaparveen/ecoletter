@@ -204,13 +204,13 @@ role_check($_SESSION['role'],1);
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="to[]" value="prinicipal" class="minimal">
+                                                    <input type="checkbox" name="principal" value="1" class="minimal">
                                                     Principal </label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="to[]" value="hod"  class="minimal-red">
+                                                    <input type="checkbox" name="hod" value="1"  class="minimal-red">
                                                     HOD
                                                 </label>
                                             </div>
@@ -274,7 +274,7 @@ role_check($_SESSION['role'],1);
                                 <div class="form-group">
                                     <label>Message</label>
                                     <textarea id="compose-textarea" name="content" class="form-control" style="height: 300px">
-                      <h1><u>BODY OF LETTER</u></h1>
+<P>BODY OF THE LETTER</P>
                     </textarea>
                                 </div>
 

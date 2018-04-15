@@ -1,15 +1,112 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],2);
+include('../custom-functions.php');
+role_check($_SESSION['role'],3);
+
 
 ?>
+
+<?php
+
+$letterid=$_GET['id'];
+
+$sql8 = "SELECT name from warden_data WHERE wardenid='" . $_SESSION['login_user'] . "'";
+$result8 = mysqli_query($db, $sql8);
+if (mysqli_num_rows($result8) > 0) {
+    $row = mysqli_fetch_assoc($result8);
+    $fname = $row['name'];
+
+} else {
+    echo "0 results";
+}
+
+
+$sts = "SELECT receiver from letter_content where letter_id=" . $letterid;
+$runsts = mysqli_query($db, $sts);
+$stst = mysqli_fetch_array($runsts);
+
+if(isset($_POST['approved']))
+{
+    $runsql1="update letter_index SET status=2, name='$fname', role='Faculty', comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
+
+    $res=mysqli_query($db, $runsql1);
+    if ($stst['receiver'] == 1) {
+
+        $runsql4 = "update letter_content SET status=2 WHERE letter_id=" . $letterid;
+        $res4 = mysqli_query($db, $runsql4);
+    } else {
+
+        $runsql5 = "update letter_content SET hod=1 WHERE letter_id=" . $letterid;
+        $res5 = mysqli_query($db, $runsql5);
+    }
+
+    if($res)
+    {
+        $msg ='<div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> Approved!</h4>
+                Success alert preview. This alert is dismissable.
+              </div>';
+
+
+    }else{
+
+        $new =mysqli_error($db);
+        $msg ='<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Problem ar!</h4>
+                Warning alert preview. This alert is dismissable. '.$new.'
+              </div>';
+
+    }
+
+
+
+}
+
+if(isset($_POST['rejected']))
+{
+
+    $runsql1="update letter_index SET status=3, comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
+    $runsql2="update letter_content SET status=3 WHERE letter_id=".$letterid;
+
+    $res=mysqli_query($db, $runsql1);
+    $res2=mysqli_query($db, $runsql2);
+
+    if($res)
+    {
+        $msg ='<div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
+                soul, like these sweet mornings of spring which I enjoy with my whole heart.
+              </div>';
+
+
+    }else{
+        $msg ='<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                Warning alert preview. This alert is dismissable.
+              </div>';
+
+    }
+
+
+}
+
+
+
+?>
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -40,7 +137,7 @@ role_check($_SESSION['role'],2);
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
     <header class="main-header">
@@ -74,13 +171,28 @@ role_check($_SESSION['role'],2);
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <section class="sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
             <div class="user-panel">
-                <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
+                <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info"><p>Faculty Name</p>                    <a href="#"><i
-                                class="fa fa-circle text-success"></i> Faculty</a></div>
+                <div class="pull-left info"><p><?php
+                        $sql = "SELECT name from warden_data WHERE wardenid='".$_SESSION['login_user']."'";
+                        $result = mysqli_query($db, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['name'];
+
+                        } else {
+                            echo "0 results";
+                        }
+
+
+                        ?></p>                    <a href="#"><i
+                                class="fa fa-circle text-success"></i> Warden </a></div>
             </div>
+
+            <!-- sidebar: style can be found in sidebar.less -->
+
             <!-- Sidebar user panel -->
 
             <!-- search form -->
@@ -89,25 +201,21 @@ role_check($_SESSION['role'],2);
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-
-
-                <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
-                <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+                <li class="active"><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
+                <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
-
-
             </ul>
         </section>
-        <!-- /.sidebar -->+
+        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
+
     <div class="content-wrapper">
 
         <?php
 
-        $letterid=$_GET['id'];
 
         $lsql="SELECT * FROM `letter_content` WHERE letter_id=".$letterid." AND status>0";
 
@@ -130,7 +238,7 @@ role_check($_SESSION['role'],2);
 
         <section class="content-header">
             <h1>
-               Read or Approve Letter
+                Read or Approve Letter
                 <small><?php echo $letter['letter_id']; ?></small>
             </h1>
             <ol class="breadcrumb">
@@ -163,7 +271,7 @@ role_check($_SESSION['role'],2);
                             From
                             <address>
                                 <strong><?php echo $student['name'];?>.</strong><br>
-                                <?php echo $student['year']; ?> Year <?php echo $student['class']; ?><br>
+                                <?php echo $student['year']; ?> Year <?php echo $student['section']; ?><br>
                                 <?php echo $student['department']; ?><br>
 
                             </address>
@@ -182,7 +290,7 @@ role_check($_SESSION['role'],2);
 
                                     }else {
 
-                                        echo "Faculty";
+                                        echo "Faculty(s)";
                                     }
 
 
@@ -222,32 +330,34 @@ role_check($_SESSION['role'],2);
 
                     <!-- this row will not appear when printing -->
 
-<form id="comment" action="">
+                    <form id="comment" method="post" action="">
 
-                    <!-- this row will not appear when printing -->
-                    <div class="row no-print">
-                        <div class="col-xs-12">
-                            <a href="manage-letter.php?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
-                                Later</a>
-                            <button type="submit" name="response" value="approve" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
-                                Letter
-                            </button>
-                            <button type="submit" name="response" value="reject" class="btn btn-danger pull-right" style="margin-right: 5px;">
-                                <i class="fa fa-ban"></i> Reject Letter
-                            </button>
+                        <!-- this row will not appear when printing -->
+                        <div class="row no-print">
+                            <div class="col-xs-12">
+                                <a href="manage-letter.php?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
+                                    Later</a>
+                                <button type="submit" name="approved" value="approve" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
+                                    Letter
+                                </button>
+                                <button type="submit" name="rejected" value="reject" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                                    <i class="fa fa-ban"></i> Reject Letter
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <HR>
-                    <div class="box-footer">
-                        <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
-                        <!-- .img-push is used to add margin to elements next to floating images -->
-                        <div class="img-push">
-                            <textarea class="form-control" placeholder="Enter comment"></textarea>
+                        <HR>
+                        <div class="box-footer">
+                            <img class="img-responsive img-circle img-sm" src="../dist/img/faculty.png" alt="Alt Text">
+                            <!-- .img-push is used to add margin to elements next to floating images -->
+                            <div class="img-push">
+                                <textarea class="form-control" name="comments" placeholder="Enter comment"></textarea>
+                            </div>
                         </div>
-                    </div>
 
-</form>
+
+                        <?php if(isset($msg)) { echo $msg;}?>
+                    </form>
                 </div>
 
 
@@ -256,36 +366,40 @@ role_check($_SESSION['role'],2);
 
 
                     <div class="box-footer box-comments">
-                        <div class="box-comment">
 
-                            <!-- User image -->
+                        <?php
+
+                        $sql="SELECT * FROM `letter_index` WHERE letter_id=".$letterid;
+                        $res=mysqli_query($db, $sql);
+                        while($comment=mysqli_fetch_array($res))
+                        {
+
+                            echo '<div class="box-comment">
+
+                            
                             <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
 
                             <div class="comment-text">
                       <span class="username">
-                        Reethesh <span class="label label-success">Approved</span>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
+                        '.$comment["name"].' -  '.$comment["role"].' '.status($comment['status']).'
+                        <span class="text-muted pull-right">'.datetime($comment["timestamp"]).'</span>
                       </span><!-- /.username -->
-                                It is a long established fact that a reader will be distracted
-                                by the readable content of a page when looking at its layout.
+                                
+                                '.$comment['comments'].'
+                                
+                                
+                                
                             </div>
                             <!-- /.comment-text -->
-                        </div>
+                        </div><br>';
 
-                        <div class="box-comment">
-                            <!-- User image -->
-                            <img class="img-circle img-sm" src="../dist/img/faculty.png" alt="User Image">
+                        }
 
-                            <div class="comment-text">
-                      <span class="username">
-                        Dr. Godfrey wingston <span class="label label-warning">Pending</span>
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                                It is a long established fact that a reader will be distracted
-                                by the readable content of a page when looking at its layout.
-                            </div>
-                            <!-- /.comment-text -->
-                        </div>
+
+                        ?>
+
+
+
                         <!-- /.box-comment -->
 
                     </div>
@@ -299,6 +413,8 @@ role_check($_SESSION['role'],2);
 
         <!-- /.content -->
     </div>
+
+
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
@@ -329,7 +445,7 @@ role_check($_SESSION['role'],2);
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
-<script src="../bower_components/chart.js/Chart.js"></script>
+<script src="../bower_components/Chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->

@@ -194,10 +194,10 @@ $student=mysqli_fetch_array($ress);
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
-                                <strong><?php if($letter['receiver']>1)
+                                <strong><?php if($letter['receiver']==3)
                                     {
                                         echo "The Principal";
-                                    }else if($letter['receiver']>0)
+                                    }else if($letter['receiver']==2)
                                     {
                                         echo "The HOD<br>";
                                         echo $letter['department'];
@@ -275,7 +275,7 @@ $student=mysqli_fetch_array($ress);
                         <?php
 
 
-                        $sql3="SELECT * FROM `letter_index` WHERE letter_id=".$letterid;
+                        $sql3="SELECT DISTINCT faculty_id, name FROM `letter_index` WHERE role='Faculty' AND letter_id=".$letterid;
                         $res=mysqli_query($db, $sql3);
                         while($row=mysqli_fetch_array($res))
 
@@ -284,7 +284,7 @@ $student=mysqli_fetch_array($ress);
 
                             echo ' <li>
                             <img src="/dist/img/faculty.png" alt="User Image">
-                            <a class="users-list-name" href="#">'.facultyname($row['faculty_id'], $db).'</a>
+                            <a class="users-list-name" href="#">'.$row['name'].'</a>
                             <span class="users-list-date">Faculty</span>
                         </li>';
 
@@ -294,12 +294,32 @@ $student=mysqli_fetch_array($ress);
 
 
 
-
-
                         ?>
 
-
-
+<?php
+                        if($letter['receiver']==3)
+                        {
+                            echo '<li>
+                            <img src="/dist/img/faculty.png" alt="User Image">
+                            <a class="users-list-name" href="#">HOD</a>
+                            <span class="users-list-date">'.$student['department'].'</span>
+                        </li>
+                        <li>
+                            <img src="/dist/img/faculty.png" alt="User Image">
+                            <a class="users-list-name" href="#">Principal</a>
+                            <span class="users-list-date">SEC</span>
+                        </li>';
+                        }
+                        if($letter['receiver']==2)
+                        {
+                            echo '
+                        <li>
+                            <img src="/dist/img/faculty.png" alt="User Image">
+                            <a class="users-list-name" href="#">HOD</a>
+                            <span class="users-list-date">'.$student['department'].'</span>
+                        </li>';
+                        }
+?>
                     </ul>
 
                         </div>
@@ -360,7 +380,7 @@ $student=mysqli_fetch_array($ress);
                             <div class="timeline-item">
                                 <span class="time"><i class="fa fa-clock-o"></i> ' . displaytime($lettersts["timestamp"]) . '</span>
 
-                                <h3 class="timeline-header"><a href="#">' . facultyname($lettersts['faculty_id'], $db) . '</a> ' . status($lettersts['status']) . ' your letter</h3>
+                                <h3 class="timeline-header"><a href="#">' . $lettersts['name']. '-' . $lettersts['role']. ' </a> ' . status($lettersts['status']) . ' your letter</h3>
 
                                 <div class="timeline-body">
                                     ' . $lettersts['comments'] . '

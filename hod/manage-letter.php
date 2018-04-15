@@ -241,9 +241,9 @@ include('../custom-functions.php');
 
                                         <tbody>
 
-                                        <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE level>1 AND hod=1";
+                                        <?php
+                                        $sql="SELECT * FROM `letter_content` WHERE hod=1 AND status=1 AND department='".$_SESSION['department']."' ";
 
                                         $res=mysqli_query($db,$sql);
 
@@ -337,7 +337,7 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE level>1 AND hod=2";
+                                        $sql="SELECT * FROM `letter_content` WHERE hod=2 AND department='".$_SESSION['department']."' ";;
 
 
                                         $res=mysqli_query($db,$sql);
@@ -433,7 +433,7 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE level>1 AND hod=3";
+                                        $sql="SELECT * FROM `letter_content` WHERE hod=3 AND department='".$_SESSION['department']."'";;
 
 
                                         $res=mysqli_query($db,$sql);
