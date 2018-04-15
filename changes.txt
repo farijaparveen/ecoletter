@@ -1,0 +1,22 @@
+student - dashboard 
+          shud include content
+student -new letter
+          1.shud include leave types 
+          2.subject
+Faculty -dashboard
+         new letter is necessary or not??if necessary then there is no option to forward the letter.
+         manage letters 
+         some errors in pending approval approved and unappoved
+         shud chng values in database 
+HOD  - dashboard
+       shud chng values in database 
+Principal - dashboard-new letter code is copied???
+            tat top theme clr for dashboard manage letter and notifications are in violet but it is in blue clr for profile
+            
+ 
+admin -remv 
+       del options nothing done in student/ faculty/warden
+       profile?? is necessary?
+warden
+     dashboard
+     manage letters

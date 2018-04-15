@@ -77,7 +77,7 @@ role_check($_SESSION['role'],3);
                     <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info"><p><?php
-                            $sql = "SELECT name from warden_data WHERE wardenid=".$_SESSION['login_user'];
+                            $sql = "SELECT name from warden_data WHERE wardenid='".$_SESSION['login_user']."'";
                             $result = mysqli_query($db, $sql);
 
                             if (mysqli_num_rows($result) > 0) {
@@ -153,17 +153,9 @@ role_check($_SESSION['role'],3);
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Designation</b> <a class="pull-right"><?php echo $data['name']; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Following</b> <a class="pull-right">543</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Friends</b> <a class="pull-right">13,287</a>
+                                        <b>Warden id</b> <a class="pull-right"><?php echo $data['wardenid']; ?></a>
                                     </li>
                                 </ul>
-
-                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -176,11 +168,6 @@ role_check($_SESSION['role'],3);
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-
-                                <p class="text-muted">
-                                    <?php echo $data['name']; ?>
-                                </p>
 
                                 <hr>
 

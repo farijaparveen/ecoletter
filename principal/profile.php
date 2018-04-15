@@ -77,7 +77,7 @@ role_check($_SESSION['role'],5);
                 <div class="pull-left image"><img src="../dist/img/teacher.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info"><p><?php
-                        $sql = "SELECT name from principal_data WHERE principal_id=".$_SESSION['login_user'];
+                        $sql = "SELECT name from principal_data WHERE principal_id='".$_SESSION['login_user']."'";
                         $result = mysqli_query($db, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -305,13 +305,13 @@ role_check($_SESSION['role'],5);
                                 if($np==$cp)
                                 {
 
-                                    $psql="SELECT password from login where userid=".$_SESSION['login_user'];
+                                    $psql="SELECT password from login where userid='".$_SESSION['login_user']."'";
                                     $rsql=mysqli_query($db, $psql);
                                     $nd=mysqli_fetch_array($rsql);
 
                                     if($nd['password']==$op)
                                     {
-                                        $usql="UPDATE login SET password='".$cp."' where userid=".$_SESSION['login_user'];
+                                        $usql="UPDATE login SET password='".$cp."' where userid='".$_SESSION['login_user']."'";
                                         $usql=mysqli_query($db, $usql);
 
                                         if($usql)

@@ -159,14 +159,9 @@ role_check($_SESSION['role'],4);
                                     <b>Designation</b> <a class="pull-right"><?php echo $data['designation']; ?></a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Following</b> <a class="pull-right">543</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Friends</b> <a class="pull-right">13,287</a>
+                                    <b>Friends</b> <a class="pull-right"><?php echo $data['hod_id']; ?></a>
                                 </li>
                             </ul>
-
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -178,11 +173,6 @@ role_check($_SESSION['role'],4);
                             <h3 class="box-title">About Me</h3>
                         </div>
                         <div class="box-body">
-                            <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-
-                            <p class="text-muted">
-                                <?php echo $data['name']; ?>
-                            </p>
 
                             <hr>
 
