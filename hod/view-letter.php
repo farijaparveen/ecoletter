@@ -1,72 +1,75 @@
 <?php
 
 include('../session.php');
-role_check($_SESSION['role'],4);
+role_check($_SESSION['role'], 4);
 include('../custom-functions.php');
 ?>
 <?php
 
-$letterid=$_GET['id'];
-$sts="SELECT receiver from letter_content where letter_id=".$letterid;
-$runsts=mysqli_query($db, $sts);
-$stst=mysqli_fetch_array($runsts);
-if(isset($_POST['approved']))
-{
+$letterid = $_GET['id'];
+$sts = "SELECT receiver from letter_content where letter_id=" . $letterid;
+$runsts = mysqli_query($db, $sts);
+$stst = mysqli_fetch_array($runsts);
 
-    
 
-    $runsql1="update letter_index SET status=2, comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
-    $runsql3="update letter_content SET hod=2 WHERE letter_id=".$letterid;
-    $res=mysqli_query($db, $runsql1);
-    $res3=mysqli_query($db, $runsql3);
+$sql7 = "SELECT name from hod_data WHERE hod_id='" . $_SESSION['login_user'] . "'";
+$result7 = mysqli_query($db, $sql7);
 
-    if($stst['receiver']==2)
-    {
+$row7 = mysqli_fetch_assoc($result7);
+$hname = $row7['name'];
 
-        $runsql4="update letter_content SET status=2 WHERE letter_id=".$letterid;
-        $res4=mysqli_query($db, $runsql4);
-    }else {
+if (isset($_POST['approved'])) {
+    $com = $_POST['comments'];
 
-        $runsql5="update letter_content SET principal=1 WHERE letter_id=".$letterid;
-        $res5=mysqli_query($db, $runsql5);
+    $runsql1 = "INSERT INTO letter_index (letter_id, faculty_id, name, role, comments, status) VALUES ('$letterid', '$user', '$hname' , 'HOD', '$com', 2)";
+
+    $runsql3 = "update letter_content SET hod=2 WHERE letter_id=" . $letterid;
+    $res = mysqli_query($db, $runsql1);
+    $res3 = mysqli_query($db, $runsql3);
+
+    if ($stst['receiver'] == 2) {
+
+        $runsql4 = "update letter_content SET status=2 WHERE letter_id=" . $letterid;
+        $res4 = mysqli_query($db, $runsql4);
+    } else {
+
+        $runsql5 = "update letter_content SET principal=1 WHERE letter_id=" . $letterid;
+        $res5 = mysqli_query($db, $runsql5);
     }
 
-    if($res)
-    {
-        $msg ='<div class="alert alert-success alert-dismissible">
+    if ($res) {
+        $msg = '<div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-check"></i> Approved!</h4>
                 Success alert preview. This alert is dismissable.
               </div>';
 
 
-    }else{
+    } else {
 
-        $new =mysqli_error($db);
-        $msg ='<div class="alert alert-warning alert-dismissible">
+        $new = mysqli_error($db);
+        $msg = '<div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-warning"></i> Problem ar!</h4>
-                Warning alert preview. This alert is dismissable. '.$new.'
+                Warning alert preview. This alert is dismissable. ' . $new . '
               </div>';
 
     }
 
 
-
 }
 
-if(isset($_POST['rejected']))
-{
+if (isset($_POST['rejected'])) {
+    $com = $_POST['comments'];
 
-    $runsql1="update letter_index SET status=3, comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
-    $runsql2="update letter_content SET status=3 WHERE letter_id=".$letterid;
+    $runsql1 = "INSERT INTO letter_index (letter_id, faculty_id, name, role, comments, status) VALUES ('$letterid', '$user', '$hname' , 'HOD', '$com', 3)";
+    $runsql2 = "update letter_content SET status=3 WHERE letter_id=" . $letterid;
 
-    $res=mysqli_query($db, $runsql1);
-    $res2=mysqli_query($db, $runsql2);
+    $res = mysqli_query($db, $runsql1);
+    $res2 = mysqli_query($db, $runsql2);
 
-    if($res)
-    {
-        $msg ='<div class="alert alert-danger alert-dismissible">
+    if ($res) {
+        $msg = '<div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-ban"></i> Alert!</h4>
                 Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
@@ -74,8 +77,8 @@ if(isset($_POST['rejected']))
               </div>';
 
 
-    }else{
-        $msg ='<div class="alert alert-warning alert-dismissible">
+    } else {
+        $msg = '<div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-warning"></i> Alert!</h4>
                 Warning alert preview. This alert is dismissable.
@@ -87,13 +90,14 @@ if(isset($_POST['rejected']))
 }
 
 
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/favicon.png" rel="icon" type="image/x-icon"/>
+    <title>Eco Letter| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -175,7 +179,8 @@ if(isset($_POST['rejected']))
                 <li class="header">MAIN NAVIGATION</li>
 
                 <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li class="active"><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
+                <li class="active"><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                </li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
@@ -192,23 +197,21 @@ if(isset($_POST['rejected']))
         <?php
 
 
-        $lsql="SELECT * FROM `letter_content` WHERE letter_id=".$letterid." AND status>0";
+        $lsql = "SELECT * FROM `letter_content` WHERE letter_id=" . $letterid . " AND status>0";
 
-        $res1=mysqli_query($db,$lsql);
+        $res1 = mysqli_query($db, $lsql);
 
-        $letter=mysqli_fetch_array($res1);
+        $letter = mysqli_fetch_array($res1);
 
 
-        $studsql="SELECT * FROM `student_data` WHERE student_id=".$letter['sender'];
+        $studsql = "SELECT * FROM `student_data` WHERE student_id=" . $letter['sender'];
 
-        $res2=mysqli_query($db,$studsql);
+        $res2 = mysqli_query($db, $studsql);
 
-        $student=mysqli_fetch_array($res2);
-
+        $student = mysqli_fetch_array($res2);
 
 
         ?>
-
 
 
         <section class="content-header">
@@ -245,7 +248,7 @@ if(isset($_POST['rejected']))
                         <div class="col-sm-4 invoice-col">
                             From
                             <address>
-                                <strong><?php echo $student['name'];?>.</strong><br>
+                                <strong><?php echo $student['name']; ?>.</strong><br>
                                 <?php echo $student['year']; ?> Year <?php echo $student['section']; ?><br>
                                 <?php echo $student['department']; ?><br>
 
@@ -255,19 +258,16 @@ if(isset($_POST['rejected']))
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
-                                <strong><?php if($letter['receiver']>1)
-                                    {
+                                <strong><?php if ($letter['receiver'] > 1) {
                                         echo "The Principal";
-                                    }else if($letter['receiver']>0)
-                                    {
+                                    } else if ($letter['receiver'] > 0) {
                                         echo "The HOD<br>";
                                         echo $letter['department'];
 
-                                    }else {
+                                    } else {
 
                                         echo "Faculty(s)";
                                     }
-
 
 
                                     ?></strong><br>
@@ -294,8 +294,6 @@ if(isset($_POST['rejected']))
                         <b><i class="fa fa-calendar-check-o"></i> Subject : <?php echo $letter['subject']; ?></b>
 
 
-
-
                     </div>
 
 
@@ -310,12 +308,15 @@ if(isset($_POST['rejected']))
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="col-xs-12">
-                                <a href="manage-letter.php?option=pending" class="btn btn-default"><i class="fa fa-clock-o"></i> May be
+                                <a href="manage-letter.php?option=pending" class="btn btn-default"><i
+                                            class="fa fa-clock-o"></i> May be
                                     Later</a>
-                                <button type="submit" name="approved" value="approve" class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
+                                <button type="submit" name="approved" value="approve"
+                                        class="btn btn-success pull-right"><i class="fa fa-check"></i> Approve
                                     Letter
                                 </button>
-                                <button type="submit" name="rejected" value="reject" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                                <button type="submit" name="rejected" value="reject" class="btn btn-danger pull-right"
+                                        style="margin-right: 5px;">
                                     <i class="fa fa-ban"></i> Reject Letter
                                 </button>
                             </div>
@@ -331,7 +332,9 @@ if(isset($_POST['rejected']))
                         </div>
 
 
-                        <?php if(isset($msg)) { echo $msg;}?>
+                        <?php if (isset($msg)) {
+                            echo $msg;
+                        } ?>
                     </form>
                 </div>
 
@@ -344,10 +347,9 @@ if(isset($_POST['rejected']))
 
                         <?php
 
-                        $sql="SELECT * FROM `letter_index` WHERE letter_id=".$letterid;
-                        $res=mysqli_query($db, $sql);
-                        while($comment=mysqli_fetch_array($res))
-                        {
+                        $sql = "SELECT * FROM `letter_index` WHERE letter_id=" . $letterid;
+                        $res = mysqli_query($db, $sql);
+                        while ($comment = mysqli_fetch_array($res)) {
 
                             echo '<div class="box-comment">
 
@@ -356,11 +358,11 @@ if(isset($_POST['rejected']))
 
                             <div class="comment-text">
                       <span class="username">
-                        '.facultyname($comment["faculty_id"],$db).' '.status($comment['status']).'
-                        <span class="text-muted pull-right">'.datetime($comment["timestamp"]).'</span>
+                        ' . facultyname($comment["faculty_id"], $db) . ' ' . status($comment['status']) . '
+                        <span class="text-muted pull-right">' . datetime($comment["timestamp"]) . '</span>
                       </span><!-- /.username -->
                                 
-                                '.$comment['comments'].'
+                                ' . $comment['comments'] . '
                                 
                                 
                                 
@@ -372,7 +374,6 @@ if(isset($_POST['rejected']))
 
 
                         ?>
-
 
 
                         <!-- /.box-comment -->

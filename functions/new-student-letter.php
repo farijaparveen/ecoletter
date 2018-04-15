@@ -4,8 +4,15 @@ include('../config.php');
 
 $through=$_POST['through'];
 $department=$_POST['department'];
-$principal=$_POST['principal'];
-$hod=$_POST['hod'];
+if(isset( $_POST['principal'])) {
+    $principal = $_POST['principal'];
+}else{ $principal = 0;}
+if(isset($_POST['hod'])) {
+    $hod = $_POST['hod'];
+}else{$hod = 0;
+}
+
+
 
 $type=$_POST['type'];
 $duration=$_POST['duration'];
