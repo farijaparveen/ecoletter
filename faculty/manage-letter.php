@@ -245,7 +245,7 @@ include ('../custom-functions.php')
 
                                         <?php
 
-                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=1 AND letter_index.faculty_id=".$_SESSION['login_user'];
+                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=0 AND letter_index.faculty_id='".$_SESSION['login_user']."'";
 
 
                                         $res=mysqli_query($db,$sql);
@@ -340,7 +340,7 @@ include ('../custom-functions.php')
 
                                         <?php
 
-                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=2 AND letter_index.faculty_id=".$_SESSION['login_user'];
+                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=2 AND letter_index.faculty_id='".$_SESSION['login_user']."'";
 
 
                                         $res=mysqli_query($db,$sql);
@@ -436,7 +436,7 @@ include ('../custom-functions.php')
 
                                         <?php
 
-                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=3 AND letter_index.faculty_id=".$_SESSION['login_user'];
+                                        $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=3 AND letter_index.faculty_id='".$_SESSION['login_user']."'";
 
 
                                         $res=mysqli_query($db,$sql);
@@ -528,7 +528,7 @@ include ('../custom-functions.php')
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
-<script src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->

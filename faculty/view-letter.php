@@ -9,9 +9,20 @@ include ('../custom-functions.php');
 
 $letterid=$_GET['id'];
 
+$sql8 = "SELECT name from faculty_data WHERE faculty_id='".$_SESSION['login_user']."'";
+$result8 = mysqli_query($db, $sql8);
+if (mysqli_num_rows($result8) > 0) {
+    $row = mysqli_fetch_assoc($result8);
+    $fname=$row['name'];
+
+} else {
+    echo "0 results";
+}
+
+
 if(isset($_POST['approved']))
 {
-    $runsql1="update letter_index SET status=2, comments='".$_POST['comments']."' WHERE faculty_id=".$_SESSION['login_user']." AND letter_id=".$letterid;
+    $runsql1="update letter_index SET name='$fname', role='Faculty', status=2, comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
     $runsql2="update letter_content SET status=1 WHERE letter_id=".$letterid;
 
     $runsql3="update letter_content SET hod=1 WHERE letter_id=".$letterid;
@@ -47,7 +58,7 @@ if(isset($_POST['approved']))
 if(isset($_POST['rejected']))
 {
 
-    $runsql1="update letter_index SET status=3, comments='".$_POST['comments']."' WHERE faculty_id=".$_SESSION['login_user']." AND letter_id=".$letterid;
+    $runsql1="update letter_index SET name='$fname', role='Faculty',  status=3, comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
     $runsql2="update letter_content SET status=3 WHERE letter_id=".$letterid;
 
     $res=mysqli_query($db, $runsql1);
@@ -154,7 +165,7 @@ if(isset($_POST['rejected']))
                 <div class="pull-left image"><img src="../dist/img/student.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info"><p><?php
-                        $sql = "SELECT name from faculty_data WHERE faculty_id=".$_SESSION['login_user'];
+                        $sql = "SELECT name from faculty_data WHERE faculty_id='".$_SESSION['login_user']."'";
                         $result = mysqli_query($db, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -195,6 +206,8 @@ if(isset($_POST['rejected']))
     <div class="content-wrapper">
 
         <?php
+
+        $letterid=$_GET['id'];
 
 
         $lsql="SELECT * FROM `letter_content` WHERE letter_id=".$letterid." AND status>0";

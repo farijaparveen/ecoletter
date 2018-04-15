@@ -1,6 +1,7 @@
 <?php
 
 include('../session.php');
+include ('../custom-functions.php');
 role_check($_SESSION['role'],3);
 
 ?>
@@ -17,6 +18,11 @@ role_check($_SESSION['role'],3);
         <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+
+
+        <link rel="stylesheet"
+              href="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
         <!-- jvectormap -->
         <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
         <!-- Theme style -->
@@ -105,7 +111,7 @@ role_check($_SESSION['role'],3);
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                    <li class="active"><a href="manage-letter.php"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
+                    <li class="active"><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a>
                     </li>
                     <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                     <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
@@ -119,7 +125,7 @@ role_check($_SESSION['role'],3);
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Past letter
+                    Manage letter
                     <small>History of past letters</small>
                 </h1>
                 <ol class="breadcrumb">
@@ -132,7 +138,359 @@ role_check($_SESSION['role'],3);
             <section class="content">
 
 
+                <div class="row">
+                    <div class="col-md-3">
+
+
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Folders</h3>
+
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li <?php
+                                    if(empty($_GET['option']) || $_GET['option']=="pending")
+                                    {echo 'class="active"'; }?>><a href="?option=pending"><i class="fa fa-inbox"></i> Pending Approval
+                                        </a></li>
+                                    <li <?php
+                                    if($_GET['option']=="approved")
+                                    {echo 'class="active"'; }?>><a href="?option=approved"><i class="fa fa-envelope-o"></i> Approved</a></li>
+                                    <li <?php
+                                    if($_GET['option']=="unapproved")
+                                    {echo 'class="active"'; }?>><a href="?option=unapproved"><i class="fa fa-trash"></i> Unapproved</a></li>
+
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /. box -->
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Labels</h3>
+
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Leave</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> OD</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> permission</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+
+
+                    <?php
+                    if($_GET['option']=="pending")
+                    {?>
+                        <div class="col-md-9">
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Pending Approval</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <div class="has-feedback">
+
+                                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Reload this page"><i
+                                                        class="fa fa-refresh fa-spin"></i> Refresh
+                                            </button>
+
+
+                                        </div>
+                                    </div>
+
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <div class="mailbox-controls">
+                                        <!-- Check all button -->
+
+                                        <!-- /.btn-group -->
+
+                                    </div>
+                                    <div class="table-responsive mailbox-messages" style="padding: 10px;">
+                                        <table id="example3" class="table table-hover table-striped">
+
+                                            <thead style="display: none;">
+                                            <tr>
+                                                <th>Icon</th>
+                                                <th>Name</th>
+                                                <th>Subject</th>
+                                                <th>Type</th>
+                                                <th>Time</th>
+
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            <?php
+
+                                            $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=0 AND letter_index.faculty_id='".$_SESSION['login_user']."'";
+
+
+                                            $res=mysqli_query($db,$sql);
+
+
+
+
+
+
+
+                                            while($row=mysqli_fetch_array($res))
+
+                                            {
+                                                echo' <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-clock-o text-yellow"></i></a></td>
+                                        <td class="mailbox-name"><a href="view-letter.php?id='.$row['letter_id'].'">'.studentname($row['sender'], $db).'</a></td>
+                                        <td class="mailbox-subject">'.$row['subject'].'
+                                        </td>
+                                        <td class="mailbox-attachment"><span class="label label-danger">'.$row['type'].'</span>
+                                        </td>
+                                        <td class="mailbox-date">'.$row['timestamp'].'</td>
+                                    </tr>';
+
+
+                                            }
+
+                                            ?>
+
+
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                        <!-- /.table -->
+                                    </div>
+                                    <!-- /.mail-box-messages -->
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                            <!-- /. box -->
+                        </div>
+                    <?php }  ?>
+                    <?php
+                    if($_GET['option']=="approved")
+                    {?>
+                        <div class="col-md-9">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Approval</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <div class="has-feedback">
+
+                                            <button type="button" class="btn btn-default btn-sm"><i
+                                                        class="fa fa-refresh fa-spin"></i> Refresh
+                                            </button>
+
+
+                                        </div>
+                                    </div>
+
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <div class="mailbox-controls">
+                                        <!-- Check all button -->
+
+                                        <!-- /.btn-group -->
+
+                                    </div>
+                                    <div class="table-responsive mailbox-messages" style="padding: 10px;">
+
+                                        <table id="example3" class="table table-hover table-striped">
+
+                                            <thead style="display: none;">
+                                            <tr>
+                                                <th>Icon</th>
+                                                <th>Name</th>
+                                                <th>Subject</th>
+                                                <th>Type</th>
+                                                <th>Time</th>
+
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            <?php
+
+                                            $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=2 AND letter_index.faculty_id='".$_SESSION['login_user']."'";
+
+
+                                            $res=mysqli_query($db,$sql);
+
+
+
+
+
+
+
+                                            while($row=mysqli_fetch_array($res))
+
+                                            {
+                                                echo' <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-check text-green"></i></a></td>
+                                        <td class="mailbox-name"><a href="view-letter.php?id='.$row['letter_id'].'">'.studentname($row['sender'], $db).'</a></td>
+                                        <td class="mailbox-subject">'.$row['subject'].'
+                                        </td>
+                                        <td class="mailbox-attachment"><span class="label label-danger">'.$row['type'].'</span>
+                                        </td>
+                                        <td class="mailbox-date">'.$row['timestamp'].'</td>
+                                    </tr>';
+
+
+                                            }
+
+                                            ?>
+
+
+
+
+
+
+
+                                            </tbody>                                    </table>
+
+
+                                        <!-- /.table -->
+                                    </div>
+                                    <!-- /.mail-box-messages -->
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                            <!-- /. box -->
+                        </div>
+                    <?php }  ?>
+
+                    <?php
+                    if($_GET['option']=="unapproved")
+                    {?>
+                        <div class="col-md-9">
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Unapproved</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <div class="has-feedback">
+
+                                            <button type="button" class="btn btn-default btn-sm"><i
+                                                        class="fa fa-refresh fa-spin"></i> Refresh
+                                            </button>
+
+
+                                        </div>
+                                    </div>
+
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <div class="mailbox-controls">
+                                        <!-- Check all button -->
+
+                                        <!-- /.btn-group -->
+
+                                    </div>
+                                    <div class="table-responsive mailbox-messages" style="padding: 10px;">
+                                        <table id="example3" class="table table-hover table-striped">
+
+                                            <thead style="display: none;">
+                                            <tr>
+                                                <th>Icon</th>
+                                                <th>Name</th>
+                                                <th>Subject</th>
+                                                <th>Type</th>
+                                                <th>Time</th>
+
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            <?php
+
+                                            $sql="SELECT letter_content.sender, letter_content.letter_id, letter_content.subject, letter_content.type, letter_content.timestamp FROM `letter_content` INNER JOIN letter_index ON letter_index.letter_id=letter_content.letter_id WHERE letter_index.status=3 AND letter_index.faculty_id='".$_SESSION['login_user']."'";
+
+
+                                            $res=mysqli_query($db,$sql);
+
+
+
+
+
+
+
+                                            while($row=mysqli_fetch_array($res))
+
+                                            {
+                                                echo' <tr>
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-ban text-red"></i></a></td>
+                                        <td class="mailbox-name"><a href="view-letter.php?id='.$row['letter_id'].'">'.studentname($row['sender'], $db).'</a></td>
+                                        <td class="mailbox-subject">'.$row['subject'].'
+                                        </td>
+                                        <td class="mailbox-attachment"><span class="label label-danger">'.$row['type'].'</span>
+                                        </td>
+                                        <td class="mailbox-date">'.$row['timestamp'].'</td>
+                                    </tr>';
+
+
+                                            }
+
+                                            ?>
+
+
+
+
+
+
+
+                                            </tbody>                                    </table>
+
+
+                                        <!-- /.table -->
+                                    </div>
+                                    <!-- /.mail-box-messages -->
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                            <!-- /. box -->
+                        </div>
+                    <?php }  ?>
+
+
+
+                    <!-- /.col -->
+                </div>
+
+
             </section>
+
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -152,6 +510,10 @@ role_check($_SESSION['role'],3);
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+
     <!-- FastClick -->
     <script src="../bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
@@ -166,9 +528,7 @@ role_check($_SESSION['role'],3);
     <!-- ChartJS -->
     <script src="../bower_components/Chart.js/Chart.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard2.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
     <script>
         $(function () {
             //Add text editor
@@ -176,14 +536,20 @@ role_check($_SESSION['role'],3);
         });
     </script>
 
-    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script>
+        $(function () {
+            $('#example3').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+
 
     </body>
     </html>
-<?php
-/**
- * Created by PhpStorm.
- * User: Durai
- * Date: 01-03-2018
- * Time: 12:59 PM
- */

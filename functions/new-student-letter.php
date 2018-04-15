@@ -4,7 +4,9 @@ include('../config.php');
 
 $through=$_POST['through'];
 $department=$_POST['department'];
-$to=isset($_POST['to']);
+$principal=$_POST['principal'];
+$hod=$_POST['hod'];
+
 $type=$_POST['type'];
 $duration=$_POST['duration'];
 $subject=$_POST['subject'];
@@ -30,6 +32,20 @@ foreach ($through as $value) {
     $result1=mysqli_query($db, $letter);
 
 }
+
+if($hod!=1 && $principal!=1){
+$s1="update letter_content SET receiver=1 where letter_id=".$letterid;
+mysqli_query($db, $s1);
+}
+if($hod==1){
+    $s1="update letter_content SET receiver=2 where letter_id=".$letterid;
+    mysqli_query($db, $s1);
+}
+if($principal==1){
+    $s1="update letter_content SET receiver=3 where letter_id=".$letterid;
+    mysqli_query($db, $s1);
+}
+
 
 
 
