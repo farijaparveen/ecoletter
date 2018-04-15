@@ -11,7 +11,7 @@ role_check($_SESSION['role'],3);
 
 $letterid=$_GET['id'];
 
-$sql8 = "SELECT name from warden_data WHERE warden_id='" . $_SESSION['login_user'] . "'";
+$sql8 = "SELECT name from warden_data WHERE wardenid='" . $_SESSION['login_user'] . "'";
 $result8 = mysqli_query($db, $sql8);
 if (mysqli_num_rows($result8) > 0) {
     $row = mysqli_fetch_assoc($result8);
@@ -28,7 +28,7 @@ $stst = mysqli_fetch_array($runsts);
 
 if(isset($_POST['approved']))
 {
-    $runsql1="update letter_index SET status=2, name='$fname' ,comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
+    $runsql1="update letter_index SET status=2, name='$fname', role='Faculty', comments='".$_POST['comments']."' WHERE faculty_id='".$_SESSION['login_user']."' AND letter_id=".$letterid;
 
     $res=mysqli_query($db, $runsql1);
     if ($stst['receiver'] == 1) {
@@ -381,7 +381,7 @@ if(isset($_POST['rejected']))
 
                             <div class="comment-text">
                       <span class="username">
-                        '.facultyname($comment["faculty_id"],$db).' '.status($comment['status']).'
+                        '.$comment["name"].' -  '.$comment["role"].' '.status($comment['status']).'
                         <span class="text-muted pull-right">'.datetime($comment["timestamp"]).'</span>
                       </span><!-- /.username -->
                                 

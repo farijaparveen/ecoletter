@@ -337,7 +337,7 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE hod=2 AND status=1 AND department='".$_SESSION['department']."' ";;
+                                        $sql="SELECT * FROM `letter_content` WHERE hod=2 AND department='".$_SESSION['department']."' ";;
 
 
                                         $res=mysqli_query($db,$sql);
@@ -433,7 +433,7 @@ include('../custom-functions.php');
 
                                         <?php
 
-                                        $sql="SELECT * FROM `letter_content` WHERE hod=3 AND status=1 AND department='".$_SESSION['department']."'";;
+                                        $sql="SELECT * FROM `letter_content` WHERE hod=3 AND department='".$_SESSION['department']."'";;
 
 
                                         $res=mysqli_query($db,$sql);

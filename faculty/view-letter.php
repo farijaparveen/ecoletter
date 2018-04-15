@@ -280,9 +280,9 @@ if (isset($_POST['rejected'])) {
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
-                                <strong><?php if ($letter['receiver'] > 1) {
+                                <strong><?php if ($letter['receiver'] ==3) {
                                         echo "The Principal";
-                                    } else if ($letter['receiver'] > 0) {
+                                    } else if ($letter['receiver'] == 2) {
                                         echo "The HOD<br>";
                                         echo $letter['department'];
 

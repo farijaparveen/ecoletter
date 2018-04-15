@@ -11,7 +11,7 @@ $sts = "SELECT receiver from letter_content where letter_id=" . $letterid;
 $runsts = mysqli_query($db, $sts);
 $stst = mysqli_fetch_array($runsts);
 
-
+$user=$_SESSION['login_user'];
 $sql7 = "SELECT name from hod_data WHERE hod_id='" . $_SESSION['login_user'] . "'";
 $result7 = mysqli_query($db, $sql7);
 
@@ -358,7 +358,7 @@ if (isset($_POST['rejected'])) {
 
                             <div class="comment-text">
                       <span class="username">
-                        ' . facultyname($comment["faculty_id"], $db) . ' ' . status($comment['status']) . '
+                        ' . $comment["name"] . ' - ' . $comment["role"] . ' ' . status($comment['status']) . '
                         <span class="text-muted pull-right">' . datetime($comment["timestamp"]) . '</span>
                       </span><!-- /.username -->
                                 

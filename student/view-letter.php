@@ -275,7 +275,7 @@ $student=mysqli_fetch_array($ress);
                         <?php
 
 
-                        $sql3="SELECT DISTINCT faculty_id FROM `letter_index` WHERE letter_id=".$letterid;
+                        $sql3="SELECT DISTINCT faculty_id, name FROM `letter_index` WHERE role='Faculty' AND letter_id=".$letterid;
                         $res=mysqli_query($db, $sql3);
                         while($row=mysqli_fetch_array($res))
 
@@ -284,7 +284,7 @@ $student=mysqli_fetch_array($ress);
 
                             echo ' <li>
                             <img src="/dist/img/faculty.png" alt="User Image">
-                            <a class="users-list-name" href="#">'.facultyname($row['faculty_id'], $db).'</a>
+                            <a class="users-list-name" href="#">'.$row['name'].'</a>
                             <span class="users-list-date">Faculty</span>
                         </li>';
 

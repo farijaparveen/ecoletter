@@ -1,6 +1,7 @@
 <?php
 
 include('../config.php');
+include ('../custom-functions.php');
 
 $through=$_POST['through'];
 $department=$_POST['department'];
@@ -35,7 +36,7 @@ $result=mysqli_query($db, $sql);
 
 
 foreach ($through as $value) {
-    $letter = "INSERT INTO letter_index (letter_id, faculty_id, status) VALUES ('$letterid', '$value', 0)";
+    $letter = "INSERT INTO letter_index (letter_id, faculty_id, role, status) VALUES ('$letterid', '$value', 'Faculty', 0)";
     $result1=mysqli_query($db, $letter);
 
 }
