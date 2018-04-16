@@ -2,15 +2,34 @@
 
 include('../../session.php');
 role_check($_SESSION['role'],6);
-
 ?>
 
 
+<?php
+$msg="";
+if(isset($_GET['delete'])) {
+    $dsql = "DELETE FROM faculty_data WHERE faculty_id='".$_GET['delete']."'";
+    $rsql = mysqli_query($db, $dsql);
+    if(isset($rsql)) {
+        $msg= '<div class="callout callout-success">
+                <h4>Successfull!</h4>
+
+                <p>Faculty record is deleted</p>
+              </div>';
+    } else {
+        $msg='<div class="callout callout-danger">
+                <h4>unsuccesfull!</h4>
+
+                <p>Error occured!Try again.</p>
+              </div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <link href="/favicon.png" rel="icon" type="image/x-icon" />    <title>Eco Letter| Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -105,7 +124,6 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -120,9 +138,8 @@ role_check($_SESSION['role'],6);
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
-                        <li class="active"><a href="remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
+                        <li class="active"><a href="add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
+                        <li><a href="remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
@@ -137,14 +154,12 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
             </ul>
@@ -157,17 +172,114 @@ role_check($_SESSION['role'],6);
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Remove
-                <small>Delete the faculty record</small>
+                Add
+                <small>Add faculty to Eco Letter</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Remove</li>
+                <li class="active">Add</li>
             </ol>
         </section>
-
-        <!-- Main content -->
         <section class="content">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <?php
+                    if(isset($msg))
+                    {
+                        echo $msg;
+                    }
+
+                    ?>
+
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Removing the faculty</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td> Faculty id</td>
+                                    <td> Name </td>
+                                    <td> Faculty type</td>
+                                    <td> Department </td>
+                                    <td> Dessignation </td>
+                                    <td> Experience</td>
+                                    <td> Gender </td>
+                                    <td> Email </td>
+                                    <td> DOB</td>
+                                    <td> Delete</td>
+
+
+
+
+
+
+                                </tr>
+
+                                </thead>
+
+                                <tbody>
+                                <?php
+
+                                $sql="SELECT * from faculty_data";
+                                $res=mysqli_query($db, $sql);
+                                while($fac=mysqli_fetch_array($res))
+                                {
+
+                                    echo '<tr>
+                            
+                            <td>'.$fac[0].'</td>
+                            <td>'.$fac[1].'</td>
+                            <td>'.$fac[2].'</td>
+                            <td>'.$fac[3].'</td>
+                            <td>'.$fac[4].'</td>
+                            <td>'.$fac[5].'</td>
+                            <td>'.$fac[6].'</td>
+                            <td>'.$fac[7].'</td>
+                            <td>'.$fac[8].'</td>
+                            <td><a href="?delete='.$fac[0].'" class="btn btn-danger">Delete</a> </td>
+                           
+
+                            </td>
+
+                            </tr>
+                            
+                            ';
+
+                                }
+
+
+
+                                ?>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+
+
+                        <!-- /.box-body -->
+
+                        <!-- /.box-footer -->
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
 
 
         </section>
@@ -191,6 +303,8 @@ role_check($_SESSION['role'],6);
 <script src="<?php echo $baseurl; ?>/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo $baseurl; ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo $baseurl; ?>/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -213,6 +327,13 @@ role_check($_SESSION['role'],6);
         //Add text editor
         $("#compose-textarea").wysihtml5();
     });
+</script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable()
+        $('#example3').DataTable()
+    })
 </script>
 
 <script src="<?php echo $baseurl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>

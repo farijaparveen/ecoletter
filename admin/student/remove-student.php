@@ -6,6 +6,27 @@ role_check($_SESSION['role'],6);
 ?>
 
 
+<?php
+$msg="";
+if(isset($_GET['delete'])) {
+    $dsql = "DELETE FROM student_data WHERE student_id=".$_GET['delete'];
+    $rsql = mysqli_query($db, $dsql);
+    if(isset($rsql)) {
+        $msg= '<div class="callout callout-success">
+                <h4>Successfull!</h4>
+
+                <p>Student record is deleted</p>
+              </div>';
+    } else {
+$msg='<div class="callout callout-danger">
+                <h4>unsuccesfull!</h4>
+
+                <p>Error occured!Try again.</p>
+              </div>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,7 +126,6 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="edit-student.php>"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li class="active"><a href="remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -121,7 +141,6 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -137,14 +156,13 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+
 
 
             </ul>
@@ -168,8 +186,106 @@ role_check($_SESSION['role'],6);
 
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <?php
+                    if(isset($msg))
+                    {
+                      echo $msg;
+                    }
+
+                    ?>
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Removing the student</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                            <div class="box-body">
+
+                                <table id="example1" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td>Reg id</td>
+                                        <td> Name </td>
+                                        <td> Student type</td>
+                                        <td> Year </td>
+                                        <td> Department </td>
+                                        <td> Section </td>
+                                        <td> Gender </td>
+                                        <td> Email </td>
+                                        <td> DOB</td>
+                                        <td> Delete</td>
 
 
+
+
+
+
+                                    </tr>
+
+                                    </thead>
+
+                                    <tbody>
+                                    <?php
+
+                                    $sql="SELECT * from student_data";
+                                    $res=mysqli_query($db, $sql);
+                                    while($std=mysqli_fetch_array($res))
+                                    {
+
+                                        echo '<tr>
+                            
+                            <td>'.$std[0].'</td>
+                            <td>'.$std[1].'</td>
+                            <td>'.$std[2].'</td>
+                            <td>'.$std[3].'</td>
+                            <td>'.$std[4].'</td>
+                            <td>'.$std[5].'</td>
+                            <td>'.$std[6].'</td>
+                            <td>'.$std[7].'</td>
+                            <td>'.$std[8].'</td>
+                            <td><a href="?delete='.$std[0].'" class="btn btn-danger">Delete</a> </td>
+
+                           
+
+                            </td>
+
+                            </tr>
+                            
+                            ';
+
+                                    }
+
+
+
+                                    ?>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+
+
+                            <!-- /.box-body -->
+
+                            <!-- /.box-footer -->
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
         </section>
         <!-- /.content -->
     </div>
@@ -191,6 +307,8 @@ role_check($_SESSION['role'],6);
 <script src="<?php echo $baseurl; ?>/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo $baseurl; ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo $baseurl; ?>/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -213,6 +331,13 @@ role_check($_SESSION['role'],6);
         //Add text editor
         $("#compose-textarea").wysihtml5();
     });
+</script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable()
+        $('#example3').DataTable()
+    })
 </script>
 
 <script src="<?php echo $baseurl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>

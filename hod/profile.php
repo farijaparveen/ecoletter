@@ -358,10 +358,10 @@ role_check($_SESSION['role'],4);
 
                                 <form action="" method="post" class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">OLD password</label>
+                                        <label for="inputName" class="col-sm-2 control-label">Old password</label>
 
                                         <div class="col-sm-10">
-                                            <input type="password" name="oldpassword" class="form-control" id="inputName" placeholder="Enter the old passsword" required>
+                                            <input type="password" name="oldpassword" class="form-control" id="inputName" placeholder="Enter the old password" required>
                                         </div>
                                     </div>
                                     <div class="form-group">

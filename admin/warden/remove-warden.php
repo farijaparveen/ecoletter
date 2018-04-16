@@ -3,6 +3,26 @@
 include('../../session.php');
 
 ?>
+<?php
+$msg="";
+if(isset($_GET['delete'])) {
+    $dsql = "DELETE FROM warden_data WHERE wardenid='".$_GET['delete']."'";
+    $rsql = mysqli_query($db, $dsql);
+    if(isset($rsql)) {
+        $msg= '<div class="callout callout-success">
+                <h4>Successfull!</h4>
+
+                <p>Warden record is deleted</p>
+              </div>';
+    } else {
+        $msg='<div class="callout callout-danger">
+                <h4>unsuccesfull!</h4>
+
+                <p>Error occured!Try again.</p>
+              </div>';
+    }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -104,7 +124,6 @@ include('../../session.php');
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -120,7 +139,6 @@ include('../../session.php');
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -136,14 +154,12 @@ include('../../session.php');
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li class="active"><a href="remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
             </ul>
@@ -167,6 +183,99 @@ include('../../session.php');
 
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <?php
+                    if(isset($msg))
+                    {
+                        echo $msg;
+                    }
+
+                    ?>
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Removing the warden</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+
+                            <table id="example3" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td> Warden id</td>
+                                    <td> Name </td>
+                                    <td> Warden type</td>
+                                    <td> Experience</td>
+                                    <td> Gender </td>
+                                    <td> DOB</td>
+                                    <td> Delete</td>
+
+
+
+
+
+                                </tr>
+
+                                </thead>
+
+                                <tbody>
+                                <?php
+
+                                $sql="SELECT * from warden_data";
+                                $res=mysqli_query($db, $sql);
+                                while($wdn=mysqli_fetch_array($res))
+                                {
+
+                                    echo '<tr>
+                            
+                            <td>'.$wdn[0].'</td>
+                            <td>'.$wdn[1].'</td>
+                            <td>'.$wdn[2].'</td>
+                            <td>'.$wdn[3].'</td>
+                            <td>'.$wdn[4].'</td>
+                            <td>'.$wdn[5].'</td>
+                            <td><a href="?delete='.$wdn[0].'" class="btn btn-danger">Delete</a> </td>
+                          
+                           
+
+                            </td>
+
+                            </tr>
+                            
+                            ';
+
+                                }
+
+
+
+                                ?>
+
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+
+
+
+
+                        <!-- /.box-body -->
+
+                        <!-- /.box-footer -->
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
 
 
         </section>
@@ -191,6 +300,9 @@ include('../../session.php');
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo $baseurl; ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo $baseurl; ?>/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
 <script src="<?php echo $baseurl; ?>/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo $baseurl; ?>/dist/js/adminlte.min.js"></script>
@@ -212,6 +324,13 @@ include('../../session.php');
         //Add text editor
         $("#compose-textarea").wysihtml5();
     });
+</script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable()
+        $('#example3').DataTable()
+    })
 </script>
 
 <script src="<?php echo $baseurl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>

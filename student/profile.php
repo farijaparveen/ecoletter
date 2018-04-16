@@ -384,7 +384,7 @@ role_check($_SESSION['role'],1);
 
                                 <form action="" method="post" class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">OLD password</label>
+                                        <label for="inputName" class="col-sm-2 control-label">Old Password</label>
 
                                         <div class="col-sm-10">
                                             <input type="password" name="oldpassword" class="form-control" id="inputName" placeholder="Enter the old passsword" required>
@@ -407,7 +407,7 @@ role_check($_SESSION['role'],1);
                                     </div>
 
 
-                                    <button class="btn btn-primary" type="submit" value="submit" name="submit">Change Password</button>
+                                    <button class="btn btn-primary" type="submit" value="submit" name="submit">Change password</button>
 
 
                                 </form>

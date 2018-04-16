@@ -165,7 +165,6 @@ VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$ema
                     </a>
                     <ul class="treeview-menu">
                         <li class="active"><a href="add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -181,7 +180,6 @@ VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$ema
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -197,14 +195,13 @@ VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$ema
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+
 
 
             </ul>
@@ -269,9 +266,9 @@ VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$ema
                                     <div class="col-sm-10">
 
                                         <select name="gender" class="form-control">
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                            <option value="3">Others</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="others">Others</option>
 
                                         </select>
 
@@ -284,8 +281,8 @@ VALUES ('$stdntid', '$stdname','$stdtyp', '$year','$dept','$sec','$gender','$ema
                                     <div class="col-sm-10">
 
                                 <select name="studenttype" class="form-control">
-                                    <option value="1">Hosteller</option>
-                                    <option value="2">Day scholar</option>
+                                    <option value="hosteller">Hosteller</option>
+                                    <option value="dayscholar">Day scholar</option>
 
                                 </select>
                                     </div>

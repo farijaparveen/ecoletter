@@ -104,7 +104,6 @@ role_check($_SESSION['role'],2);
                 <li class="header">MAIN NAVIGATION</li>
 
                 <li class="active"><a href="index.php"><i class="fa fa-pie-chart"></i><span>Dashboard</span></a></li>
-                <li><a href="new-letter.php"><i class="fa fa-plus-square"></i> <span>New Letter</span></a></li>
                 <li><a href="manage-letter.php?option=pending"><i class="fa fa-tasks"></i> <span>Manage Letters</span></a></li>
                 <li><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
                 <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
@@ -133,56 +132,80 @@ role_check($_SESSION['role'],2);
         <section class="content">
 
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="info-box">
-                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                        <span class="info-box-icon bg-aqua"><i class="fa fa-inbox"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">CPU Traffic</span>
-                            <span class="info-box-number">90<small>%</small></span>
+                            <span class="info-box-text">Pending Letters</span>
+                            <span class="info-box-number">
+                            <?php
+
+                            $sql5="SELECT count(*) as counts from letter_index where status=0 AND faculty_id='".$_SESSION['login_user']."'";
+                            $rsql=mysqli_query($db,$sql5);
+                            $row=mysqli_fetch_assoc($rsql);
+                            echo $row['counts'];
+
+
+
+
+                            ?>
+                            </span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
-                            <span class="info-box-number">41,410</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
                 <!-- /.col -->
 
                 <!-- fix for small devices only -->
                 <div class="clearfix visible-sm-block"></div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="info-box">
-                        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                        <span class="info-box-icon bg-green"><i class="fa fa-envelope-o"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">760</span>
+                            <span class="info-box-text">Approved Letters</span>
+                            <span class="info-box-number">
+                                <?php
+
+                                $sql5="SELECT count(*) as counts from letter_index where status=2 AND faculty_id='".$_SESSION['login_user']."'";
+                                $rsql=mysqli_query($db,$sql5);
+                                $row=mysqli_fetch_assoc($rsql);
+                                echo $row['counts'];
+
+
+
+                                ?>
+                            </span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="info-box">
-                        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                        <span class="info-box-icon bg-yellow"><i class="fa fa-trash"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
+                            <span class="info-box-text">Unapproved Letters</span>
+                            <span class="info-box-number">
+                            <?php
+
+                            $sql5="SELECT count(*) as counts from letter_index where status=3 AND faculty_id='".$_SESSION['login_user']."'";
+                            $rsql=mysqli_query($db,$sql5);
+                            $row=mysqli_fetch_assoc($rsql);
+                            echo $row['counts'];
+
+
+
+
+                            ?>
+                            </span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

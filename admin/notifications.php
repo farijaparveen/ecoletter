@@ -109,7 +109,6 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="student/add-student.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -125,7 +124,6 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -141,14 +139,13 @@ role_check($_SESSION['role'],6);
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li class="active"><a href="notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+
 
 
             </ul>

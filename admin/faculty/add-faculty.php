@@ -160,7 +160,6 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -176,7 +175,6 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                     </a>
                     <ul class="treeview-menu">
                         <li class="active"><a href="add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -192,14 +190,12 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../warden/add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../warden/edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../warden/remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
 
 
             </ul>
@@ -260,10 +256,10 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                                     <div class="col-sm-10">
 
                                         <select name="designation" class="form-control">
-                                            <option value="1">Associate Professor</option>
-                                            <option value="2">Assistant Professor(OG)</option>
-                                            <option value="3">Assistant Professor(SG)</option>
-                                            <option value="4">Professor</option>
+                                            <option value="Associate Professor">Associate Professor</option>
+                                            <option value="Assistant Professor(OG)">Assistant Professor(OG)</option>
+                                            <option value="Assistant Professor(SG)">Assistant Professor(SG)</option>
+                                            <option value="Professor">Professor</option>
                                         </select>
 
                                     </div>
@@ -283,8 +279,8 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                                     <div class="col-sm-10">
 
                                         <select name="facultytype" class="form-control">
-                                            <option value="1">Teaching-staff</option>
-                                            <option value="2">Non-teaching staff</option>
+                                            <option value="teaching">Teaching-staff</option>
+                                            <option value="non-teaching">Non-teaching staff</option>
                                         </select>
 
                                     </div>
@@ -318,9 +314,9 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                                     <div class="col-sm-10">
 
                                         <select name="gender" class="form-control">
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                            <option value="3">Others</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="others">Others</option>
 
                                         </select>
 
@@ -398,6 +394,7 @@ VALUES ('$facultyid','$facname','$factype','$dept','$desig', $exp, '$gender','$e
                             </div>
                             <!-- /.box-footer -->
                         </form>
+
 
 
 

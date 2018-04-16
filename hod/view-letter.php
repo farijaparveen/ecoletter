@@ -41,7 +41,7 @@ if (isset($_POST['approved'])) {
         $msg = '<div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-check"></i> Approved!</h4>
-                Success alert preview. This alert is dismissable.
+                The letter submitted is approved!! 
               </div>';
 
 
@@ -50,8 +50,8 @@ if (isset($_POST['approved'])) {
         $new = mysqli_error($db);
         $msg = '<div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-warning"></i> Problem ar!</h4>
-                Warning alert preview. This alert is dismissable. ' . $new . '
+                <h4><i class="icon fa fa-warning"></i> Error!</h4>
+                Unable to approve!!Try again! ' . $new . '
               </div>';
 
     }
@@ -71,17 +71,16 @@ if (isset($_POST['rejected'])) {
     if ($res) {
         $msg = '<div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire
-                soul, like these sweet mornings of spring which I enjoy with my whole heart.
+                <h4><i class="icon fa fa-ban"></i> Rejected!</h4>
+                  The letter submitted is rejected!!
               </div>';
 
 
     } else {
         $msg = '<div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
-                Warning alert preview. This alert is dismissable.
+                <h4><i class="icon fa fa-warning"></i> Error!</h4>
+                Unable to approve!!Try again!
               </div>';
 
     }

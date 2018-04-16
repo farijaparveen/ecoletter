@@ -223,7 +223,7 @@ include('../custom-functions.php');
 
                                     <?php
 
-                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=1";
+                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=1 order by timestamp desc" ;
 
                                     $res=mysqli_query($db,$sql);
 
@@ -311,7 +311,7 @@ include('../custom-functions.php');
 
                                     <?php
 
-                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=2";
+                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=2 order by timestamp desc";
 
                                     $res=mysqli_query($db,$sql);
 
@@ -401,7 +401,7 @@ include('../custom-functions.php');
 
                                     <?php
 
-                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=3";
+                                    $sql="SELECT * FROM `letter_content` WHERE sender=".$_SESSION['login_user']." AND status=3 order by timestamp desc";
 
                                     $res=mysqli_query($db,$sql);
 

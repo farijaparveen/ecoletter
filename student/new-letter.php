@@ -175,7 +175,7 @@ role_check($_SESSION['role'],1);
                                                 <?php
 
 
-                                                $std="SELECT studenttype from student_data WHERE studenttype=2 AND student_id='".$_SESSION['login_user']."'";
+                                                $std="SELECT studenttype from student_data WHERE studenttype=1 AND student_id='".$_SESSION['login_user']."'";
                                                 $rstd=mysqli_query($db, $std);
                                                 $or=mysqli_fetch_array($rstd);
 
@@ -253,11 +253,11 @@ role_check($_SESSION['role'],1);
                                         <div class="form-group">
                                             <label>Letter Type</label>
                                             <select class="form-control select2" name="type" style="width: 100%;">
-                                                <option value="leave">Leave Letter</option>
-                                                <option value="pleave">Permission Letter</option>
-                                                <option value="oleave">OD letter</option>
-                                                <option value="sleave">Special Permission</option>
-                                                <option value="eleave">Emergency</option>
+                                                <option value="Leave">Leave Letter</option>
+                                                <option value="Permission">Permission Letter</option>
+                                                <option value="On Duty">OD letter</option>
+                                                <option value="Special Permission">Special Permission</option>
+                                                <option value="Emergency">Emergency</option>
                                             </select>
                                         </div>
 

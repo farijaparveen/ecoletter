@@ -39,7 +39,7 @@ role_check($_SESSION['role'],5);
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
 
     <header class="main-header">
@@ -363,7 +363,7 @@ role_check($_SESSION['role'],5);
 
                             <form action="" method="post" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">OLD password</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Old password</label>
 
                                     <div class="col-sm-10">
                                         <input type="password" name="oldpassword" class="form-control" id="inputName" placeholder="Enter the old passsword" required>
@@ -386,7 +386,7 @@ role_check($_SESSION['role'],5);
                                 </div>
 
 
-                                <button class="btn btn-primary" type="submit" value="submit" name="submit">Change Password</button>
+                                <button class="btn btn-primary" type="submit" value="submit" name="submit">Change password</button>
 
                             </form>
 

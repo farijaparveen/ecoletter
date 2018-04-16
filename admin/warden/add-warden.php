@@ -154,7 +154,6 @@ VALUES ('$wdnid', '$wdnname','$wdntyp', '$exp','$gender','$dob','$email','$phnno
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../student/add-student.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="../student/edit-student.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../student/remove-student.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -170,7 +169,6 @@ VALUES ('$wdnid', '$wdnname','$wdntyp', '$exp','$gender','$dob','$email','$phnno
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../faculty/add-faculty.php"><i class="fa fa-user-plus"></i> Add </a></li>
-                        <li><a href="../faculty/edit-faculty.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="../faculty/remove-faculty.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
@@ -186,14 +184,13 @@ VALUES ('$wdnid', '$wdnname','$wdntyp', '$exp','$gender','$dob','$email','$phnno
                     </a>
                     <ul class="treeview-menu">
                         <li class="active"><a href="add-warden.php"><i class="fa  fa-user-plus"></i> Add </a></li>
-                        <li><a href="edit-warden.php"><i class="fa fa-pencil"></i> Edit</a></li>
                         <li><a href="remove-warden.php"><i class="fa fa-trash-o"></i> Delete</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="../notifications.php"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
-                <li><a href="../profile.php"><i class="fa fa-user-circle"></i> <span>Profile</span></a></li>
+
 
 
             </ul>
@@ -254,8 +251,8 @@ VALUES ('$wdnid', '$wdnname','$wdntyp', '$exp','$gender','$dob','$email','$phnno
                                     <div class="col-sm-10">
 
                                         <select name="wardentype" class="form-control">
-                                            <option value="1">Floor warden</option>
-                                            <option value="2">Full time warden</option>
+                                            <option value="floor warden">Floor warden</option>
+                                            <option value="fulltime warden">Full time warden</option>
                                         </select>
 
                                     </div>

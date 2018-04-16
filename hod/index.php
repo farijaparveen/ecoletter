@@ -129,10 +129,95 @@ role_check($_SESSION['role'],4);
 
         <!-- Main content -->
         <section class="content">
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-inbox"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Pending Letters</span>
+                                <span class="info-box-number">
+                            <?php
+
+                            $sql5="SELECT count(*) as counts from letter_content WHERE hod=1 AND department='".$_SESSION['department']."'";
+                            $rsql=mysqli_query($db,$sql5);
+                            $row=mysqli_fetch_assoc($rsql);
+                            echo $row['counts'];
 
 
 
-        </section>
+
+                            ?>
+                            </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-envelope-o"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Approved Letters</span>
+                                <span class="info-box-number">
+                                <?php
+
+                                $sql5="SELECT count(*) as counts from letter_content WHERE hod=2 AND department='".$_SESSION['department']."'";
+                                $rsql=mysqli_query($db,$sql5);
+                                $row=mysqli_fetch_assoc($rsql);
+                                echo $row['counts'];
+
+
+
+                                ?>
+                            </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-yellow"><i class="fa fa-trash"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Unapproved Letters</span>
+                                <span class="info-box-number">
+                            <?php
+
+                            $sql5="SELECT count(*) as counts from letter_content WHERE hod=3 AND department='".$_SESSION['department']."'";
+                            $rsql=mysqli_query($db,$sql5);
+                            $row=mysqli_fetch_assoc($rsql);
+                            echo $row['counts'];
+
+
+
+
+                            ?>
+                            </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+
+
+            </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
